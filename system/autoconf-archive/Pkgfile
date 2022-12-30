@@ -3,7 +3,7 @@
 
 name=autoconf-archive
 version=2022.09.03
-release=7n
+release=1
 source=https://ftpmirror.gnu.org/$name/$name-$version.tar.xz
 
 build() {
