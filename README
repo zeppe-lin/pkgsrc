@@ -5,7 +5,7 @@ ABOUT zeppe-lin
     so-called "GNU/Linux distribution".  Zeppe-Lin contains software
     written by a lot of different people, and each software package
     comes with its own license, chosen by its author(s).  To find out
-    how package is licensed, have a loot at its source code.
+    how package is licensed, have a look at its source code.
     Sometimes, for obsolete software or software whose source code is
     hard to find, the package' source (build scripts and so) may
     contain side by side the source code of the software itself.  As a
