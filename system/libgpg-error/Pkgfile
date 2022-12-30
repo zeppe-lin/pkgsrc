@@ -3,7 +3,7 @@
 
 name=libgpg-error
 version=1.46
-release=7n
+release=1
 source=https://www.gnupg.org/ftp/gcrypt/$name/$name-$version.tar.bz2
 
 build() {
