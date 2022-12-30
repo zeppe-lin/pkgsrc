@@ -1,0 +1,15 @@
+README android-ndk-bin
+
+POST-INSTALL
+
+    Add Android NDK tools to your path:
+
+        export PATH=$PATH:/opt/android-ndk
+        export ANDROID_NDK=/opt/android-ndk
+
+        # some programs such as gradle ask this as well:
+        export ANDROID_NDK_HOME=/opt/android-ndk
+
+
+vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
+End of file.

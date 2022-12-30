@@ -1,0 +1,15 @@
+README dosfstools
+
+KERNEL CONFIGURATION
+
+    Enable the following option in the kernel configuration and
+    recompile the kernel:
+
+        File systems --->
+          <DOS/FAT/EXFAT/NT Filesystems --->
+            <*/M> MSDOS fs support                   [CONFIG_MSDOS_FS]
+            <*/M> VFAT (Windows-95) fs support        [CONFIG_VFAT_FS]
+
+
+vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
+End of file.

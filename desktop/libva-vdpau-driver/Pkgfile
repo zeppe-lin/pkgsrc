@@ -1,0 +1,34 @@
+# Description: VDPAU back-end for NVIDIA and VIA chipsets
+# URL:         http://freedesktop.org/wiki/Software/vaapi
+# Depends on:  libva libvdpau
+
+name=libva-vdpau-driver
+version=0.7.4
+release=1
+source="https://www.freedesktop.org/software/vaapi/releases/$name/$name-$version.tar.bz2
+	glext-missing-definition.patch
+	libvdpau-0.8.patch
+	VAEncH264VUIBufferType.patch
+	sigfpe-crash.patch
+	include-linux-videodev2.h.patch"
+
+build() {
+	patch -p1 -d $name-$version -i $SRC/glext-missing-definition.patch
+	patch -p1 -d $name-$version -i $SRC/libvdpau-0.8.patch
+	patch -p1 -d $name-$version -i $SRC/VAEncH264VUIBufferType.patch
+	patch -p1 -d $name-$version -i $SRC/sigfpe-crash.patch
+	patch -p1 -d $name-$version -i $SRC/include-linux-videodev2.h.patch
+
+	sed -i 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:' \
+		$name-$version/configure.ac
+
+	mkdir build; cd build
+
+	autoreconf -i ../$name-$version
+	../$name-$version/configure  \
+		--prefix=/usr        \
+		--enable-glx         \
+
+	make V=1
+	make DESTDIR=$PKG install
+}

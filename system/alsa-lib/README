@@ -1,0 +1,15 @@
+README alsa-lib
+
+KERNEL CONFIGURATION
+
+    If needed, enable the following options in the kernel configuration
+    and recompile the kernel:
+
+        Device Drivers --->
+          <*/M> Sound card support --->                 [CONFIG_SOUND]
+            <*/M> Advanced Linux Sound Architecture --->  [CONFIG_SND]
+            Select settings and drivers appropriate for your hardware.
+
+
+vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
+End of file.

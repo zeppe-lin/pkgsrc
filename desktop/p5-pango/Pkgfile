@@ -1,0 +1,28 @@
+# Description: Perl bindings for pango
+# URL:         https://metacpan.org/pod/Pango
+# Depends on:  pango p5-cairo
+
+name=p5-pango
+version=1.227
+release=1
+source=https://search.cpan.org/CPAN/authors/id/X/XA/XAOC/Pango-$version.tar.gz
+
+build() {
+	cd Pango-$version
+
+	PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+
+	make OPTIMIZE="$CFLAGS"
+	make install DESTDIR=$PKG
+
+	# remove junk and empty dirs
+	find $PKG -depth \
+		-type f \( -name perllocal.pod  \
+			-o -name \*.bs          \
+			-o -name .packlist      \
+			\) -delete ,            \
+		-type d -empty -delete
+
+	# fix perms
+	find $PKG -type f -a -perm -u-w | xargs chmod u+w
+}

@@ -1,0 +1,111 @@
+#!/usr/bin/env perl
+# See COPYING and COPYRIGHT files for corresponding information.
+
+# flush stdout
+$|++;
+
+use strict;
+use warnings;
+#use diagnostics;
+use version;
+use Data::Dumper;
+
+use Module::CoreList;
+use Getopt::Long qw(:config gnu_compat);
+use Term::ANSIColor ':constants';
+
+#use JSON;
+use YAML::XS 'LoadFile';
+
+my @BLOCKS = qw(build_requires configure_requires requires);
+
+sub found_in_packages {
+    my $dep = shift;
+    my $found = '';
+    my %incs = map { $_, 1 } @INC; # sort paths by unique
+
+    for my $inc (keys %incs) {
+        my $path = $inc . '/' . join('/', split('::', $dep));
+
+        my @pathsearch =
+            qx(pkgman fsearch --full '$path.*' 2>/dev/null);
+
+        $found .= "@pathsearch";
+    }
+    print "$found";
+    return $found;
+}
+
+sub finddeps_distmeta {
+    my $meta = LoadFile(shift || 'META.yml');
+
+    for my $require (@BLOCKS) {
+        next unless exists $meta->{ $require };
+
+        print BOLD, UNDERLINE, "Check $require...", RESET, "\n";
+
+        for my $dep (sort keys %{ $meta->{ $require } }) {
+            my $ver = $meta->{ $require }->{ $dep };
+
+            # check if dependency is in Perl's core or outside
+            if (Module::CoreList::is_core($dep, $ver)) {
+                print BRIGHT_GREEN, "$dep: $ver (core)\n", RESET;
+            } else {
+                # the dependency is perl itself and requires
+                # minimum version
+                if ($dep eq 'perl') {
+                    if (version->parse($ver) <= version->parse($])) {
+                        print "$dep: $ver (ok)\n";
+                    } else {
+                        print RED, "$dep: $ver (missing)\n", RESET;
+                    }
+                } else {
+                    # normal dependency, search it in the packages'
+                    # database...
+                    print BRIGHT_YELLOW, <<EOF, RESET;
+$dep: $ver (not in core, searching in packages...)
+EOF
+                    print("  ", BOLD, RED, "MISSING!\n", RESET)
+                        if !found_in_packages($dep);
+                }
+            }
+        }
+        print "\n";
+    }
+}
+
+sub print_help {
+    print <<EOF;
+Usage: finddeps-distmeta [OPTION] [FILE]
+Parse perl-module's distmeta file and show dependencies.
+
+  -v, --version   print version and exit
+  -h, --help      print help and exit
+EOF
+    exit 0;
+}
+
+sub print_version {
+    print "finddeps-distmeta (pkgmaint) \@VERSION@\n";
+    exit 0;
+}
+
+sub main {
+    GetOptions(
+        "v|version" => \my $opt_version,
+        "h|help"    => \my $opt_help,
+    ) or die "Error in command-line arguments\n";
+
+    print_version() if $opt_version;
+    print_help()    if $opt_help;
+
+    die "Too many arguments\n" if scalar(@ARGV) > 1;
+
+    finddeps_distmeta(shift @ARGV);
+}
+
+main() if not caller();
+1;
+
+# vim:sw=4:ts=4:sts=4:et:cc=72:tw=70
+# End of file.

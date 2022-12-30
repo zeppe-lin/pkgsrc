@@ -1,0 +1,36 @@
+# Description: API and commands for processing SPIR-V modules
+# URL:         https://www.khronos.org/vulkan/
+# Depends on:  spirv-headers
+
+name=spirv-tools
+version=2022.4
+release=7n
+source=https://github.com/KhronosGroup/SPIRV-Tools/archive/v$version/SPIRV-Tools-v$version.tar.gz
+
+build() {
+	PKGMK_SPIRV_TOOLS="
+	-S SPIRV-Tools-$version
+	-G Ninja
+	-D CMAKE_INSTALL_PREFIX=/usr
+	-D CMAKE_INSTALL_LIBDIR=lib
+	-D CMAKE_BUILD_TYPE=Release
+	-D SPIRV_WERROR=OFF
+	-D SPIRV-Headers_SOURCE_DIR=/usr
+	-D PYTHON_EXECUTABLE=/usr/bin/python3
+	-Wno-dev"
+
+	cmake -B build-static $PKGMK_SPIRV_TOOLS \
+		-D CMAKE_C_FLAGS_RELEASE="$CFLAGS -ffat-lto-objects" \
+		-D CMAKE_CXX_FLAGS_RELEASE="$CXXFLAGS -ffat-lto-objects" \
+		-D BUILD_SHARED_LIBS=OFF
+	cmake --build build-static -v
+
+	cmake -B build-shared $PKGMK_SPIRV_TOOLS \
+		-D CMAKE_C_FLAGS_RELEASE="$CFLAGS -ffat-lto-objects" \
+		-D CMAKE_CXX_FLAGS_RELEASE="$CXXFLAGS -ffat-lto-objects" \
+		-D BUILD_SHARED_LIBS=ON
+	cmake --build build-shared -v
+
+	DESTDIR=$PKG cmake --build build-static --target install
+	DESTDIR=$PKG cmake --build build-shared --target install
+}

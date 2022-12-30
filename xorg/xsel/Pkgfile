@@ -1,0 +1,22 @@
+# Description: Retrieve and set the X selection
+# URL:         http://www.vergenet.net/~conrad/software/xsel/
+# Depends on:  xorg-libxt
+
+name=xsel
+version=1.2.0-062e6d3
+release=1
+source=https://github.com/kfish/xsel/archive/${version#*-}/$name-$version.tar.gz
+
+build() {
+	sed -i 's|-Wall -Werror -g|-Wall|' \
+		$name-${version#*-}*/configure.ac
+
+	mkdir build; cd build
+
+	autoreconf -fi ../$name-${version#*-}*
+	../$name-${version#*-}*/configure  \
+		--prefix=/usr              \
+
+	make V=1
+	make install DESTDIR=$PKG
+}

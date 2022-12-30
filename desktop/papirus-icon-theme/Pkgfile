@@ -1,0 +1,16 @@
+# Description: Papirus Icon Theme
+# URL:         https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
+
+name=papirus-icon-theme
+version=20221201
+release=1
+source=https://github.com/PapirusDevelopmentTeam/$name/archive/$version/$name-$version.tar.gz
+
+build() {
+	cd $name-$version
+
+	make DESTDIR="$PKG" install
+
+	# remove junk
+	find $PKG -type f \( -name AUTHORS -o -name README \) -delete
+}

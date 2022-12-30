@@ -1,0 +1,20 @@
+# Description: XCB client and window-manager helpers for ICCCM & EWMH
+# URL:         https://xcb.freedesktop.org/
+# Depends on:  xorg-libxcb
+
+name=xorg-xcb-util-wm
+version=0.4.2
+release=1
+source=https://xcb.freedesktop.org/dist/xcb-util-wm-$version.tar.xz
+
+build() {
+	mkdir build; cd build
+
+	../xcb-util-wm-$version/configure  \
+		--prefix=/usr              \
+		--disable-devel-docs       \
+		--without-doxygen          \
+
+	make V=1
+	make DESTDIR=$PKG install
+}

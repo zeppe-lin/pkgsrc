@@ -1,0 +1,261 @@
+=pod
+
+=encoding UTF-8
+
+=head1 NAME
+
+pkgman - advanced package management tool
+
+=head1 SYNOPSIS
+
+B<pkgman> [I<COMMAND>] [I<OPTION>]... [I<ARGS>]
+
+=head1 DESCRIPTION
+
+B<pkgman> is a package management tool that provides additional
+functionality to basic package management utilities, like
+L<pkgmk(8)|https://zeppe-lin.github.io/pkgmk.8.html>,
+L<pkgadd(8)|https://zeppe-lin.github.io/pkgadd.8.html>,
+L<pkgrm(8)|https://zeppe-lin.github.io/pkgrm.8.html>, and
+L<pkginfo(8)|https://zeppe-lin.github.io/pkginfo.8.html>.
+
+=head1 OPTIONS
+
+The following options are common to all commands.  Note that each
+command has its own set of specific options and arguments.
+
+=over 8
+
+=item B<--no-std-config>
+
+Ignore F</etc/pkgman.conf>.
+
+=item B<--config>="I<FILE>"
+
+Use alternate configuration file.
+
+=item B<--config-set>="I<STRING>"
+
+Set I<STRING> in configuration, overriding configuration file.
+
+=item B<--config-append>="I<STRING>"
+
+Append I<STRING> to configuration.
+
+=item B<--config-prepend>="I<STRING>"
+
+Prepend I<STRING> to configuration.
+
+=item B<--root>="I<PATH>"
+
+Use I<PATH> as root directory.
+
+=item B<-V>, B<--version>
+
+Print program version and exit.
+
+=item B<-h>, B<--help>
+
+Print the I<COMMAND>'s help if I<COMMAND> specified.  Otherwise,
+print this help message.
+
+=item B<-->
+
+A B<--> signals the end of options and disables further option
+processing.  Any arguments after the B<--> are treated as
+I<COMMAND> and its arguments.  It helps to specify I<COMMAND>
+arguments that starts with B<-> and B<pkgman> won't confuse it
+with an option.  Example:
+
+  pkgman search -- -lib
+  -- search ([i] = installed)
+  [i] alsa-lib
+  [i] p5-libwww
+  ...
+
+=back
+
+=head1 COMMANDS
+
+B<pkgman> uses so-called commands, which always have to be the first
+non-option argument passed.  The commands can be divided into the
+following self-explanatory categories.
+
+=head2 INFORMATIONAL
+
+=over 8
+
+=item L<pkgman-dumpconfig(1)|https://zeppe-lin.github.io/pkgman-dumpconfig.1.html>
+
+dump the configuration
+
+=item L<pkgman-list(1)|https://zeppe-lin.github.io/pkgman-list.1.html>
+
+print list of available packages
+
+=item L<pkgman-list-dup(1)|https://zeppe-lin.github.io/pkgman-list-dup.1.html>
+
+print list of duplicate packages
+
+=item L<pkgman-list-nodependents(1)|https://zeppe-lin.github.io/pkgman-list-nodependents.1.html>
+
+print list of packages that no other depends on them
+
+=item L<pkgman-list-locked(1)|https://zeppe-lin.github.io/pkgman-list-locked.1.html>
+
+print list of locked packages
+
+=item L<pkgman-list-orphans(1)|https://zeppe-lin.github.io/pkgman-list-orphans.1.html>
+
+print list of orphaned packages
+
+=item L<pkgman-printf(1)|https://zeppe-lin.github.io/pkgman-printf.1.html>
+
+print formatted list of available packages
+
+=item L<pkgman-info(1)|https://zeppe-lin.github.io/pkgman-info.1.html>
+
+print package info
+
+=item L<pkgman-readme(1)|https://zeppe-lin.github.io/pkgman-readme.1.html>
+
+print the package's README
+
+=item L<pkgman-path(1)|https://zeppe-lin.github.io/pkgman-path.1.html>
+
+print path to package source
+
+=item L<pkgman-isinst(1)|https://zeppe-lin.github.io/pkgman-isinst.1.html>
+
+print whether packages are installed or not
+
+=item L<pkgman-current(1)|https://zeppe-lin.github.io/pkgman-current.1.html>
+
+print installed package version
+
+=item L<pkgman-diff(1)|https://zeppe-lin.github.io/pkgman-diff.1.html>
+
+print the differences between installed and available packages
+
+=back
+
+=head2 DEPENDENCIES
+
+=over 8
+
+=item L<pkgman-dep(1)|https://zeppe-lin.github.io/pkgman-dep.1.html>
+
+print dependencies for a package
+
+=item L<pkgman-rdep(1)|https://zeppe-lin.github.io/pkgman-rdep.1.html>
+
+print reverse dependencies for a package
+
+=back
+
+=head2 SEARCHING
+
+=over 8
+
+=item L<pkgman-search(1)|https://zeppe-lin.github.io/pkgman-search.1.html>
+
+search the packages sources directories for package name
+
+=item L<pkgman-dsearch(1)|https://zeppe-lin.github.io/pkgman-dsearch.1.html>
+
+search the packages sources directories for package name/description
+
+=item L<pkgman-fsearch(1)|https://zeppe-lin.github.io/pkgman-fsearch.1.html>
+
+search the packages sources directories for a file in package footprint
+
+=back
+
+=head2 INSTALL / UPDATE / REMOVE
+
+=over 8
+
+=item L<pkgman-install(8)|https://zeppe-lin.github.io/pkgman-install.8.html>
+
+install package(s)
+
+=item L<pkgman-update(8)|https://zeppe-lin.github.io/pkgman-update.8.html>
+
+update installed package(s)
+
+=item L<pkgman-remove(8)|https://zeppe-lin.github.io/pkgman-remove.8.html>
+
+remove installed package(s)
+
+=back
+
+=head2 SYSTEM UPDATE
+
+=over 8
+
+=item L<pkgman-sysup(8)|https://zeppe-lin.github.io/pkgman-sysup.8.html>
+
+update all outdated packages
+
+=item L<pkgman-lock(8)|https://zeppe-lin.github.io/pkgman-lock.8.html>
+
+lock the package(s)
+
+=item L<pkgman-unlock(8)|https://zeppe-lin.github.io/pkgman-unlock.8.html>
+
+unlock the package(s)
+
+=back
+
+=head2 FILE OPERATIONS
+
+=over 8
+
+=item L<pkgman-ls(1)|https://zeppe-lin.github.io/pkgman-ls.1.html>
+
+print out a listing of the package's directory
+
+=item L<pkgman-cat(1)|https://zeppe-lin.github.io/pkgman-cat.1.html>
+
+print out the package's file
+
+=item L<pkgman-edit(8)|https://zeppe-lin.github.io/pkgman-edit.8.html>
+
+edit the package's file
+
+=back
+
+=head1 FILES
+
+=over 8
+
+=item F</etc/pkgman.conf>
+
+Configuration file.  See
+L<pkgman.conf(5)|https://zeppe-lin.github.io/pkgman.conf.5.html> for
+more information.
+
+=item F</var/lib/pkg/db>
+
+Database of currently installed packages.
+
+=item F</var/lib/pkg/locked>
+
+Database of currently locked packages.  Used by
+L<pkgman-lock(8)|https://zeppe-lin.github.io/pkgman-lock.8.html>,
+L<pkgman-unlock(8)|https://zeppe-lin.github.io/pkgman-unlock.8.html>
+and L<pkgman-list-locked(1)|https://zeppe-lin.github.io/pkgman-list-locked.1.html>.
+
+=back
+
+B<NOTE!> When the B<--root>=I<PATH> option is specified, both
+databases location changes to I<PATH/var/lib/pkg/...>.
+
+=head1 SEE ALSO
+
+L<pkgman.conf(5)|https://zeppe-lin.github.io/pkgman.conf.5.html>
+
+=cut
+
+# vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
+# End of file.

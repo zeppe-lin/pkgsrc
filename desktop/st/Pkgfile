@@ -1,0 +1,33 @@
+# Description: Terminal emulator for X (adjusted for Zeppe-Lin)
+# URL:         https://zeppe-lin.github.io/
+# Depends on:  fontconfig freetype xorg-libx11 xorg-libxext xorg-libxft
+
+name=st
+version=0.8.4zpln
+release=1
+source="src/arg.h
+	src/normalMode.c
+	src/normalMode.h
+	src/st.1
+	src/st.c
+	src/st.h
+	src/st.info
+	src/utils.h
+	src/win.h
+	src/x.c
+
+	src/config.mk
+	src/Makefile
+
+	config.def.h"
+
+build() {
+	# apply user-defined configuration if exists
+	[ -f $PKGMK_ROOT/config.h ] && cp $PKGMK_ROOT/config.h .
+
+	# comment if you find a program that complains that st is
+	# unknown/not recognised/unsupported/etc
+	sed -i '/tic/d' Makefile
+
+	make PREFIX=/usr DESTDIR=$PKG install
+}

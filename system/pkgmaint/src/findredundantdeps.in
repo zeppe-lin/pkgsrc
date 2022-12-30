@@ -1,0 +1,68 @@
+#!/bin/sh
+# See COPYING and COPYRIGHT files for corresponding information.
+
+findredundantdeps() {
+	_deps=$(pkgman dep --all "$1") || exit 3
+
+	# Intentional.
+	# shellcheck disable=2086
+	pkgman dep --all --recursive --full "$1" |
+		grep -E "($(echo $_deps | tr ' ' '|'))$"
+}
+
+show_uniq() {
+	tr ' ' '\n' | sort | uniq -u
+}
+
+error() {
+	echo "findredundantdeps: $1" >/dev/stderr
+}
+
+print_help() {
+	cat <<EOF
+Usage: findredundantdeps [OPTION] PKGNAME
+Find (un)necessary dependencies of the package.
+
+  -u, --unique    print only unique (required) dependencies
+  -v, --version   print version and exit
+  -h, --help      print help and exit
+EOF
+}
+
+main() {
+	while [ "$1" ]; do
+		case $1 in
+		-u|--unique)
+			SHOW_UNIQ_CMD=show_uniq
+			;;
+		-v|--version)
+			echo "findredundantdeps (pkgmaint) @VERSION@"
+			exit 0
+			;;
+		-h|--help)
+			print_help
+			exit 0
+			;;
+		-*)
+			error "invalid option $1"
+			exit 1
+			;;
+		*)
+			PKGNAME=$1
+			;;
+		esac
+		shift
+	done
+
+	if [ -z "$PKGNAME" ]; then
+		error "option missing"
+		exit 2
+	fi
+
+	findredundantdeps "$PKGNAME" | ${SHOW_UNIQ_CMD:-cat}
+}
+
+main "$@"
+
+# vim:cc=72:tw=70
+# End of file.

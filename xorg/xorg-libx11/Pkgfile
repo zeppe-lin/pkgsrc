@@ -1,0 +1,24 @@
+# Description: Core X11 protocol client library (aka "Xlib")
+# URL:         http://xorg.freedesktop.org
+# Depends on:  xorg-libxcb xorg-xtrans
+
+name=xorg-libx11
+version=1.8.3
+release=1
+source=https://www.x.org/releases/individual/lib/libX11-$version.tar.xz
+
+build() {
+	mkdir build; cd build
+
+	../libX11-$version/configure                 \
+		--prefix=/usr                        \
+		--disable-specs                      \
+		--disable-thread-safety-constructor  \
+		--without-fop                        \
+		--without-launchd                    \
+		--without-xmlto                      \
+		--without-xsltproc                   \
+
+	make V=1
+	make DESTDIR=$PKG install
+}

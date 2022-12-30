@@ -1,0 +1,21 @@
+# Description: Additional style plugins for Qt5
+# URL:         https://github.com/qt/qtstyleplugins
+# Depends on:  gtk libpcre2 qt5 zstd
+
+name=qt5-styleplugins
+version=5.0.0-335dbec
+release=1
+source="https://github.com/qt/qtstyleplugins/archive/${version#*-}/$name-$version.tar.gz
+	qt5.15.patch"
+
+build() {
+       cd qtstyleplugins-${version#*-}*
+
+       patch -p1 -i $SRC/qt5.15.patch
+
+       CCACHE_DISABLE=1 qmake-qt5 PREFIX="/usr"   \
+               QMAKE_CFLAGS_RELEASE="$CFLAGS"     \
+               QMAKE_CXXFLAGS_RELEASE="$CXXFLAGS" \
+
+       make INSTALL_ROOT=$PKG install
+}

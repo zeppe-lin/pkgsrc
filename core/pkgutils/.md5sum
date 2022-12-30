@@ -1,0 +1,17 @@
+0c7dd69fce61946d5d7bf7afc39588e0  Makefile
+04bf7fb9825621413f5e0dc108190edd  bash_completion
+3ffe2f3d4ae390e79158c80e8b524c17  config.mk
+d9244f8f0cf3192d2156ead631325b6d  main.cc
+e14fe9c5b45d3d07455a823fb1ff6acd  pkgadd.8.pod
+7116c5dc98467a612b5f2513a70306a2  pkgadd.cc
+9a2b65263528b887a387c992776b55fc  pkgadd.conf
+33818b393857a3eb5f0bd0a763cc831e  pkgadd.conf.5.pod
+b5c6717a77c74f018f12de690195b89b  pkgadd.h
+f5d44df77759fd7b25986fa746b2329e  pkginfo.1.pod
+41d2ec2c22c0a3fb7039a219e56a549f  pkginfo.cc
+30ef8de20e73a17a43d507b8cf1de6c3  pkginfo.h
+ad97838d6e4f981889c63c38cd72313d  pkgrm.8.pod
+4cd30f2ae8cabdad65deeefce43f569f  pkgrm.cc
+a008e600dc17cf6cd2a086d30f48d694  pkgrm.h
+34b06f58d61e2b1e0a3e2cb3a172a284  pkgutil.cc
+6070b33531ae25337d10abaae3f78682  pkgutil.h

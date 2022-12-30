@@ -1,0 +1,20 @@
+# Description: X font handling library for server & utilities
+# URL:         http://xorg.freedesktop.org
+# Depends on:  bzip2 freetype xorg-libfontenc xorg-xtrans
+
+name=xorg-libxfont
+version=1.5.4
+release=1
+source=https://www.x.org/releases/individual/lib/libXfont-$version.tar.bz2
+
+build() {
+	mkdir build; cd build
+
+	../libXfont-$version/configure  \
+		--prefix=/usr           \
+		--without-xmlto         \
+		--without-fop           \
+
+	make V=1
+	make DESTDIR=$PKG install
+}

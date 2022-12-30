@@ -1,0 +1,11 @@
+# Description: Zeppe-Lin handbook
+# URL:         https://zeppe-lin.github.io/
+
+name=handbook
+version=0.99
+release=1
+source="src/handbook.7.pod src/Makefile"
+
+build() {
+	make PREFIX=/usr DESTDIR=$PKG install-man
+}

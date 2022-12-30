@@ -1,0 +1,28 @@
+# Description: Perl bindings for cairo
+# URL:         https://metacpan.org/pod/Cairo
+# Depends on:  cairo p5-extutils-config p5-glib
+
+name=p5-cairo
+version=1.109
+release=1
+source=https://search.cpan.org/CPAN/authors/id/X/XA/XAOC/Cairo-$version.tar.gz
+
+build() {
+	cd Cairo-$version
+
+	PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+
+	make OPTIMIZE="$CFLAGS"
+	make install DESTDIR=$PKG
+
+        # remove junk and empty dirs
+	find $PKG -depth \
+		-type f \( -name perllocal.pod  \
+			-o -name \*.bs          \
+			-o -name .packlist      \
+			\) -delete ,            \
+		-type d -empty -delete
+
+	# fix perms
+	find $PKG -type f -a -perm -u-w | xargs chmod u+w
+}

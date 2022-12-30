@@ -1,0 +1,23 @@
+README pdf2hashcat
+
+HASHCAT MODES
+
+    10400 | PDF 1.1 - 1.3 (Acrobat 2 - 4)
+    10410 | PDF 1.1 - 1.3 (Acrobat 2 - 4), collider #1
+    10420 | PDF 1.1 - 1.3 (Acrobat 2 - 4), collider #2
+    10500 | PDF 1.4 - 1.6 (Acrobat 5 - 8)
+    25400 | PDF 1.4 - 1.6 (Acrobat 5 - 8)
+    10600 | PDF 1.7 Level 3 (Acrobat 9)
+    10700 | PDF 1.7 Level 8 (Acrobat 10 - 11)
+
+    Use the following command to view supported modes:
+        hashcat --help | grep -i pdf
+
+USAGE
+
+    pdf2hashcat example.pdf | tee example.pdf.hash
+    hashcat -m $MODE -a 0 example.pdf.hashcat wordlist.txt
+
+
+vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
+End of file.

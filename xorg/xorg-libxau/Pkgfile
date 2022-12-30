@@ -1,0 +1,18 @@
+# Description: Functions for handling Xauthority files and entries
+# URL:         http://xorg.freedesktop.org
+# Depends on:  xorg-xorgproto
+
+name=xorg-libxau
+version=1.0.11
+release=1
+source=https://www.x.org/releases/individual/lib/libXau-$version.tar.xz
+
+build() {
+	mkdir build; cd build
+
+	../libXau-$version/configure  \
+		--prefix=/usr         \
+
+	make V=1
+	make DESTDIR=$PKG install
+}

@@ -1,0 +1,22 @@
+# Description: X Session Management client library
+# URL:         http://xorg.freedesktop.org
+# Depends on:  util-linux xorg-libice
+
+name=xorg-libsm
+version=1.2.4
+release=1
+source=https://www.x.org/releases/individual/lib/libSM-$version.tar.xz
+
+build() {
+	mkdir build; cd build
+
+	../libSM-$version/configure  \
+		--prefix=/usr        \
+		--without-fop        \
+		--without-xmlto      \
+		--without-xsltproc   \
+		--disable-docs       \
+
+	make V=1
+	make DESTDIR=$PKG install
+}

@@ -1,0 +1,24 @@
+# Description: Xlib-based library for XTEST & RECORD extensions
+# URL:         http://xorg.freedesktop.org
+# Depends on:  xorg-libxi
+
+name=xorg-libxtst
+version=1.2.4
+release=1
+source=https://www.x.org/releases/individual/lib/libXtst-$version.tar.xz
+
+build() {
+	mkdir build; cd build
+
+	../libXtst-$version/configure  \
+		--prefix=/usr          \
+		--without-fop          \
+		--without-xmlto        \
+		--without-xsltproc     \
+
+	make V=1
+	make DESTDIR=$PKG install
+
+	# remove junk
+	rm -r $PKG/usr/share/doc
+}

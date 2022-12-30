@@ -1,0 +1,24 @@
+# Description: Library for manipulating sound files
+# URL:         https://libsndfile.github.io/libsndfile/
+# Depends on:  alsa-lib flac lame libvorbis opus python3
+
+name=libsndfile
+version=1.2.0
+release=1
+source=https://github.com/$name/$name/releases/download/$version/$name-$version.tar.xz
+
+build() {
+	export PYTHON=python3
+
+	mkdir build; cd build
+
+	../$name-$version/configure  \
+		--prefix=/usr        \
+		--enable-static      \
+
+	make V=1
+	make DESTDIR=$PKG install
+
+	# remove junk
+	rm -r $PKG/usr/share/doc
+}

@@ -1,0 +1,20 @@
+# Description: Synaptics touchpad driver for the Xorg X server
+# URL:         http://xorg.freedesktop.org
+# Depends on:  xorg-server xorg-libevdev
+
+name=xorg-xf86-input-synaptics
+version=1.9.2
+release=1
+source=https://www.x.org/releases/individual/driver/${name#*-}-$version.tar.xz
+
+build() {
+	mkdir build; cd build
+
+	../${name#*-}-$version/configure  \
+		--prefix=/usr             \
+		--disable-unit-tests      \
+		--enable-static           \
+
+	make V=1
+	make DESTDIR=$PKG install
+}

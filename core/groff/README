@@ -1,0 +1,15 @@
+README groff
+
+PAPERSIZE
+
+    As of groff version 1.22.2 release 2 the default papersize for
+    groff can be defined in /etc/papersize.  Just add the required
+    papersize like 'letter' or 'a4' here, default is 'letter'.
+
+    See
+    http://www.gnu.org/software/groff/manual/html_node/DESC-File-Format.html
+    for more informations.
+
+
+vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
+End of file.

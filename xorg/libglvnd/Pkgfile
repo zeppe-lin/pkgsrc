@@ -1,0 +1,40 @@
+# Description: GL Vendor-Neutral Dispatch library
+# URL:         https://github.com/NVIDIA/libglvnd
+# Depends on:  libbsd xorg-libxext
+
+name=libglvnd
+version=1.6.0
+release=1
+source="https://github.com/NVIDIA/$name/archive/v$version/$name-$version.tar.gz
+	https://gitlab.freedesktop.org/glvnd/libglvnd/-/commit/fd1df5e9891dec71013a272e7132f1a33e45f5b5.patch
+	0001-glx-Add-another-fallback-library-name.patch"
+
+build() {
+	if pkgman isinst xorg-libx11 xorg-libxext xorg-xorgproto; then
+		PKGMK_GLVND="$PKGMK_GLVND -D x11=enabled -D glx=enabled"
+	fi
+
+	# https://src.fedoraproject.org/rpms/libglvnd
+	patch -Np1 -d $name-$version \
+		-i ../0001-glx-Add-another-fallback-library-name.patch
+
+	# [PATCH] Update GL headers and XML files.
+	# Update the GL headers and XML files to the Khronos repo,
+	# from commit 11d7b7baebfc2b58116670cd17266f9c6a0d760b.
+	#patch -Np1 -d $name-$version \
+	#	-i ../fd1df5e9891dec71013a272e7132f1a33e45f5b5.patch
+
+	meson build $name-$version       \
+		--prefix=/usr            \
+		--buildtype=plain        \
+		--wrap-mode=nodownload   \
+		-D b_lto=true            \
+		-D b_pie=true            \
+		-D gles1=false           \
+		-D egl=true              \
+		-D tls=false             \
+		$PKGMK_GLVND
+
+	ninja -C build -j ${JOBS:-1} -v
+	DESTDIR=$PKG ninja -C build install
+}

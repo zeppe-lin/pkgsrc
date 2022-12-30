@@ -1,0 +1,45 @@
+drwxr-xr-x	root/root	etc/
+drwxr-xr-x	root/root	etc/dbus-1/
+drwxr-xr-x	root/root	etc/dbus-1/system.d/
+-rw-r--r--	root/root	etc/dbus-1/system.d/bluealsa.conf
+drwxr-xr-x	root/root	etc/rc.d/
+-rwxr-xr-x	root/root	etc/rc.d/bluealsa
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/a2dpconf
+-rwxr-xr-x	root/root	usr/bin/bluealsa
+-rwxr-xr-x	root/root	usr/bin/bluealsa-aplay
+-rwxr-xr-x	root/root	usr/bin/bluealsa-cli
+-rwxr-xr-x	root/root	usr/bin/bluealsa-rfcomm
+-rwxr-xr-x	root/root	usr/bin/hcitop
+drwxr-xr-x	root/root	usr/etc/
+drwxr-xr-x	root/root	usr/etc/alsa/
+drwxr-xr-x	root/root	usr/etc/alsa/conf.d/
+-rw-r--r--	root/root	usr/etc/alsa/conf.d/20-bluealsa.conf
+drwxr-xr-x	root/root	usr/lib/
+drwxr-xr-x	root/root	usr/lib/alsa-lib/
+-rw-r--r--	root/root	usr/lib/alsa-lib/libasound_module_ctl_bluealsa.a
+-rwxr-xr-x	root/root	usr/lib/alsa-lib/libasound_module_ctl_bluealsa.la
+-rwxr-xr-x	root/root	usr/lib/alsa-lib/libasound_module_ctl_bluealsa.so
+-rw-r--r--	root/root	usr/lib/alsa-lib/libasound_module_pcm_bluealsa.a
+-rwxr-xr-x	root/root	usr/lib/alsa-lib/libasound_module_pcm_bluealsa.la
+-rwxr-xr-x	root/root	usr/lib/alsa-lib/libasound_module_pcm_bluealsa.so
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/bash-completion/
+drwxr-xr-x	root/root	usr/share/bash-completion/completions/
+lrwxrwxrwx	root/root	usr/share/bash-completion/completions/a2dpconf -> bluealsa
+-rw-r--r--	root/root	usr/share/bash-completion/completions/bluealsa
+lrwxrwxrwx	root/root	usr/share/bash-completion/completions/bluealsa-aplay -> bluealsa
+lrwxrwxrwx	root/root	usr/share/bash-completion/completions/bluealsa-cli -> bluealsa
+lrwxrwxrwx	root/root	usr/share/bash-completion/completions/bluealsa-rfcomm -> bluealsa
+lrwxrwxrwx	root/root	usr/share/bash-completion/completions/hcitop -> bluealsa
+drwxr-xr-x	root/root	usr/share/man/
+drwxr-xr-x	root/root	usr/share/man/man1/
+-rw-r--r--	root/root	usr/share/man/man1/bluealsa-aplay.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/bluealsa-cli.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/bluealsa-rfcomm.1.gz
+-rw-r--r--	root/root	usr/share/man/man1/hcitop.1.gz
+drwxr-xr-x	root/root	usr/share/man/man7/
+-rw-r--r--	root/root	usr/share/man/man7/bluealsa-plugins.7.gz
+drwxr-xr-x	root/root	usr/share/man/man8/
+-rw-r--r--	root/root	usr/share/man/man8/bluealsa.8.gz

@@ -1,0 +1,15 @@
+# Description: Keyboard layout switcher for X
+# URL:         https://zeppe-lin.github.io/
+# Depends on:  xorg-libx11
+
+name=xkbswitch
+version=0.1.3
+release=1
+source="src/xkbswitch.c
+	src/xkbswitch.1.pod
+	src/config.mk
+	src/Makefile"
+
+build() {
+	make PREFIX=/usr DESTDIR=$PKG install
+}

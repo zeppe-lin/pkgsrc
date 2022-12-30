@@ -1,0 +1,25 @@
+# Description: Keyboard input driver
+# URL:         http://xorg.freedesktop.org
+# Depends on:  xorg-server
+
+name=xorg-xf86-input-keyboard
+version=2.0.0
+release=1
+source="https://www.x.org/releases/individual/driver/${name#*-}-$version.tar.xz
+	https://github.com/freedesktop/xorg-xf86-input-keyboard/commit/7e366936d7b7d6c3b4d9c1554908ad20eef74a27.patch"
+
+build() {
+	# rollback linux support
+	patch -d ${name#*-}-$version -p1 -R \
+		-i $SRC/7e366936d7b7d6c3b4d9c1554908ad20eef74a27.patch
+
+	mkdir build; cd build
+
+	autoreconf -fi ../${name#*-}-$version
+	../${name#*-}-$version/configure  \
+		--prefix=/usr             \
+		--enable-static           \
+
+	make V=1
+	make DESTDIR=$PKG install
+}

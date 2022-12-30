@@ -1,0 +1,20 @@
+# Description: XCB utility libraries
+# URL:         https://xcb.freedesktop.org/
+# Depends on:  xorg-libxcb
+
+name=xorg-xcb-util
+version=0.4.1
+release=1
+source=https://xcb.freedesktop.org/dist/xcb-util-$version.tar.xz
+
+build() {
+	mkdir build; cd build
+
+	../xcb-util-$version/configure  \
+		--prefix=/usr           \
+		--disable-doxygen       \
+		--disable-devel-docs    \
+
+	make V=1
+	make DESTDIR=$PKG install
+}

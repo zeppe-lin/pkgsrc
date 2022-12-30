@@ -1,0 +1,17 @@
+README feh
+
+SVG IMAGES (requires imagemagick)
+
+    feh --conversion-timeout 1 file.svg
+
+BROWSE IMAGES
+
+    feh -g 640x480 -d -S filename /path/
+
+RANDOM BACKGROUND IMAGE
+
+    feh --bg-[tile|center|max|file] [--recursive] --randomize /path/
+
+
+vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
+End of file.

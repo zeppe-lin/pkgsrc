@@ -1,0 +1,24 @@
+# Description: Xlib library for the X Input Extension
+# URL:         http://xorg.freedesktop.org
+# Depends on:  libbsd xorg-libxext xorg-libxfixes
+
+name=xorg-libxi
+version=1.8
+release=1
+source=https://www.x.org/releases/individual/lib/libXi-$version.tar.bz2
+
+build() {
+	mkdir build; cd build
+
+	../libXi-$version/configure  \
+		--prefix=/usr        \
+		--disable-docs       \
+		--disable-specs      \
+		--without-fop        \
+		--without-xsltproc   \
+		--without-xmlto      \
+		--without-asciidoc   \
+
+	make V=1
+	make DESTDIR=$PKG install
+}

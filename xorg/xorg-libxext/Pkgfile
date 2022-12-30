@@ -1,0 +1,24 @@
+# Description: Xlib-based library for common extensions to the X11 protocol
+# URL:         http://xorg.freedesktop.org
+# Depends on:  xorg-libx11
+
+name=xorg-libxext
+version=1.3.5
+release=1
+source=https://www.x.org/releases/individual/lib/libXext-$version.tar.xz
+
+build() {
+	mkdir build; cd build
+
+	../libXext-$version/configure  \
+		--prefix=/usr          \
+		--without-xmlto        \
+		--without-xsltproc     \
+		--without-fop          \
+
+	make V=1
+	make DESTDIR=$PKG install
+
+	# remove junk
+	rm -r $PKG/usr/share/doc
+}

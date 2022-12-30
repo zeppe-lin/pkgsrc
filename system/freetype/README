@@ -1,0 +1,10 @@
+README freetype
+
+SUBPIXEL HINTING MODE
+
+    Edit /etc/profile.d/freetype2.sh and "source" this file from
+    /etc/profile.  Logout then in to see the change.
+
+
+vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
+End of file.

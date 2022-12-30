@@ -1,0 +1,12 @@
+README libva
+
+REQUIREMENTS
+
+    Install a backend driver for libva to function on your graphics
+    card:
+        libva-vdpau-driver  ->  vdpau back-end for nvidia
+        libva-intel-driver  ->  vdpau back-end for intel
+
+
+vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
+End of file.

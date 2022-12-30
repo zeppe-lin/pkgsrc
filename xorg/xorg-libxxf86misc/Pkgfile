@@ -1,0 +1,18 @@
+# Description: Extension library for the XFree86-Misc X extension (obsolete)
+# URL:         http://xorg.freedesktop.org
+# Depends on:  xorg-libxext
+
+name=xorg-libxxf86misc
+version=1.0.4
+release=1
+source=https://www.x.org/releases/individual/lib/libXxf86misc-$version.tar.bz2
+
+build() {
+	mkdir build; cd build
+
+	../libXxf86misc-$version/configure  \
+		--prefix=/usr               \
+
+	make V=1
+	make DESTDIR=$PKG install
+}

@@ -1,0 +1,10 @@
+README git
+
+GIT-DAEMON
+
+    If you want to run git-daemon for serving git repos, make sure to
+    create a dedicated user like, first.
+
+
+vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
+End of file.

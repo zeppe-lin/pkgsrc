@@ -1,0 +1,14 @@
+README dhcp
+
+KERNEL CONFIGURATION
+
+    You must have Packet Socket support.  IPv6 support is optional.
+
+        [*] Networking Support --->                       [CONFIG_NET]
+              Networking options --->
+                <*> Packet socket                      [CONFIG_PACKET]
+                <*> The IPv6 Protocol --->               [CONFIG_IPV6]
+
+
+vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
+End of file.

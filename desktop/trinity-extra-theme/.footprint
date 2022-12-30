@@ -1,0 +1,14 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/trinity-extra-theme/
+-rw-r--r--	root/root	usr/share/trinity-extra-theme/dircolors
+-rw-r--r--	root/root	usr/share/trinity-extra-theme/dunst
+-rw-r--r--	root/root	usr/share/trinity-extra-theme/gitk
+-rw-r--r--	root/root	usr/share/trinity-extra-theme/hexchat
+-rw-r--r--	root/root	usr/share/trinity-extra-theme/newsboat
+-rw-r--r--	root/root	usr/share/trinity-extra-theme/transmission_web
+-rw-r--r--	root/root	usr/share/trinity-extra-theme/vifm
+-rw-r--r--	root/root	usr/share/trinity-extra-theme/vim
+-rw-r--r--	root/root	usr/share/trinity-extra-theme/wireshark
+-rw-r--r--	root/root	usr/share/trinity-extra-theme/xresources
+-rw-r--r--	root/root	usr/share/trinity-extra-theme/zathura

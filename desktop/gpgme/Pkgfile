@@ -1,0 +1,37 @@
+# Description: C and C++ API for GnuPG
+# URL:         https://www.gnupg.org/related_software/gpgme/
+# Depends on:  gnupg
+
+name=gpgme
+version=1.18.0
+release=1
+source="https://www.gnupg.org/ftp/gcrypt/$name/$name-$version.tar.bz2
+	gpgme-1.18.0-gpg_error_1_46-1.patch"
+
+build() {
+	# fix build failure with SWIG and libgpg-error-1.46 or later
+	patch -Np1 -d $name-$version \
+		-i $SRC/gpgme-1.18.0-gpg_error_1_46-1.patch
+
+	mkdir build; cd build
+
+	../$name-$version/configure       \
+		--prefix=/usr             \
+		--disable-fd-passing      \
+		--disable-g13-test        \
+		--disable-glibtest        \
+		--disable-gpg-test        \
+		--disable-gpgconf-test    \
+		--disable-gpgsm-test      \
+		--enable-languages='cpp'  \
+		--enable-static           \
+
+	make V=1
+	make DESTDIR=$PKG install
+
+	install -d $PKG/usr/etc/gpgme
+	echo 'c cpp' > $PKG/usr/etc/gpgme/base
+
+	# remove junk
+	rm -r $PKG/usr/share/info
+}

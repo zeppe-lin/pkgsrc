@@ -1,0 +1,15 @@
+README thc-ipv6
+
+    According to this thread
+    https://github.com/vanhauser-thc/thc-ipv6/pull/18
+    van Hauser has a sane reasons to decline this PR.
+    And at the same time, since this patch is very handyful, we may
+    include it as a separate tool to not break backward compatibility.
+
+LICENSE
+
+    AGPL3.
+
+
+vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
+End of file.

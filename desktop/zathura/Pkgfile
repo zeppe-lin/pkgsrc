@@ -1,0 +1,36 @@
+# Description: Highly customizable and functional document viewer
+# URL:         https://pwmt.org/projects/zathura
+# Depends on:  girara libseccomp
+
+name=zathura
+version=0.5.2
+release=1
+source="https://pwmt.org/projects/$name/download/$name-$version.tar.xz
+	remove_gettext.patch"
+
+build() {
+	patch -p0 -d $name-$version -i $SRC/remove_gettext.patch
+	sed -e "/^subdir('doc')/d"       \
+	    -e "/^subdir('tests')/d"     \
+	    -i $name-$version/meson.build
+
+	meson setup build $name-$version \
+		--prefix=/usr            \
+		--sysconfdir=/usr/etc    \
+		--buildtype=plain        \
+		--wrap-mode=nodownload   \
+		-D b_lto=true            \
+		-D b_pie=true            \
+		-D synctex=disabled      \
+		-D sqlite=disabled       \
+		-D seccomp=enabled       \
+		-D tests=disabled        \
+		-D manpages=disabled     \
+		-D convert-icon=enabled  \
+
+	ninja -C build -j ${JOBS:-1} -v
+	DESTDIR=$PKG ninja -C build install
+
+	# remove fish and zsh completion
+	rm -r $PKG/usr/share/fish $PKG/usr/share/zsh
+}

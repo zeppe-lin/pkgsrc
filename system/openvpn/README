@@ -1,0 +1,15 @@
+README openvpn
+
+KERNEL CONFIGURATION
+
+    Enable Universal TUN/TAP device driver support in your kernel:
+
+        CONFIG_TUN=y
+
+    If you compiled device driver as a loadable kernel module
+    (CONFIG_TUN=m) then do not forget to add 'modprobe tun' to
+    rc.modules to not do this after each reboot.
+
+
+vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
+End of file.

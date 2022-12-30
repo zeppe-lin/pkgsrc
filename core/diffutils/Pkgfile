@@ -1,0 +1,21 @@
+# Description: GNU diff utilities
+# URL:         http://www.gnu.org/software/diffutils/
+
+name=diffutils
+version=3.8
+release=7n
+source=https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz
+
+build() {
+	mkdir build; cd build
+
+	../$name-$version/configure  \
+		--prefix=/usr        \
+		--disable-nls        \
+
+	make V=1
+	make DESTDIR=$PKG install
+
+	# remove junk
+	rm -r $PKG/usr/share/info
+}

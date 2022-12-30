@@ -1,0 +1,68 @@
+README trinity-extra-theme
+
+CONFIGURATION
+
+    DIRCOLORS
+
+        cp /usr/share/trinity/dircolors ~/.dircolors
+
+        and add the following lines to your .bashrc:
+
+          if [ -r ~/.dircolors ]; then
+            eval "$(dircolors -b ~/.dircolors)"
+          else
+            eval "$(dircolors -b)"
+          fi
+          alias ls='ls --color=auto'
+
+    DUNST
+
+        mkdir -p ~/.config/dunst
+        cp /usr/share/trinity/dunst ~/.config/dunst/dunstrc
+        killall dunst
+
+    GITK
+
+        mkdir -p ~/.config/git
+        cp /usr/share/trinity/gitk ~/.config/git/gitk
+
+        ... and restart gitk.
+
+    HEXCHAT
+
+        mkdir -p ~/.config/hexchat
+        cp /usr/share/trinity/hexchat ~/.config/hexchat/colors.conf
+
+        ... and restart hexchat.
+
+    VIFM
+
+        mkdir -p ~/.vifm/colors
+        cp /usr/share/trinity/vifm ~/.vifm/colors/trinity.vifm
+
+        ... and add ":colorscheme trinity" to ~/.vifm/vifmrc
+
+    VIM
+
+        mkdir -p ~/.vim/colors
+        cp /usr/share/trinity/vim ~/.vim/colors/trinity.vim
+
+        ... and add ":colorscheme trinity" to ~/.vimrc
+
+    XRESOURCES
+
+        Add the following line to ~/Xresources:
+
+        #include "/usr/share/trinity/xresources"
+
+        ... and add the following line to ~/.xinitrc for persistent
+        setting:
+
+        [ -f ~/.Xresources ] && xrdb -merge ~/.Xresources
+
+    ZATHURA
+        cp /usr/share/trinity/zathurarc ~/.config/zathura/zathurarc
+
+
+vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
+End of file.

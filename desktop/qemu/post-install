@@ -1,0 +1,7 @@
+#!/bin/sh -ex
+
+if ! /usr/bin/getent group kvm; then
+	/usr/sbin/groupadd -r kvm
+fi
+
+# End of file.

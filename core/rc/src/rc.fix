@@ -1,0 +1,25 @@
+#!/bin/sh
+#
+# /etc/rc.fix: adjustments startup file (multi-user)
+#
+
+#######################################################################
+# X11 font-related checks                                             #
+#######################################################################
+
+# Create an index of X font files and scalable font files for X.
+if [ -d /usr/share/fonts/X11 ]; then
+	for _dir in /usr/share/fonts/X11/*; do
+		if [ -d "$_dir" ] && [ ! -f "$_dir/fonts.dir" ]; then
+			/usr/bin/mkfontdir   "$_dir" >/dev/null 2>&1
+			/usr/bin/mkfontscale "$_dir" >/dev/null 2>&1
+		fi
+	done
+fi
+
+# Build font information cache files.
+if [ -d /var/cache/fontconfig ] && [ -z "$(ls /var/cache/fontconfig/)" ]; then
+	/usr/bin/fc-cache --system-only >/dev/null 2>&1
+fi
+
+# End of file.

@@ -1,0 +1,14 @@
+#!/bin/sh -ex
+
+if ! /usr/bin/getent group stunnel; then
+	/usr/sbin/groupadd -r stunnel
+fi
+
+if ! /usr/bin/getent passwd stunnel; then
+	/usr/sbin/useradd -g stunnel -r -d /var/empty \
+		-s /bin/false stunnel
+fi
+
+/usr/bin/passwd -l stunnel
+
+# End of file.

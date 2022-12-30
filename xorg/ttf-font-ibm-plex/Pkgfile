@@ -1,0 +1,13 @@
+# Description: IBM Plex Mono, Sans, and Serif (unhinted)
+# URL:         https://github.com/IBM/plex
+
+name=ttf-font-ibm-plex
+version=6.1.1
+release=7n
+source=$name-$version.zip
+
+build() {
+	cd TrueType
+	find -name *.ttf ! -path "*/unhinted/*" -exec \
+		install -m 0644 -Dt $PKG/usr/share/fonts/TTF/ {}  \;
+}

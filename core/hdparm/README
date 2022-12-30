@@ -1,0 +1,19 @@
+README hdparm
+
+NOTES
+
+    It is possible to make the ext3 filesystem reliable across power
+    failures for some hard disk types.  To do this, add the barrier=1
+    mount option to the appropriate entry in /etc/fstab.  To check if
+    the disk drive supports this option, run hdparm on the applicable
+    disk drive.  For example, if the following command returns non-empty
+    output, the option is supported:
+
+        hdparm -I /dev/sda | grep NCQ
+
+    Note, that Logical Volume Management (LVM) based partitions cannot
+    use the barrier option.
+
+
+vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
+End of file.

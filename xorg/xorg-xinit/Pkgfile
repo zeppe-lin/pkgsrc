@@ -1,0 +1,23 @@
+# Description: X server & client startup utilities (includes startx)
+# URL:         http://xorg.freedesktop.org
+# Depends on:  xorg-server
+
+name=xorg-xinit
+version=1.4.2
+release=1
+source=https://www.x.org/releases/individual/app/xinit-$version.tar.xz
+
+build() {
+	# Move startx auth files in /tmp so they are removed on reboot.
+	sed -i 's|xserverauthfile=\$HOME/\.serverauth\.\$\$|xserverauthfile=$(mktemp -p /tmp serverauth.XXXXXXXXXX)|' \
+		xinit-$version/startx.cpp
+
+	mkdir build; cd build
+
+	../xinit-$version/configure  \
+		--prefix=/usr        \
+		--sysconfdir=/etc    \
+
+	make V=1
+	make DESTDIR=$PKG install
+}

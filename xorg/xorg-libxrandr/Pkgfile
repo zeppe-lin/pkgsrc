@@ -1,0 +1,18 @@
+# Description: Xlib Resize, Rotate and Reflection (RandR) extension library
+# URL:         http://xorg.freedesktop.org
+# Depends on:  xorg-libxext xorg-libxrender
+
+name=xorg-libxrandr
+version=1.5.3
+release=1
+source=https://www.x.org/releases/individual/lib/libXrandr-$version.tar.xz
+
+build() {
+	mkdir build; cd build
+
+	../libXrandr-$version/configure  \
+		--prefix=/usr            \
+
+	make V=1
+	make DESTDIR=$PKG install
+}

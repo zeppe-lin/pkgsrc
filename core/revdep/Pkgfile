@@ -1,0 +1,23 @@
+# Description: Check for missing libraries of installed packages
+# URL:         https://zeppe-lin.github.io/
+# Depends on:  elfutils
+
+name=revdep
+version=2.1
+release=1
+source="src/*.cpp
+	src/*.h
+	src/*.pod
+	src/config.mk
+	src/Makefile
+	src/bash_completion"
+
+build() {
+	# it's safe to optimize
+	export CXXFLAGS="$(echo $CXXFLAGS | sed 's/-O. /-O3 /')"
+
+	make DESTDIR=$PKG install
+
+	install -m 0644 -D bash_completion \
+		$PKG/usr/share/bash-completion/completions/$name
+}

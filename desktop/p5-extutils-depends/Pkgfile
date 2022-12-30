@@ -1,0 +1,28 @@
+# Description: Perl bindings for depends
+# URL:         https://www.cpan.org/
+# Depends on:  p5-xml-parser
+
+name=p5-extutils-depends
+version=0.8001
+release=1
+source=https://www.cpan.org/modules/by-module/ExtUtils/ExtUtils-Depends-$version.tar.gz
+
+build() {
+	cd ExtUtils-Depends-$version
+
+	PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+
+	make OPTIMIZE="$CFLAGS"
+	make install DESTDIR=$PKG
+
+	# remove junk and empty dirs
+	find $PKG -depth \
+		-type f \( -name perllocal.pod  \
+			-o -name \*.bs          \
+			-o -name .packlist      \
+			\) -delete ,            \
+		-type d -empty -delete
+
+	# fix perms
+	find $PKG -type f -a ! -perm -u+w | xargs chmod u+w
+}

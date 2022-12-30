@@ -1,0 +1,11 @@
+a547fd62c8081d84d5bd90ee5f98e3b9  inittab
+20984b932c5559ce1683edc1ccf08c74  rc
+c3c23329eccfb98a5dd4caab20d0bead  rc.conf
+c27430d14267ca0bf10477470d552e14  rc.conf.5.pod
+1315d07d6d10fe6881ebbedc36e121b0  rc.fix
+893aef0c62e1812044d91786e8f56ea5  rc.local
+e2e16c27309555db39737a721696f7be  rc.modules
+b3e00811cba8839ff05cbc763b79aa38  rc.multi
+e2b5aed744a0b4042f26eb5824ab1bfb  rc.netfs
+4d2c2294ebcf9fe9d188544d7cbcb7fc  rc.shutdown
+aec17ea34e889314708547da00e5df61  rc.single

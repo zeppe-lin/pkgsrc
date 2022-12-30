@@ -1,0 +1,21 @@
+README sylpheed
+
+URGENT WINDOW NOTIFY
+
+    Since the notifications in the Sylpheed are pretty ugly, and the
+    current build is not patched for libnotify support, Tile-WM-Users
+    can use the standard tag notifications:
+
+    Sylpheed -> Configuration -> Common preferences ...
+      * Execute command when new messages arrive
+        xdotool search --class Sylpheed set_window -urgency 1
+
+    If the last command not working, try this:
+
+        xdotool search --name Sylpheed set_window --urgency 1
+
+    Remember to install xdotool, and enjoy tag notifications ;-)
+
+
+vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
+End of file.

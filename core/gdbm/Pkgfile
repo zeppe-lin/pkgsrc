@@ -1,0 +1,22 @@
+# Description: GNU database library for C
+# URL:         http://www.gnu.org/software/gdbm/gdbm.html
+# Depends on:  readline
+
+name=gdbm
+version=1.23
+release=7n
+source=https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.gz
+
+build() {
+	mkdir build; cd build
+
+	../$name-$version/configure      \
+		--prefix=/usr            \
+		--enable-libgdbm-compat  \
+
+	make V=1
+	make DESTDIR=$PKG install
+
+	# remove junk
+	rm -r $PKG/usr/share/info $PKG/usr/share/locale
+}

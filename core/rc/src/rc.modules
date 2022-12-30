@@ -1,0 +1,16 @@
+#!/bin/sh
+#
+# /etc/rc.modules: module initialization script
+#
+
+/sbin/depmod -a
+
+# required by /etc/rc.d/bridge
+#/sbin/modprobe tun
+#/sbin/modprobe tap
+#/sbin/modprobe vhost
+
+# required by cdrtools
+#/sbin/modprobe sg
+
+# End of file.

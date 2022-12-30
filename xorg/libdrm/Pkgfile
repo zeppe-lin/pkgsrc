@@ -1,0 +1,26 @@
+# Description: Userspace interface to kernel DRM services
+# URL:         https://dri.freedesktop.org/
+# Depends on:  docutils xorg-libpciaccess
+
+name=libdrm
+version=2.4.114
+release=7n
+source=https://dri.freedesktop.org/libdrm/libdrm-$version.tar.xz
+
+build() {
+	meson setup build $name-$version        \
+		--prefix=/usr                   \
+		--buildtype=plain               \
+		--wrap-mode=nodownload          \
+		-D b_lto=true                   \
+		-D b_pie=true                   \
+		-D man-pages=enabled            \
+		-D udev=true                    \
+		-D valgrind=disabled            \
+		-D cairo-tests=disabled         \
+		-D nouveau=enabled              \
+		-D install-test-programs=false  \
+
+	meson compile -C build -j ${JOBS:-1} -v
+	DESTDIR=$PKG meson install -C build
+}

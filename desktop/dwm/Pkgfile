@@ -1,0 +1,19 @@
+# Description: Dynamic window manager for X (adjusted for Zeppe-Lin)
+# URL:         https://zeppe-lin.github.io/
+# Depends on:  xorg-libxft xorg-libxinerama
+
+name=dwm
+version=6.1zpln
+release=1
+source="src/config.mk
+	src/dwm.1.in
+	src/dwm.c
+	src/Makefile
+	config.def.h"
+
+build() {
+	# apply user-defined configuration if exists
+	[ -f $PKGMK_ROOT/config.h ] && cp $PKGMK_ROOT/config.h .
+
+	make PREFIX=/usr DESTDIR=$PKG install
+}

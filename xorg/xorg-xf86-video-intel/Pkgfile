@@ -1,0 +1,25 @@
+# Description: Open-source Xorg graphics driver for Intel graphics
+# URL:         https://www.x.org/wiki/
+# Depends on:  xorg-libxscrnsaver xorg-server xorg-xcb-util
+
+name=xorg-xf86-video-intel
+version=2.99.917-916
+release=1
+source=https://crux.nu/files/distfiles/${name#*-}-$version.tar.xz
+
+build() {
+	mkdir build; cd build
+
+	../${name#*-}-$version/configure                \
+		--prefix=/usr                           \
+		--libexecdir=/usr/lib/xf86-video-intel  \
+		--enable-static                         \
+		--enable-tools                          \
+		--with-default-dri=3                    \
+
+	make V=1
+	make DESTDIR=$PKG install
+
+	# remove junk
+	rm -r $PKG/usr/share/polkit-1
+}

@@ -1,0 +1,18 @@
+# Description: X font rendering client library
+# URL:         http://xorg.freedesktop.org
+# Depends on:  harfbuzz
+
+name=xorg-libxft
+version=2.3.7
+release=7n
+source=https://www.x.org/releases/individual/lib/libXft-$version.tar.xz
+
+build() {
+	mkdir build; cd build
+
+	../libXft-$version/configure  \
+		--prefix=/usr         \
+
+	make V=1
+	make DESTDIR=$PKG install
+}

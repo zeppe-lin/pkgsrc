@@ -1,0 +1,35 @@
+# Description: Terminal based IRC client
+# URL:         https://irssi.org
+# Depends on:  glib openssl perl
+
+name=irssi
+version=1.4.3
+release=1
+source=https://github.com/irssi-import/irssi/releases/download/$version/$name-$version.tar.xz
+
+build() {
+	export CFLAGS="$CFLAGS -Wno-deprecated-declarations"
+
+	mkdir build; cd build
+
+	../$name-$version/configure   \
+		--prefix=/usr         \
+		--enable-true-color   \
+		--with-perl-lib=site  \
+		--with-proxy          \
+		--with-socks          \
+		--disable-glibtest    \
+		--disable-utf8proc    \
+		--disable-gregex      \
+
+	make V=1
+	make DESTDIR=$PKG install
+
+	# remove junk
+	rm -r $PKG/usr/share/doc/
+	find $PKG -type f \( -name perllocal.pod -o -name \*.bs \
+		-o -name autosplit.ix -o -name .packlist \) -delete
+
+	# remove empty dirs
+	find $PKG -type d -empty -delete
+}

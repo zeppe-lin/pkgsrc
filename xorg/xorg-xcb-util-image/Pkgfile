@@ -1,0 +1,20 @@
+# Description: XCB port of Xlib's XImage and XShmImage functions
+# URL:         https://xcb.freedesktop.org/
+# Depends on:  xorg-xcb-util
+
+name=xorg-xcb-util-image
+version=0.4.1
+release=1
+source=https://xcb.freedesktop.org/dist/xcb-util-image-$version.tar.xz
+
+build() {
+	mkdir build; cd build
+
+	../xcb-util-image-$version/configure  \
+		--prefix=/usr                 \
+		--disable-devel-docs          \
+		--without-doxygen             \
+
+	make V=1
+	make DESTDIR=$PKG install
+}

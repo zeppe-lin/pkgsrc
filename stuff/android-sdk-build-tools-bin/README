@@ -1,0 +1,14 @@
+README android-sdk-build-tools-bin
+
+REQUIREMENTS
+
+    android-ndk-bin  (optional)
+
+POST-INSTALL
+
+    Add the Android SDK build tools to your path:
+        export PATH="$PATH:/opt/android-sdk/build-tools"
+
+
+vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
+End of file.

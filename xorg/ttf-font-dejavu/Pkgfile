@@ -1,0 +1,18 @@
+# Description: Font family based on the Bitstream Vera Fonts
+# URL:         https://dejavu-fonts.github.io/
+# Depends on:  fontconfig xorg-mkfontscale
+
+name=ttf-font-dejavu
+version=2.37
+release=7n
+source=https://github.com/dejavu-fonts/dejavu-fonts/releases/download/version_$(echo $version | tr . _)/dejavu-fonts-ttf-$version.zip
+
+build() {
+	cd dejavu-fonts-ttf-$version
+
+	install -m 0644 -Dt $PKG/usr/share/fonts/TTF/  ttf/*.ttf
+	install -m 0644 -Dt $PKG/etc/fonts/conf.avail/ fontconfig/*.conf
+
+	install -d $PKG/etc/fonts/conf.d
+	cd $PKG/etc/fonts/conf.d && ln -s ../conf.avail/* .
+}

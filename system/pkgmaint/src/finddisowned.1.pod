@@ -1,0 +1,89 @@
+# See COPYING and COPYRIGHT files for corresponding information.
+
+=pod
+
+=encoding UTF-8
+
+=head1 NAME
+
+finddisowned - find files that are disowned by package manager
+
+=head1 SYNOPSIS
+
+B<finddisowned> [I<OPTION>]...
+
+=head1 DESCRIPTION
+
+B<finddisowned> lists the files that are disowned by package manager.
+
+In particular, finddisowned compares the package database with
+contents of the directories described in F</etc/finddisowned.conf>.
+
+B<finddisowned> does not compare the package database with the entire
+file system, but only with files from directories described in
+F</etc/finddisowned.conf> because the entire file system contains
+directories such as F</home>, F</mnt> and even dynamic directories
+like F</proc>, F</dev>, etc, the contents of which are definitely not
+taken into account (and should not be) by package manager.
+
+Feel free to adjust the configuration file (F</etc/finddisowned.conf>)
+conform your needs.
+
+=head1 OPTIONS
+
+Mandatory arguments to long options are mandatory for short options
+too.
+
+=over 8
+
+=item B<-c>, B<--config> I<FILE>
+
+Specify alternate configuration file.
+
+=item B<-r>, B<--root> I<PATH>
+
+Specify alternate root directory.
+
+=item B<-v>, B<--version>
+
+Print version and exit.
+
+=item B<-h>, B<--help>
+
+Print help and exit.
+
+=back
+
+=head1 FILES
+
+=over 8
+
+=item F</var/lib/pkg/db>
+
+System package database.
+
+=item F</etc/finddisowned.conf>
+
+Contains a list of directories, the contents of which will be compared
+with package database.
+
+=back
+
+=head1 COPYRIGHT
+
+Copyright (C) 2021-2022 Alexandr Savca <alexandr.savca89@gmail.com>
+
+License GPLv3+: GNU GPL version 3 or later
+L<https://gnu.org/licenses/gpl.html>.
+
+=head1 SEE ALSO
+
+L<finddeps-distmeta(1)|https://zeppe-lin.github.io/finddeps-distmeta.1.html>,
+L<finddeps-linked(1)|https://zeppe-lin.github.io/finddeps-linked.1.html>,
+L<findredundantdeps(1)|https://zeppe-lin.github.io/findredundantdeps.1.html>,
+L<finddisappeared(1)|https://zeppe-lin.github.io/finddisappeared.1.html>
+
+=cut
+
+# vim:cc=72:tw=70
+# End of file.

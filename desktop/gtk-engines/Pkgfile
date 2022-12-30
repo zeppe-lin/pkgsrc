@@ -1,0 +1,29 @@
+# Description: Standard theme engines for GTK+2 (HighContrast only)
+# URL:         https://wiki.gnome.org/action/show/Design?action=show&redirect=GnomeArt
+# Depends on:  gtk
+
+name=gtk-engines
+version=2.20.2
+release=1
+source=https://ftp.gnome.org/pub/GNOME/sources/$name/2.20/$name-$version.tar.bz2
+
+build() {
+	# disable i18n
+	export LINGUAS=' '
+
+	sed -i 's|<glib/.*\.h>|<glib.h>|' \
+		$name-$version/engines/clearlooks/src/animation.c
+
+	mkdir build; cd build
+
+	# build only HighContrast engine for trinity-gtk-theme
+	../$name-$version/configure  \
+		--prefix=/usr        \
+		--enable-animation   \
+		--enable-hc          \
+		--disable-all        \
+		--disable-nls        \
+
+	make V=1
+	make DESTDIR=$PKG install
+}

@@ -1,0 +1,26 @@
+# Description: X Toolkit Intrinsics library
+# URL:         http://xorg.freedesktop.org
+# Depends on:  xorg-libsm xorg-libx11
+
+name=xorg-libxt
+version=1.2.1
+release=1
+source=https://www.x.org/releases/individual/lib/libXt-$version.tar.bz2
+
+build() {
+	mkdir build; cd build
+
+	../libXt-$version/configure  \
+		--prefix=/usr        \
+		--disable-unit-tests \
+		--without-fop        \
+		--without-glib       \
+		--without-xmlto      \
+		--without-xsltproc   \
+
+	make V=1
+	make DESTDIR=$PKG install
+
+	# remove junk
+	rm -r $PKG/usr/share/doc
+}

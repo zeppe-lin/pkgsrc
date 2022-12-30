@@ -1,0 +1,13 @@
+# Description: Content blocker for firefox
+# URL:         https://github.com/gorhill/uBlock
+# Depends on:  firefox-bin
+
+name=firefox-ublock-bin
+version=1.46.0
+release=1
+source=https://github.com/gorhill/uBlock/releases/download/$version/uBlock0_$version.firefox.signed.xpi
+
+build() {
+	install -m 0644 -D uBlock0_$version.firefox.signed.xpi \
+		$PKG/opt/firefox/distribution/extensions/uBlock0@raymondhill.net.xpi
+}

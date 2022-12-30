@@ -1,0 +1,21 @@
+# Description: Xlib library for the Render Extension to the X11 protocol
+# URL:         http://xorg.freedesktop.org
+# Depends on:  xorg-libx11
+
+name=xorg-libxrender
+version=0.9.11
+release=1
+source=https://www.x.org/releases/individual/lib/libXrender-$version.tar.xz
+
+build() {
+	mkdir build; cd build
+
+	../libXrender-$version/configure  \
+		--prefix=/usr             \
+
+	make V=1
+	make DESTDIR=$PKG install
+
+	# remove junk
+	rm -r $PKG/usr/share
+}

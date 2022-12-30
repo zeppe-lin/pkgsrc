@@ -1,0 +1,11 @@
+README radare2
+
+WEB-UI
+
+    There are 2 different layouts: Tiles (t) and Material (m).
+    Usage: r2 -q -e http.ui=<t|m> -c=H file
+    Material (m) seems very buggy now. Use (t) for a while.
+
+
+vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
+End of file.

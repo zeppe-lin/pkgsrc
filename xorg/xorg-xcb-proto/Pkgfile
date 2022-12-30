@@ -1,0 +1,20 @@
+# Description: XML-XCB protocol descriptions used by libxcb for the X11 protocol & extensions
+# URL:         https://xcb.freedesktop.org/
+# Depends on:  python3
+
+name=xorg-xcb-proto
+version=1.15.2
+release=1
+source=https://xorg.freedesktop.org/archive/individual/proto/xcb-proto-$version.tar.xz
+
+build() {
+	export PYTHON=/usr/bin/python3
+
+	mkdir build; cd build
+
+	../xcb-proto-$version/configure  \
+		--prefix=/usr            \
+
+	make V=1
+	make DESTDIR=$PKG install
+}

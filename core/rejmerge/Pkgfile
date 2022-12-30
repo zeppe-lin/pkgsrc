@@ -1,0 +1,21 @@
+# Description: Merge files that were rejected during package upgrades
+# URL:         https://zeppe-lin.github.io/
+
+name=rejmerge
+version=5.41
+release=1
+source="src/rejmerge.in
+	src/rejmerge.8.pod
+	src/rejmerge.conf.5.pod
+	src/Makefile
+	src/bash_completion
+
+	rejmerge.conf"
+
+build() {
+	make DESTDIR=$PKG install
+
+	install -m 0644 -Dt $PKG/etc/ rejmerge.conf
+	install -m 0644 -D bash_completion \
+		$PKG/usr/share/bash-completion/completions/rejmerge
+}

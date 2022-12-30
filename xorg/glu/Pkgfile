@@ -1,0 +1,18 @@
+# Description: Mesa OpenGL Utility library
+# URL:         https://www.mesa3d.org/
+# Depends on:  mesa
+
+name=glu
+version=9.0.2
+release=1
+source=https://mesa.freedesktop.org/archive/$name/$name-$version.tar.xz
+
+build() {
+	mkdir build; cd build
+
+	../$name-$version/configure  \
+		--prefix=/usr        \
+
+	make V=1
+	make DESTDIR=$PKG install
+}

@@ -1,0 +1,14 @@
+# Description: Control the creation and termination of system-level processes
+# URL:         https://zeppe-lin.github.io/
+
+name=start-stop-daemon
+version=20210417
+release=1
+source="src/start-stop-daemon.c
+	src/start-stop-daemon.8.pod
+	src/config.mk
+	src/Makefile"
+
+build() {
+	make DESTDIR=$PKG install
+}

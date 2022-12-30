@@ -1,0 +1,18 @@
+# Description: Utilities to create the fonts.scale and fonts.dir index files
+# URL:         http://xorg.freedesktop.org
+# Depends on:  freetype xorg-libfontenc xorg-libx11
+
+name=xorg-mkfontscale
+version=1.2.2
+release=1
+source=https://www.x.org/releases/individual/app/mkfontscale-$version.tar.xz
+
+build() {
+	mkdir build; cd build
+
+	../mkfontscale-$version/configure  \
+		--prefix=/usr              \
+
+	make V=1
+	make DESTDIR=$PKG install
+}

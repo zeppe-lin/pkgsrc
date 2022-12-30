@@ -1,0 +1,45 @@
+# Description: GTK+ email client and news reader
+# URL:         http://sylpheed.sraoss.jp/en/
+# Depends on:  gpgme gtk xorg-libxdamage
+
+name=sylpheed
+version=3.7.0
+release=1
+source="https://sylpheed.sraoss.jp/$name/v${version%.*}/$name-$version.tar.xz
+	0001-fix_widget_style_for_dark_theme.patch
+	0001-trinity-icon-theme.patch
+	0002-fix_summary_font_size_4_8px.patch"
+
+build() {
+	export LINGUAS=' '
+
+	# disable i18n, tests
+	sed -i '/^SUBDIRS/s/ po / /g'            $name-$version/Makefile.??
+	sed -i '/^SUBDIRS/s/de en es fr it/en/g' $name-$version/faq/Makefile.??
+	sed -i '/^SUBDIRS/s/en ja/en/g'          $name-$version/manual/Makefile.??
+	sed -i '/^SUBDIRS/s/ test//g'            $name-$version/plugin/Makefile.??
+
+	for _file in $SRC/*.patch; do
+		patch -p1 -d $name-$version -i $_file
+	done
+
+	mkdir build; cd build
+
+	../$name-$version/configure          \
+		--prefix=/usr                \
+		--disable-glibtest           \
+		--disable-gtktest            \
+		--disable-updatecheck        \
+		--disable-updatecheckplugin  \
+
+	make V=1
+	make DESTDIR=$PKG install
+
+	# remove i18n entries
+	sed -ri '/\[.+\]=/d' ../$name-$version/$name.desktop
+
+	install -m 0644 -Dt $PKG/usr/share/applications/ \
+		../$name-$version/$name.desktop
+	install -m 0644 -Dt $PKG/usr/share/pixmaps/ \
+		../$name-$version/$name.png
+}

@@ -1,0 +1,18 @@
+# Description: X font encoding library
+# URL:         http://xorg.freedesktop.org
+# Depends on:  xorg-xorgproto zlib
+
+name=xorg-libfontenc
+version=1.1.7
+release=1
+source=https://www.x.org/releases/individual/lib/libfontenc-$version.tar.xz
+
+build() {
+	mkdir build; cd build
+
+	../libfontenc-$version/configure  \
+		--prefix=/usr             \
+
+	make V=1
+	make DESTDIR=$PKG install
+}

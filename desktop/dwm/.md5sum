@@ -1,0 +1,5 @@
+4ff84a7fd56e60beac8d1ec454080bed  Makefile
+5eee13f8b4725ff401478b1058953e94  config.def.h
+d58d7d5249fc9f1122bd572ccfb307e4  config.mk
+1a39ef8530f1dd691efbfa8a25b871dd  dwm.1.in
+530e56edc6a5516d1d2da7d1237af492  dwm.c

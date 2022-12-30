@@ -1,0 +1,19 @@
+# Description: POSIX library for priority-based and scheduled multi threading
+# URL:         https://gnupg.org/software/npth/index.html
+
+name=npth
+version=1.6
+release=7n
+source=https://gnupg.org/ftp/gcrypt/npth/$name-$version.tar.bz2
+
+build() {
+	mkdir build; cd build
+
+	../$name-$version/configure  \
+		--prefix=/usr        \
+		--disable-tests      \
+		--enable-static      \
+
+	make V=1
+	make DESTDIR=$PKG install
+}

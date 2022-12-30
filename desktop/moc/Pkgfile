@@ -1,0 +1,28 @@
+# Description: Console audio player
+# URL:         http://moc.daper.net/
+# Depends on:  curl db ffmpeg file libid3tag libmad libsndfile libtool popt
+# Optional:    ffmpeg
+
+name=moc
+version=2.5.2
+release=1
+source="http://ftp.daper.net/pub/soft/moc/stable/moc-$version.tar.bz2
+	moc-ffmpeg4.patch moc-https.patch"
+
+build() {
+	patch -p0 -d $name-$version -i $SRC/moc-ffmpeg4.patch
+	patch -p0 -d $name-$version -i $SRC/moc-https.patch
+
+	mkdir build; cd build
+
+	../$name-$version/configure  \
+		--prefix=/usr        \
+		--disable-debug      \
+		--disable-nls        \
+
+	make V=1
+	make DESTDIR=$PKG install
+
+	# remove junk
+	rm -r $PKG/usr/share/doc
+}

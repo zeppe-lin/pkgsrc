@@ -1,0 +1,24 @@
+# Description: Patched Iosevka font with Nerd Glyphs
+# URL:         https://github.com/ryanoasis/nerd-fonts
+# Depends on:  git
+
+name=ttf-font-iosevka-nerd
+version=2.1.0-da88bdb
+release=7n
+source=/dev/null
+
+build() {
+	git clone --filter=blob:none --sparse \
+		https://github.com/ryanoasis/nerd-fonts
+
+	cd nerd-fonts
+
+	git sparse-checkout add patched-fonts/Iosevka
+	git checkout ${version#*-}
+
+	find patched-fonts/Iosevka/ -iname "*.ttf"     \
+		-not -iname "*Windows Compatible.ttf"  \
+		-not -iname "*Mono.ttf"                \
+		-execdir install -m 0644 -D {}         \
+			"$PKG/usr/share/fonts/TTF/{}"  \;
+}

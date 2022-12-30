@@ -1,0 +1,23 @@
+# Description: Flexible frontend for optical disc authoring
+# URL:         http://www.xcdroast.org
+# Depends on:  alsa-lib cdrtools gtk
+
+name=xcdroast
+version=1.19
+release=1
+source="https://downloads.sourceforge.net/project/$name/$name-$version.tar.gz
+	adjust_font_to_terminus.patch"
+
+build() {
+	patch -p6 -d $name-$version -i $SRC/adjust_font_to_terminus.patch
+
+	mkdir build; cd build
+
+	../$name-$version/configure  \
+		--prefix=/usr        \
+		--sysconfdir=/etc    \
+		--disable-nls        \
+
+	make V=1
+	make DESTDIR=$PKG install
+}

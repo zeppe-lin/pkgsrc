@@ -1,0 +1,6 @@
+292965e5d7421377aa806d946161806f  Makefile
+c85747bd1c6bdeb693da321061cb7d5e  config.mk
+ddc21fd5e877b149c713d0eb640b44b0  qemuconf-import
+aa564b08e45e53c2e8ffebd6e4a24dd8  qemuconf-import.1.pod
+991a22f710692a4a64e096298adc7fa0  qemuconf.1.pod
+a69e6d6205a0232f7ed0db65642e72ed  qemuconf.c

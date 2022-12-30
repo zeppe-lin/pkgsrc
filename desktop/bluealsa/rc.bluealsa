@@ -1,0 +1,40 @@
+#!/bin/sh
+#
+# /etc/rc.d/bluealsa: start/stop bluealsa(8) daemon
+#
+# Requires: <- bluetoothd [<- dbus]
+#
+
+SSD=/sbin/start-stop-daemon
+PROG=/usr/bin/bluealsa
+PID=/run/bluealsa.pid
+OPTS="--syslog --profile=a2dp-sink --profile=a2dp-source --codec=AAC"
+
+case $1 in
+start)
+	exec $SSD --start --background --make-pidfile --pidfile $PID \
+		--exec $PROG -- $OPTS
+	;;
+stop)
+	exec $SSD --stop --remove-pidfile --retry 10 --pidfile $PID \
+		--exec $PROG
+	;;
+restart)
+	$0 stop
+	$0 start
+	;;
+status)
+	$SSD --status --pidfile $PID --exec $PROG
+	case $? in
+	0) echo "$PROG is running with pid $(cat $PID)" ;;
+	1) echo "$PROG is not running but the pid file $PID exists" ;;
+	3) echo "$PROG is not running" ;;
+	4) echo "Unable to determine the program status" ;;
+	esac
+	;;
+*)
+	echo "usage: $0 [start|stop|restart|status]"
+	;;
+esac
+
+# End of file.

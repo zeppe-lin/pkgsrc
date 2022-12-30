@@ -1,0 +1,18 @@
+# Description: Forcibly terminate X11 clients
+# URL:         http://xorg.freedesktop.org
+# Depends on:  libbsd xorg-libxmu
+
+name=xorg-xkill
+version=1.0.6
+release=1
+source=https://www.x.org/releases/individual/app/xkill-$version.tar.xz
+
+build() {
+	mkdir build; cd build
+
+	../xkill-$version/configure  \
+		--prefix=/usr        \
+
+	make V=1
+	make DESTDIR=$PKG install
+}

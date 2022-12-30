@@ -1,0 +1,9 @@
+#!/bin/sh -ex
+
+gdk-pixbuf-query-loaders --update-cache
+
+if command -v gtk-update-icon-cache; then
+	gtk-update-icon-cache -q -t -f /usr/share/icons/trinity
+fi
+
+# End of file.

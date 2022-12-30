@@ -1,0 +1,48 @@
+=pod
+
+=encoding UTF-8
+
+=head1 NAME
+
+dwmblocks - modular status bar for dwm or similar programs
+
+=head1 SYNOPSIS
+
+B<dwmblocks> [B<-d> I<DELIM>] [B<-p>]
+
+=head1 DESCRIPTION
+
+dwmblocks is a tiny utility for generating a status bar for dwm or
+similar programs.  There is an ability to generate status bar to
+stdout, that may be useful for L<dvtm(1)> and similar programs.
+
+The status bar is made from text output from command-line programs.
+Blocks are added and removed by editing F<config.h> file.
+
+=head1 OPTIONS
+
+=over 8
+
+=item B<-d> I<DELIM>
+
+Set blocks delimeter.
+
+=item B<-p>
+
+Print status bar to stdout.
+
+=back
+
+=head1 CUSTOMIZATION
+
+B<dwmblocks> can be customized by creating a custom F<config.h> and
+(re)compiling the source code.  This keeps it fast, secure and simple.
+
+=head1 SEE ALSO
+
+L<dwm(1)>, L<dmenu(1)>, L<st(1)>
+
+=cut
+
+# vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
+# End of file.

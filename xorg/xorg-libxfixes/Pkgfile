@@ -1,0 +1,18 @@
+# Description: Xlib-based library for the XFIXES Extension
+# URL:         http://xorg.freedesktop.org
+# Depends on:  xorg-libx11
+
+name=xorg-libxfixes
+version=6.0.0
+release=1
+source=https://www.x.org/releases/individual/lib/libXfixes-$version.tar.bz2
+
+build() {
+	mkdir build; cd build
+
+	../libXfixes-$version/configure  \
+		--prefix=/usr            \
+
+	make V=1
+	make DESTDIR=$PKG install
+}

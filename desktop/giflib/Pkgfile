@@ -1,0 +1,14 @@
+# Description: Compressed GIF library compatible with libungif
+# URL:         https://giflib.sourceforge.net
+
+name=giflib
+version=5.2.1
+release=1
+source=https://download.sourceforge.net/$name/$name-$version.tar.gz
+
+build() {
+	cd $name-$version
+
+	make OFLAGS="$CFLAGS"
+	make PREFIX=$PKG/usr install
+}

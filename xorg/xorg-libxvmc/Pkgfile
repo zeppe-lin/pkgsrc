@@ -1,0 +1,24 @@
+# Description: X Video Motion Compensation extension client library
+# URL:         http://xorg.freedesktop.org
+# Depends on:  xorg-libxv
+
+name=xorg-libxvmc
+version=1.0.13
+release=7n
+source=https://www.x.org/releases/individual/lib/libXvMC-$version.tar.xz
+
+build() {
+	meson build libXvMC-$version    \
+		--prefix=/usr           \
+		--buildtype=plain       \
+		--wrap-mode=nodownload  \
+		-D b_lto=true           \
+		-D b_pie=true           \
+
+	ninja -C build -j ${JOBS:-1} -v
+	DESTDIR=$PKG ninja -C build install
+
+	# remove junk
+	rm -r $PKG/usr/share/doc
+	rmdir $PKG/usr/share
+}

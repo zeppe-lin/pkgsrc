@@ -1,0 +1,49 @@
+# Description: GUI toolkit for TCL
+# URL:         https://www.tcl.tk/
+# Depends on:  tcl xorg-libxft xorg-libxscrnsaver
+
+name=tk
+version=8.6.13
+_version=$(echo $version | awk -F'.' '{if (NF <= '2') {print $0} else {print $1 "." $2 "." $3}}')
+release=1
+source=https://downloads.sourceforge.net/project/tcl/Tcl/$_version/${name}${version}-src.tar.gz
+
+build() {
+	sed -e '/chmod/s:555:755:g' -i tk${_version}/unix/Makefile.in
+	sed -e 's:-O[2s]\?::g'      -i tk${_version}/unix/tcl.m4
+
+	mkdir build; cd build
+
+	../tk${_version}/unix/configure  \
+		--prefix=/usr            \
+		--mandir=/usr/share/man  \
+		--enable-gcc             \
+		--enable-shared          \
+		--enable-xft             \
+
+	make V=1
+	make MKLINKS_FLAGS="-s" INSTALL_ROOT=$PKG install install-private-headers
+
+	# install private headers
+	cp ../tk${_version}/generic/*.h          $PKG/usr/include/
+	cp ../tk${_version}/unix/tkUnixPort.h    $PKG/usr/include/tkPort.h
+	cp ../tk${_version}/unix/tkUnixDefault.h $PKG/usr/include/tkDefault.h
+	cp ../tk${_version}/unix/tkUnixInt.h     $PKG/usr/include/tkInt.h
+
+	# remove $SRC traces
+	sed -i  -e "s|$SRC/tk$_version/unix|/usr/lib|g"  \
+		-e "s|$SRC/tk$_version|/usr/include|g"   \
+		$PKG/usr/lib/tkConfig.sh
+
+	# install symlink for libraries
+	ln -s wish${_version%.*}        $PKG/usr/bin/wish
+	ln -s libtk${_version%.*}.so    $PKG/usr/lib/libtk.so
+	ln -s libtkstub${_version%.*}.a $PKG/usr/lib/libtkstub.a
+
+	# remove junk
+	rm -r $PKG/usr/lib/tk${_version%.*}/demos
+	rm $PKG/usr/lib/tk${_version%.*}/images/README
+
+	# fix perms
+	chmod -R u+w $PKG/usr/share/man
+}

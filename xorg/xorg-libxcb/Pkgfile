@@ -1,0 +1,26 @@
+# Description: C interface to the X Window System protocol (Xlib replacement)
+# URL:         https://xcb.freedesktop.org/
+# Depends on:  xorg-libxau xorg-libxdmcp xorg-xcb-proto
+
+name=xorg-libxcb
+version=1.15
+release=1
+source=https://xorg.freedesktop.org/archive/individual/lib/libxcb-$version.tar.xz
+
+build() {
+	export PYTHON=/usr/bin/python3
+
+	mkdir build; cd build
+
+	../libxcb-$version/configure  \
+		--prefix=/usr         \
+		--without-launchd     \
+		--without-doxygen     \
+		--disable-devel-docs  \
+
+	make V=1
+	make DESTDIR=$PKG install
+
+	# remove junk
+	rm -r $PKG/usr/share
+}

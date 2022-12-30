@@ -1,0 +1,13 @@
+# Description: Advanced proxy management tool for firefox
+# URL:         https://github.com/foxyproxy
+# Depends on:  firefox-bin
+
+name=firefox-foxyproxy-bin
+version=7.4.2
+release=1
+source=https://github.com/foxyproxy/firefox-extension/releases/download/$version/foxyproxy_standard-$version-an+fx.xpi
+
+build() {
+	install -m 0644 -D foxyproxy_standard-$version-an+fx.xpi \
+		$PKG/opt/firefox/distribution/extensions/foxyproxy@eric.h.jung.xpi
+}

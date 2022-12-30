@@ -1,0 +1,25 @@
+README palemoon
+
+RUN AS DIFFERENT USER
+
+    Add a new user and change its default gtk theme if needed:
+
+        sudo useradd -G video,audio -U -m palemoon
+        xhost +SI:localuser:palemoon
+        sudo -u palemoon -H lxappearance
+
+    Use this wrapper as palemoon launcher:
+
+        #!/bin/sh
+        xhost +SI:localuser:palemoon
+        sudo -u palemoon -H /usr/bin/palemoon --new-tab "$@"
+
+    To run this wrapper without asking the password, add
+
+        user ALL=(palemoon) NOPASSWD: /usr/bin/palemoon *
+
+    into /etc/sudoers.d/99_palemoon
+
+
+vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
+End of file.

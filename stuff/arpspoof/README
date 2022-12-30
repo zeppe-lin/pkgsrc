@@ -1,0 +1,11 @@
+README arpspoof
+
+USAGE
+
+    Basic spoofing example:
+        arpspoof.py -i ${IFACE} -t ${VICTIM_IP} ${GW_IP} &
+        arpspoof.py -i ${IFACE} -t ${GW_IP} ${VICTIM_IP} &
+
+
+vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
+End of file.

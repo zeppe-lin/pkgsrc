@@ -1,0 +1,22 @@
+# Description: ATI/AMD Radeon video driver for the Xorg X server
+# URL:         https://www.x.org/wiki/
+# Depends on:  xorg-server
+
+name=xorg-xf86-video-ati
+version=19.1.0
+release=1
+source="https://www.x.org/archive/individual/driver/${name#*-}-$version.tar.bz2
+	xorg-abi.patch"
+
+build() {
+	patch -p1 -d ${name#*-}-$version -i $SRC/xorg-abi.patch
+
+	mkdir build; cd build
+
+	../${name#*-}-$version/configure  \
+		--prefix=/usr             \
+		--enable-static           \
+
+	make V=1 CFLAGS="$CFLAGS -fcommon"
+	make DESTDIR=$PKG install
+}

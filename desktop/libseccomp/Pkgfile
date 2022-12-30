@@ -1,0 +1,19 @@
+# Description: Library for Linux Kernel's syscall filtering mechanism
+# URL:         https://github.com/seccomp/libseccomp
+
+name=libseccomp
+version=2.5.4
+release=1
+source=https://github.com/seccomp/$name/releases/download/v$version/$name-$version.tar.gz
+
+build() {
+	mkdir build; cd build
+
+	# --disable-python: since requires cython
+	../$name-$version/configure  \
+		--prefix=/usr        \
+		--disable-python     \
+
+	make V=1
+	make DESTDIR=$PKG install
+}

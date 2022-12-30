@@ -1,0 +1,47 @@
+# Description: Bluetooth Audio ALSA Backend (for users in "audio" group)
+# URL:         https://github.com/Arkq/bluez-alsa
+# Depends on:  bluez fdk-aac lame libldac mpg123 sbc
+
+name=bluealsa
+version=4.0.0
+release=1
+source="https://github.com/Arkq/bluez-alsa/archive/v$version/bluez-alsa-$version.tar.gz
+	bluealsa.conf
+	rc.bluealsa"
+
+build() {
+	pkgman isinst libbsd   \
+		&& PKGMK_BLUEALSA="$PKGMK_BLUEALSA --enable-hcitop"   \
+		|| PKGMK_BLUEALSA="$PKGMK_BLUEALSA --disable-hcitop"
+	pkgman isinst lame     \
+		&& PKGMK_BLUEALSA="$PKGMK_BLUEALSA --enable-lame"     \
+		|| PKGMK_BLUEALSA="$PKGMK_BLUEALSA --disable-lame"
+	pkgman isinst libldac  \
+		&& PKGMK_BLUEALSA="$PKGMK_BLUEALSA --enable-ldac"     \
+		|| PKGMK_BLUEALSA="$PKGMK_BLUEALSA --disable-ldac"
+	pkgman isinst mpg123   \
+		&& PKGMK_BLUEALSA="$PKGMK_BLUEALSA --enable-mpg123"   \
+		|| PKGMK_BLUEALSA="$PKGMK_BLUEALSA --disable-mpg123"
+	pkgman isinst docutils \
+		&& PKGMK_BLUEALSA="$PKGMK_BLUEALSA --enable-manpages" \
+		|| PKGMK_BLUEALSA="$PKGMK_BLUEALSA --disable-manpages"
+
+	mkdir build; cd build
+
+	autoreconf --install --symlink ../bluez-alsa-$version
+	../bluez-alsa-$version/configure \
+		--prefix=/usr            \
+		--enable-cli             \
+		--enable-aac             \
+		--enable-rfcomm          \
+		--enable-a2dpconf        \
+		--enable-ofono           \
+		$PKGMK_BLUEALSA          \
+		--with-bash-completion=/usr/share/bash-completion/completions/
+
+	make V=1 all
+	make DESTDIR=$PKG install
+
+	install -D -m 755 $SRC/rc.$name   $PKG/etc/rc.d/$name
+	install -D -m 644 $SRC/$name.conf $PKG/etc/dbus-1/system.d/$name.conf
+}

@@ -1,0 +1,29 @@
+# Description:  Customizable jukebox for large collections of audio files
+# URL:          https://zeppe-lin.github.io/
+# Depends on:   p5-gtk2 p5-net-dbus
+
+name=jukebox
+version=1.1.16zpln
+release=1
+source=/dev/null
+
+build() {
+	mkdir -p $PKG/usr/bin/
+	mkdir -p $PKG/usr/share/jukebox
+	cp -Pr $PKGMK_ROOT/src/* $PKG/usr/share/jukebox/
+	chmod +x $PKG/usr/share/jukebox/jukebox.pl
+	chmod +x $PKG/usr/share/jukebox/iceserver.pl
+	ln -s /usr/share/jukebox/jukebox.pl   $PKG/usr/bin/jukebox
+	ln -s /usr/share/jukebox/iceserver.pl $PKG/usr/bin/iceserver
+
+	cd $PKG/usr/share/jukebox
+
+	mkdir -p $PKG/usr/share/man/man1
+	mkdir -p $PKG/usr/share/applications
+	mv jukebox.1       $PKG/usr/share/man/man1/
+	mv jukebox.desktop $PKG/usr/share/applications
+
+	# remove junk
+	rm AUTHORS COPYING README Makefile pix/LICENSE pix/README \
+		layout_doc.mkd
+}

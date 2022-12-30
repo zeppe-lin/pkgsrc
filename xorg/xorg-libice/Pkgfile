@@ -1,0 +1,24 @@
+# Description: Inter-Client Exchange Library
+# URL:         http://xorg.freedesktop.org
+# Depends on:  xorg-xorgproto xorg-xtrans
+
+name=xorg-libice
+version=1.1.1
+release=1
+source=https://www.x.org/releases/individual/lib/libICE-$version.tar.xz
+
+build() {
+	mkdir build; cd build
+
+	../libICE-$version/configure  \
+		--prefix=/usr         \
+		--disable-docs        \
+		--without-xmlto       \
+		--without-xsltproc    \
+
+	make V=1
+	make DESTDIR=$PKG install
+
+	# remove junk
+	rm -r $PKG/usr/share/doc; rmdir $PKG/usr/share
+}

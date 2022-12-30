@@ -1,0 +1,38 @@
+# Description: OpenGL and OpenGL ES shader front end and validator
+# URL:         https://www.khronos.org/opengles/sdk/tools/Reference-Compiler
+# Depends on:  spirv-tools
+
+name=glslang
+version=11.12.0
+release=7n
+source="https://github.com/KhronosGroup/glslang/archive/$version/$name-$version.tar.gz
+	0001-pkg-config-compatibility.patch"
+
+build() {
+	patch -p1 -d $name-$version -i $SRC/0001-pkg-config-compatibility.patch
+
+	PKGMK_GLSLANG_CONF="
+		-S $name-$version
+		-G Ninja
+		-D CMAKE_INSTALL_PREFIX=/usr
+		-D CMAKE_INSTALL_LIBDIR=lib
+		-D CMAKE_BUILD_TYPE=Release
+		-D CMAKE_SKIP_RPATH=yes
+		-Wno-dev"
+
+	cmake -B build-static $PKGMK_GLSLANG_CONF $PKGMK_GLSLANG \
+		-D BUILD_SHARED_LIBS=OFF \
+		-D CMAKE_CXX_FLAGS_RELEASE="$CXXFLAGS -ffat-lto-objects"
+	cmake --build build-static -v
+
+	# -Wl,--no-undefined:
+	# https://github.com/KhronosGroup/glslang/issues/1484
+	cmake -B build-shared $PKGMK_GLSLANG_CONF $PKGMK_GLSLANG \
+		-D BUILD_SHARED_LIBS=ON \
+		-D CMAKE_CXX_FLAGS_RELEASE="$CXXFLAGS -ffat-lto-objects" \
+		-D CMAKE_SHARED_LINKER_FLAGS='-Wl,--no-undefined'
+	cmake --build build-shared -v
+
+	DESTDIR=$PKG cmake --build build-static --target install
+	DESTDIR=$PKG cmake --build build-shared --target install
+}

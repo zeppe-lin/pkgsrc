@@ -1,0 +1,16 @@
+# Description: Dynamic menu for X
+# URL:         https://tools.suckless.org/dmenu/
+# Depends on:  xorg-libxft xorg-libxinerama
+
+name=dmenu
+version=5.2
+release=1
+source=https://dl.suckless.org/tools/$name-$version.tar.gz
+
+build() {
+	cd $name-$version
+
+	sed -i "/^CFLAGS/s/-Os/$CFLAGS/" config.mk
+
+	make PREFIX=/usr DESTDIR=$PKG install
+}

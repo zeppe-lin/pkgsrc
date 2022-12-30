@@ -1,0 +1,21 @@
+# Description: Command-line tool for editing audio file tags
+# URL:         https://github.com/kaworu/tagutil
+# Depends on:  flac libvorbis libyaml taglib zlib
+# Optional:    jansson flac libvorbis taglib
+
+name=tagutil
+version=3.1
+release=1
+source=https://github.com/kaworu/$name/archive/v$version/$name-v$version.tar.gz
+
+build() {
+	mkdir build; cd build
+
+	cmake ../$name-$version/src          \
+		-D PREFIX=/usr               \
+		-D CMAKE_BUILD_TYPE=Release  \
+		-D WITHOUT_JSON=yes          \
+
+	make VERBOSE=1
+	make DESTDIR=$PKG install
+}

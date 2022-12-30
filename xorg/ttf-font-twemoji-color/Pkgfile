@@ -1,0 +1,18 @@
+# Description: Twitter Unicode emoji color SVGinOT font
+# URL:         https://github.com/eosrei/twemoji-color-font
+# Depends on:  fontconfig ttf-font-bitstream-vera
+
+name=ttf-font-twemoji-color
+version=14.0.2
+release=7n
+source=https://github.com/eosrei/twemoji-color-font/releases/download/v$version/TwitterColorEmoji-SVGinOT-Linux-$version.tar.gz
+
+build() {
+	cd TwitterColorEmoji-SVGinOT-Linux-$version
+
+	install -m 0644 -Dt $PKG/usr/share/fonts/TTF/ \
+		TwitterColorEmoji-SVGinOT.ttf
+
+	install -m 0644 -Dt $PKG/etc/fonts/conf.avail/ \
+		fontconfig/46-twemoji-color.conf
+}

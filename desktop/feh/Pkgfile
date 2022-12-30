@@ -1,0 +1,20 @@
+# Description: Fast and light imlib2-based image viewer
+# URL:         https://feh.finalrewind.org
+# Depends on:  curl imlib2 libexif xorg-libxinerama
+
+name=feh
+version=3.9.1
+release=1
+source=https://github.com/derf/feh/archive/$version/feh-$version.tar.gz
+
+build() {
+	_OPTS='curl=1 exif=1 xinerama=1 inotify=1 stat64=1'
+
+	cd feh-$version
+
+	make PREFIX=/usr VERSION=$version $_OPTS
+	make PREFIX=/usr VERSION=$version DESTDIR=$PKG install
+
+	# remove junk
+	rm -r $PKG/usr/share/doc/
+}

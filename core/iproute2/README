@@ -1,0 +1,14 @@
+README iproute2
+
+POST-INSTALL
+
+    Add the following lines to /etc/rc.modules to be able to use
+    rc.bridge:
+
+        /sbin/modprobe tun
+        /sbin/modprobe tap
+        /sbin/modprobe vhost
+
+
+vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
+End of file.

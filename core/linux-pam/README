@@ -1,0 +1,10 @@
+README linux-pam
+
+POST-INSTALL
+
+    Shadow package must be reinstalled and reconfigured after
+    installing and configuring Linux PAM.
+
+
+vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
+End of file.

@@ -1,0 +1,18 @@
+# Description: Xlib-based library for the XFree86-VidMode (Video Mode) extension
+# URL:         http://xorg.freedesktop.org
+# Depends on:  xorg-libxext
+
+name=xorg-libxxf86vm
+version=1.1.5
+release=1
+source=https://www.x.org/releases/individual/lib/libXxf86vm-$version.tar.xz
+
+build() {
+	mkdir build; cd build
+
+	../libXxf86vm-$version/configure  \
+		--prefix=/usr             \
+
+	make V=1
+	make DESTDIR=$PKG install
+}

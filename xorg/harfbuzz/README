@@ -1,0 +1,11 @@
+README harfbuzz
+
+POST-INSTALL
+
+    After Harfbuzz is installed, reinstall freetype, libpng and which:
+
+        sudo pkgman update -fr --deps --depsort freetype libpng which
+
+
+vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
+End of file.

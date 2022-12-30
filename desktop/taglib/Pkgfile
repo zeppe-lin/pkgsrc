@@ -1,0 +1,21 @@
+# Description: Library to read/edit the meta-data of popular audio formats
+# URL:         https://taglib.github.io/
+
+name=taglib
+version=1.13
+release=1
+source=https://taglib.github.io/releases/$name-$version.tar.gz
+
+build() {
+	cmake -S $name-$version -B build -G Ninja  \
+		-D CMAKE_INSTALL_PREFIX=/usr       \
+		-D CMAKE_INSTALL_LIBDIR=lib        \
+		-D CMAKE_RELEASE_TYPE=Release      \
+		-D BUILD_SHARED_LIBS=ON            \
+		-D BUILD_TESTING=OFF               \
+		-D WITH_MP4=ON                     \
+		-D WITH_ASF=ON                     \
+
+	ninja -C build -j ${JOBS:-1} -v
+	DESTDIR=$PKG ninja -C build install
+}

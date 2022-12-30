@@ -1,0 +1,20 @@
+# Description: Diagnose issues with power consumption and power management
+# URL:         https://01.org/powertop/
+# Depends on:  autoconf-archive libnl ncurses pciutils
+
+name=powertop
+version=2.15
+release=7n
+source=https://github.com/fenrus75/$name/archive/v$version/$name-$version.tar.gz
+
+build() {
+	mkdir build; cd build
+
+	autoreconf -fi ../$name-$version
+	../$name-$version/configure  \
+		--prefix=/usr        \
+		--disable-nls        \
+
+	make V=1
+	make DESTDIR=$PKG install
+}

@@ -1,0 +1,22 @@
+# Description: Pixel manipulation library
+# URL:         http://xorg.freedesktop.org
+
+name=xorg-libpixman
+version=0.42.2
+release=7n
+source=https://www.x.org/releases/individual/lib/pixman-$version.tar.xz
+
+build() {
+	# don't build test programs
+	sed -i -e 's|^SUBDIRS *=.*|SUBDIRS = pixman|' \
+		pixman-$version/Makefile.in
+
+	mkdir build; cd build
+
+	../pixman-$version/configure  \
+		--prefix=/usr         \
+		--disable-gtk         \
+
+	make V=1
+	make DESTDIR=$PKG install
+}

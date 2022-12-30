@@ -1,0 +1,49 @@
+# Description: Multi-platform toolkit for creating GUI
+# URL:         https://www.gtk.org
+# Depends on:  atk gdk-pixbuf hicolor-icon-theme pango xorg-libxcomposite xorg-libxcursor xorg-libxdamage xorg-libxinerama xorg-libxrandr
+
+name=gtk
+version=2.24.33
+release=7n
+source="https://download.gnome.org/sources/gtk+/2.24/${name}+-$version.tar.xz
+	gtk.immodules gtk-register.sh"
+
+build() {
+	export LINGUAS=' '
+
+	(cd gtk+-$version
+	for _f in Makefile.am Makefile.in; do
+		# don't waste time building tests
+		sed -i '/SRC_SUBDIRS/s/tests//g' $_f
+		sed -i '/SUBDIRS/s/tests//g' gdk/$_f gtk/$_f
+
+		# don't waste time building demos
+		sed -i '/SRC_SUBDIRS/s/demos//g' $_f
+	done)
+
+	mkdir build; cd build
+
+	../gtk+-$version/configure            \
+		--prefix=/usr                 \
+		--disable-papi                \
+		--disable-glibtest            \
+		--disable-cups                \
+		--disable-test-print-backend  \
+		--enable-introspection=no     \
+		--enable-gtk-doc=no           \
+		--enable-gtk-doc-html=no      \
+		--enable-gtk-doc-pdf=no       \
+		--enable-man=no               \
+
+	make V=1
+	make DESTDIR=$PKG install
+
+	install -m 0644 -D $SRC/gtk.immodules \
+		$PKG/usr/lib/gtk-2.0/2.10.0/immodules.cache
+
+	install -m 0755 -D $SRC/gtk-register.sh \
+		$PKG/usr/bin/gtk-register
+
+	# provided by gtk3
+	rm $PKG/usr/bin/gtk-update-icon-cache
+}

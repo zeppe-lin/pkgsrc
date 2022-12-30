@@ -1,0 +1,18 @@
+# Description: Xlib-based library for the DMX (Distributed Multihead X) extension
+# URL:         http://xorg.freedesktop.org
+# Depends on:  xorg-libxext
+
+name=xorg-libdmx
+version=1.1.4
+release=1
+source=https://www.x.org/releases/individual/lib/libdmx-$version.tar.bz2
+
+build() {
+	mkdir build; cd build
+
+	../libdmx-$version/configure  \
+		--prefix=/usr         \
+
+	make V=1
+	make DESTDIR=$PKG install
+}

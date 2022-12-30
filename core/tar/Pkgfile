@@ -1,0 +1,26 @@
+# Description: GNU tar
+# URL:         http://www.gnu.org/software/tar/tar.html
+# Depends on:  acl
+
+name=tar
+version=1.34
+release=7n
+source=https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz
+
+build() {
+	mkdir build; cd build
+
+	FORCE_UNSAFE_CONFIGURE=1             \
+	../$name-$version/configure          \
+		--prefix=                    \
+		--libexec=/usr/lib/tar       \
+		--mandir=/usr/share/man      \
+		--disable-nls                \
+
+	make V=1
+	make DESTDIR=$PKG install
+
+	# remove junk
+	rm -r $PKG/share/info
+	rmdir $PKG/share
+}

@@ -1,0 +1,26 @@
+# Description: Additional package maintaining tools
+# URL:         https://zeppe-lin.github.io/
+# Depends on:  p5-yaml-libyaml
+
+name=pkgmaint
+version=0.1
+release=1
+source="src/finddeps-distmeta.1.pod
+	src/finddeps-distmeta.in
+	src/finddeps-linked.1.pod
+	src/finddeps-linked.in
+	src/finddisappeared.1.pod
+	src/finddisappeared.in
+	src/finddisowned.1.pod
+	src/finddisowned.in
+	src/findredundantdeps.1.pod
+	src/findredundantdeps.in
+	src/Makefile
+
+	finddisowned.conf"
+
+build() {
+	make DESTDIR=$PKG install
+
+	install -m 0644 -Dt $PKG/etc/ finddisowned.conf
+}

@@ -1,0 +1,60 @@
+# Description: Firefox web browser
+# URL:         http://www.mozilla.com
+# Depends on:  alsa-lib dbus-glib gtk3 nss xorg-libxtst
+
+name=firefox-bin
+version=108.0.1
+release=1
+source=https://ftp.mozilla.org/pub/firefox/releases/$version/linux-x86_64/en-US/firefox-$version.tar.bz2
+
+build() {
+	install -d $PKG/opt $PKG/usr/bin
+	mv $SRC/firefox $PKG/opt/firefox
+
+	# create an indirect launcher in /usr/bin
+	cat > $PKG/usr/bin/firefox << EOF
+#!/bin/sh -e
+if [ -x /usr/bin/apulse ]; then
+	exec apulse /opt/firefox/firefox "\$@"
+else
+	exec /opt/firefox/firefox "\$@"
+fi
+EOF
+	chmod +x $PKG/usr/bin/firefox
+
+	# add custom .desktop file
+	install -d $PKG/usr/share/applications
+	cat > $PKG/usr/share/applications/firefox.desktop << EOF
+[Desktop Entry]
+Name=Firefox
+Name[en_US]=Firefox
+GenericName=Web Browser
+GenericName[en_US]=Web Browser
+Comment=Free web browser from Mozilla
+Exec=firefox %U
+Terminal=false
+Type=Application
+Icon=firefox
+Categories=Network;
+EOF
+	# add icon to standard path (desktop file refers to it)
+	install -d $PKG/usr/share/pixmaps
+	ln -s /opt/firefox/browser/chrome/icons/default/default32.png \
+		$PKG/usr/share/pixmaps/firefox.png
+
+	# we don't want these 'features'
+	rm -r $PKG/opt/firefox/browser/features
+
+	# disable autoupdate
+	install -d $PKG/opt/firefox/distribution
+	cat > $PKG/opt/firefox/distribution/policies.json << EOF
+{
+  "policies": {
+    "DisableAppUpdate": true
+  }
+}
+EOF
+	# revdep configuration
+	install -d $PKG/etc/revdep.d
+	echo "/opt/firefox" > $PKG/etc/revdep.d/$name
+}

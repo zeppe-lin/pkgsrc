@@ -1,0 +1,18 @@
+# Description: Utility to print information about windows on an X server
+# URL:         http://xorg.freedesktop.org
+# Depends on:  xorg-libxmu
+
+name=xorg-xwininfo
+version=1.1.5
+release=1
+source=https://www.x.org/releases/individual/app/xwininfo-$version.tar.bz2
+
+build() {
+	mkdir build; cd build
+
+	../xwininfo-$version/configure  \
+		--prefix=/usr           \
+
+	make V=1
+	make DESTDIR=$PKG install
+}

@@ -1,0 +1,28 @@
+# Description:  Perl module for processing huge XML documents in tree mode
+# URL:          https://metacpan.org/pod/XML::Twig
+# Depends on:   p5-xml-parser
+
+name=p5-xml-twig
+version=3.52
+release=1
+source=https://search.cpan.org/CPAN/authors/id/M/MI/MIROD/XML-Twig-$version.tar.gz
+
+build() {
+	cd XML-Twig-$version
+
+	PERL_MM_USE_DEFAULT=1 perl Makefile.PL -n INSTALLDIRS=vendor
+
+	make V=1
+	make DESTDIR=$PKG install
+
+	# remove junk and empty dirs
+	find $PKG -depth \
+		-type f \( -name perllocal.pod  \
+			-o -name \*.bs          \
+			-o -name .packlist      \
+			\) -delete ,            \
+		-type d -empty -delete
+
+	# fix perms
+	find $PKG -type f -a -perm -u-w | xargs chmod u+w
+}

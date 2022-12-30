@@ -1,0 +1,33 @@
+# Description: X11 core protocol and extension specs and headers
+# URL:         http://xorg.freedesktop.org
+
+name=xorg-xorgproto
+version=2022.2
+release=1
+source=https://xorg.freedesktop.org/archive/individual/proto/xorgproto-$version.tar.xz
+
+build() {
+	meson build xorgproto-$version  \
+		--prefix=/usr           \
+		--buildtype=plain       \
+		--wrap-mode=nodownload  \
+		-D b_lto=true           \
+		-D b_pie=true           \
+		-D legacy=true          \
+
+	ninja -C build -j ${JOBS:-1} -v
+	DESTDIR=$PKG ninja -C build install
+
+	# remove junk
+	rm -r   $PKG/usr/include/X11/extensions/apple*      \
+		$PKG/usr/include/X11/extensions/windows*    \
+		$PKG/usr/share/pkgconfig/applewmproto.pc    \
+		$PKG/usr/share/pkgconfig/windowswmproto.pc  \
+		$PKG/usr/share/doc
+
+	# xorg-libxvmc >= 1.0.13-2
+	rm -r   $PKG/usr/include/X11/extensions/vldXvMC.h
+
+	# xorg-libx11 >= 1.8.1-2
+	rm -r   $PKG/usr/include/X11/extensions/XKBgeom.h
+}

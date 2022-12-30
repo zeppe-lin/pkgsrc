@@ -1,0 +1,25 @@
+# Description: Arbitrary precision numeric processing language
+# URL:         http://www.gnu.org/software/bc/bc.html
+# Depends on:  flex readline
+
+name=bc
+version=1.07.1
+release=7n
+source=https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.gz
+
+build() {
+	mkdir build; cd build
+
+	../$name-$version/configure  \
+		--prefix=/usr        \
+		--with-readline      \
+
+	# do not regen docs
+	(cd ../$name-$version; touch doc/*.info doc/*.1 doc/Makefile)
+
+	make V=1
+	make DESTDIR=$PKG install
+
+	# remove junk
+	rm -r $PKG/usr/share/info
+}

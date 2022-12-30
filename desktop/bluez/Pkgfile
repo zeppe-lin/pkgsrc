@@ -1,0 +1,58 @@
+# Description: Bluetooth libraries and utilities
+# URL:         http://www.bluez.org/
+# Depends on:  alsa-lib dbus glib docutils libical
+# Optional:    cups docutils libical
+
+name=bluez
+version=5.66
+release=1
+source="https://mirrors.edge.kernel.org/pub/linux/bluetooth/bluez-$version.tar.xz
+  	rc.bluetoothd"
+
+build() {
+	if pkgman isinst cups; then
+		PKGMK_BLUEZ="$PKGMK_BLUEZ --enable-cups"
+	else
+		PKGMK_BLUEZ="$PKGMK_BLUEZ --disable-cups"
+	fi
+	if pkgman isinst docutils; then
+		PKGMK_BLUEZ="$PKGMK_BLUEZ --enable-manpages"
+	else
+		PKGMK_BLUEZ="$PKGMK_BLUEZ --disable-manpages"
+	fi
+	if pkgman isinst libical; then
+		PKGMK_BLUEZ="$PKGMK_BLUEZ --enable-obex"
+	else
+		PKGMK_BLUEZ="$PKGMK_BLUEZ --disable-obex"
+	fi
+
+	mkdir build; cd build
+
+	../bluez-$version/configure    \
+		--prefix=/usr          \
+		--sysconfdir=/etc      \
+		--localstatedir=/var   \
+		--libexecdir=/usr/lib  \
+		--enable-a2dp          \
+		--enable-experimental  \
+		--enable-library       \
+		--enable-midi          \
+		--enable-tools         \
+		--disable-systemd      \
+		$PKGMK_BLUEZ
+
+	make V=1
+	make DESTDIR=$PKG install
+
+	install -m 0644 -D ../bluez-$version/src/main.conf \
+		$PKG/etc/bluetooth/main.conf
+
+	install -m 0755 -D $SRC/rc.bluetoothd $PKG/etc/rc.d/bluetoothd
+
+	if pkgman isinst libical; then
+		install -m 0755 -Dt $PKG/usr/lib/bluetooth/ tools/obexctl
+	fi
+
+	# remove zsh
+	rm -r $PKG/usr/share/zsh
+}

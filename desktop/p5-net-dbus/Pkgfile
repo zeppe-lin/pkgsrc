@@ -1,0 +1,30 @@
+# Description: Perl extension for the DBus message system
+# URL:         https://metacpan.org/pod/Net::DBus
+# Depends on:  p5-xml-twig
+
+# TODO: fix dependencies
+
+name=p5-net-dbus
+version=1.2.0
+release=1
+source=https://search.cpan.org/CPAN/authors/id/D/DA/DANBERR/Net-DBus-$version.tar.gz
+
+build() {
+	cd Net-DBus-$version
+
+	PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+
+	make OPTIMIZE="$CFLAGS"
+	make DESTDIR="$PKG" install
+
+	# remove junk and empty dirs
+	find $PKG -depth \
+		-type f \( -name perllocal.pod  \
+			-o -name \*.bs          \
+			-o -name .packlist      \
+			\) -delete ,            \
+		-type d -empty -delete
+
+	# remove empty dirs
+	find $PKG -type d -empty -delete
+}

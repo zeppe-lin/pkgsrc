@@ -1,0 +1,98 @@
+# See COPYING and COPYRIGHT files for corresponding information.
+
+=pod
+
+=head1 NAME
+
+mkinitramfs - tiny initramfs generator written in POSIX shell
+
+=head1 SYNOPSIS
+
+B<mkinitramfs> [I<OPTION>]...
+
+=head1 DESCRIPTION
+
+B<mkinitramfs> is a simple, extensible and modular initramfs generator
+tool written with focus on portability.
+
+=head1 OPTIONS
+
+Mandatory arguments to long options are mandatory for short options
+too.
+
+=over 8
+
+=item B<-o>, B<--output>=I<FILE>
+
+Specify output location where initramfs image will be stored.
+
+=item B<-c>, B<--config>=I<FILE>
+
+Specify config location.
+
+Default is F</etc/mkinitramfs/config>.
+
+=item B<-k>, B<--kernel>=I<VERSION>
+
+Specify kernel version.  Useful for bootstrapping future system with
+modular kernel.
+
+Default is current kernel version.
+
+=item B<-m>, B<--modules>=I<PATH>
+
+Specify directory where modules stored.
+
+Default is F</lib/modules>.
+
+This option has no effect if B<monolith> or B<hostonly> were enabled
+in config.
+
+=item B<-H>, B<--hooks>=I<PATH>
+
+Specify additional hooks location.
+
+Default is F</usr/share/mkinitramfs/hooks> and
+F</etc/mkinitramfs/hooks>.
+
+=item B<-D>, B<--helper>=I<FILE>
+
+Specify location to device helper.
+
+Default is F</usr/share/mkinitramfs/device-helper>.
+
+=item B<-I>, B<--init>=I<FILE>
+
+Specify location to init script.
+
+Default is F</usr/share/mkinitramfs/init>.
+
+=item B<-d>, B<--debug>
+
+Enable debug mode.  Useful for reporting bugs in build stage.
+
+=item B<-f>, B<--force>
+
+Forcefully overwrite initramfs image.
+
+=back
+
+=head1 NOTES
+
+If you have modular kernel and you use B<busybox' modprobe> to handle
+modules, you must note that B<busybox' modprobe> doesn't have ability
+to install soft dependencies of modules (i.e. modules.softdep).  You
+must install them yourself using hooks.  See
+L<mkinitramfs.hooks(7)|https://zeppe-lin.github.io/mkinitramfs.hooks.7.html>
+how to do it.
+
+=head1 SEE ALSO
+
+L<mkinitramfs.config(5)|https://zeppe-lin.github.io/mkinitramfs.config.5.html>,
+L<mkinitramfs.cmdline(7)|https://zeppe-lin.github.io/mkinitramfs.cmdline.7.html>,
+L<mkinitramfs.hooks(7)|https://zeppe-lin.github.io/mkinitramfs.hooks.7.html>
+
+=cut
+
+# vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
+# End of file.

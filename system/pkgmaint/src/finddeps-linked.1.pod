@@ -1,0 +1,56 @@
+# See COPYING and COPYRIGHT files for corresponding information.
+
+=pod
+
+=encoding UTF-8
+
+=head1 NAME
+
+finddeps-linked - find linked dependencies for a package
+
+=head1 SYNOPSIS
+
+B<finddeps-linked> [I<OPTION>] I<PKGNAME>
+
+=head1 DESCRIPTION
+
+B<finddeps-linked> lists the dependencies of the installed package's
+dynamic executables and libraries.
+
+B<finddeps-linked> operates on installed packages and requires
+L<ldd(1)|https://www.mankier.com/1/ldd>,
+L<pkginfo(8)|https://zeppe-lin.github.io/pkginfo.8.html> and
+L<pkgman(1)|https://zeppe-lin.github.io/pkgman.1.html>.
+
+=head1 OPTIONS
+
+=over 8
+
+=item B<-v>, B<--version>
+
+Print version and exit.
+
+=item B<-h>, B<--help>
+
+Print help and exit.
+
+=back
+
+=head1 COPYRIGHT
+
+Copyright (C) 2021-2022 Alexandr Savca <alexandr.savca89@gmail.com>
+
+License GPLv3+: GNU GPL version 3 or later
+L<https://gnu.org/licenses/gpl.html>.
+
+=head1 SEE ALSO
+
+L<finddeps-distmeta(1)|https://zeppe-lin.github.io/finddeps-distmeta.1.html>,
+L<findredundantdeps(1)|https://zeppe-lin.github.io/findredundantdeps.1.html>,
+L<finddisappeared(1)|https://zeppe-lin.github.io/finddisappeared.1.html>,
+L<finddisowned(1)|https://zeppe-lin.github.io/finddisowned.1.html>
+
+=cut
+
+# vim:cc=72:tw=70
+# End of file.

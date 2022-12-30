@@ -1,0 +1,22 @@
+# Description: X miscellaneous utility routines library
+# URL:         http://xorg.freedesktop.org
+# Depends on:  xorg-libxext xorg-libxt
+
+name=xorg-libxmu
+version=1.1.4
+release=1
+source=https://www.x.org/releases/individual/lib/libXmu-$version.tar.xz
+
+build() {
+	mkdir build; cd build
+
+	../libXmu-$version/configure  \
+		--prefix=/usr         \
+		--disable-docs        \
+		--without-fop         \
+		--without-xmlto       \
+		--without-xsltproc    \
+
+	make V=1
+	make DESTDIR=$PKG install
+}

@@ -1,0 +1,76 @@
+# Description: Multi-platform toolkit for creating GUI
+# URL:         https://www.gtk.org
+# Depends on:  atk gdk-pixbuf libepoxy pango xorg-libxcomposite xorg-libxcursor xorg-libxi xorg-libxinerama
+
+name=gtk3
+version=3.24.36
+release=1
+source="https://download.gnome.org/sources/gtk+/${version%.*}/gtk+-$version.tar.xz
+	https://github.com/lah7/gtk3-classic/archive/$version/gtk3-classic-$version-2.tar.gz
+	gtk.immodules gtk-register-3.sh
+	no-fribidi.patch"
+
+build() {
+	if pkgman isinst colord; then
+		PKGMK_GTK3="$PKGMK_GTK3 -D colord=yes"
+	else
+		PKGMK_GTK3="$PKGMK_GTK3 -D colord=no"
+	fi
+	if pkgman isinst libxkbcommon wayland-protocols; then
+		PKGMK_GTK3="$PKGMK_GTK3 -D wayland_backend=true"
+	else
+		PKGMK_GTK3="$PKGMK_GTK3 -D wayland_backend=false"
+	fi
+
+	# provide a more traditional experience
+	while read p; do
+		case $p in \#*) continue ;; esac
+		patch -Np1 -d gtk+-$version -i $SRC/gtk3-classic-$version/$p
+	done < $SRC/gtk3-classic-$version/series
+
+	# remove error on array-bounds
+	sed -i '/array-bounds/d' gtk+-$version/meson.build
+
+	# remove fribidi dependency
+	patch -p1 -d gtk+-$version -i $SRC/no-fribidi.patch
+
+	# remove 'atk-bridge' dependency which removes the 'dbus' dependency
+	sed -i '/atk-bridge-2/d' gtk+-$version/meson.build
+	sed -i '/<atk-bridge.h>/d;/atk_bridge_adaptor_init/d' \
+		gtk+-$version/gtk/a11y/gtkaccessibility.c
+
+	# remove i18n
+	sed -i "/^subdir('po')/d" gtk+-$version/meson.build
+	sed -i "/^subdir('po-properties')/d" gtk+-$version/meson.build
+
+	meson setup build gtk+-$version  \
+		--prefix=/usr            \
+		--wrap-mode=nodownload   \
+		-D buildtype=plain       \
+		-D b_lto=true \
+		-D b_pie=true \
+		-D default_library=both \
+		-D xinerama=yes \
+		-D x11_backend=true \
+		-D print_backends=file \
+		-D demos=false \
+		-D examples=false \
+		-D tests=false \
+		-D installed_tests=false \
+		-D gtk_doc=false \
+		-D wayland_backend=false \
+		-D introspection=false \
+		-D cloudproviders=false \
+		-D profiler=false \
+
+	ninja -C build -j ${JOBS:-1} -v
+	DESTDIR=$PKG ninja -C build install
+
+	install -m 0644 -D $SRC/gtk.immodules \
+		$PKG/usr/lib/gtk-3.0/3.0.0/immodules.cache
+	install -m 0755 -D $SRC/gtk-register-3.sh \
+		$PKG/usr/bin/gtk-register-3
+
+	# remove junk
+	rm -r $PKG/usr/share/gtk-3.0
+}

@@ -1,0 +1,14 @@
+# Description:  Terminus TTF fonts
+# URL:          https://files.ax86.net/terminus-ttf/
+# Depends on:   fontconfig
+
+name=ttf-font-terminus
+version=4.49.2
+release=2
+source=https://files.ax86.net/terminus-ttf/files/$version/terminus-ttf-$version.zip
+
+build() {
+	cd terminus-ttf-$version
+
+	install -m 0644 -Dt $PKG/usr/share/fonts/TTF/ *.ttf
+}
