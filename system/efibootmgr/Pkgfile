@@ -4,14 +4,14 @@
 
 name=efibootmgr
 version=18
-release=7n
+release=1
 source=https://github.com/rhboot/$name/archive/$version/$name-$version.tar.gz
 
 build() {
 	cd $name-$version
 
 	export CFLAGS="$CFLAGS -Wno-error=pointer-sign"
-	sed -e '/extern int efi_set_verbose/d' -i src/efibootmgr.c
+	sed -i '/extern int efi_set_verbose/d' src/efibootmgr.c
 
 	EFIDIR=/boot/efi make
 	install -m 0755 -Dt $PKG/usr/sbin/            src/$name
