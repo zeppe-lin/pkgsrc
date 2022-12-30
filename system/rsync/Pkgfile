@@ -4,9 +4,9 @@
 
 name=rsync
 version=3.2.7
-release=7n
+release=1
 source="https://download.samba.org/pub/rsync/$name-$version.tar.gz
-	rsyncd.conf  rc.rsyncd"
+	rsyncd.conf rc.rsyncd"
 
 build() {
 	mkdir build; cd build
@@ -22,8 +22,8 @@ build() {
 	make V=1
 	make DESTDIR=$PKG install
 
-	install -m 755 -D $SRC/rc.rsyncd    $PKG/etc/rc.d/rsyncd
-	install -m 644 -D $SRC/rsyncd.conf  $PKG/etc/rsyncd.conf
+	install -m 0755 -D $SRC/rc.rsyncd    $PKG/etc/rc.d/rsyncd
+	install -m 0644 -D $SRC/rsyncd.conf  $PKG/etc/rsyncd.conf
 
 	install -d $PKG/var/log
 	touch $PKG/var/log/rsyncd.log
