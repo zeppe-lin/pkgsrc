@@ -3,7 +3,7 @@
 
 name=iperf
 version=2.0.13
-release=7n
+release=1
 source=https://downloads.sourceforge.net/sourceforge/iperf2/files/$name-$version.tar.gz
 
 build() {
