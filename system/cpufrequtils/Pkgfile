@@ -4,7 +4,7 @@
 
 name=cpufrequtils
 version=008
-release=7n
+release=1
 source="https://www.kernel.org/pub/linux/utils/kernel/cpufreq/$name-$version.tar.xz
 	rc.cpufreq
 	0001-only-x86-has-cpuid-instruction.patch
@@ -27,5 +27,5 @@ build() {
 	make NLS=false V=true CP="cp -fR" INSTALL=install \
 		mandir=/usr/share/man DESTDIR=$PKG install
 
-	install -m 700 -D $SRC/rc.cpufreq $PKG/etc/rc.d/cpufreq
+	install -m 0700 -D $SRC/rc.cpufreq $PKG/etc/rc.d/cpufreq
 }
