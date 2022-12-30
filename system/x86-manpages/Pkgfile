@@ -3,11 +3,11 @@
 
 name=x86-manpages
 version=0.9.1
-release=7n
+release=1
 source=https://github.com/ttmo-O/$name/archive/v$version/$name-$version.tar.gz
 
 build() {
 	cd $name-$version
 
-	install -m 644 -Dt $PKG/usr/share/man/man7/ manpages/*
+	install -m 0644 -Dt $PKG/usr/share/man/man7/ manpages/*
 }
