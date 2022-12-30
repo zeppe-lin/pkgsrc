@@ -4,9 +4,9 @@
 
 name=wpa-supplicant
 version=2.10
-release=7n
+release=1
 source="https://w1.fi/releases/wpa_supplicant-$version.tar.gz
-	wpa_supplicant.conf  rc.wpa_supplicant"
+	wpa_supplicant.conf rc.wpa_supplicant"
 
 build() {
 	cd wpa_supplicant-$version/wpa_supplicant
