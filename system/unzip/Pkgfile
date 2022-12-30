@@ -3,9 +3,9 @@
 
 name=unzip
 version=6.0
-release=7n
 _version=$(echo $version | sed 's/\.//g')
-source="https://downloads.sourceforge.net/sourceforge/infozip/${name}${_version}.tar.gz
+release=1
+source="https://downloads.sourceforge.net/sourceforge/infozip/unzip${_version}.tar.gz
 	unzip-6.0-overflow.patch unzip-6.0-attribs-overflow.patch
 	unzip-6.0-heap-overflow-infloop.patch
 	unzip-6.0-cve-2014-8139.patch
@@ -16,7 +16,7 @@ source="https://downloads.sourceforge.net/sourceforge/infozip/${name}${_version}
 	unzip-6.0-alt-iconv-utf8-print.patch"
 
 build() {
-	cd ${name}${_version}
+	cd unzip${_version}
 
 	patch -p1 -i $SRC/unzip-6.0-overflow.patch
 	patch -p1 -i $SRC/unzip-6.0-attribs-overflow.patch
