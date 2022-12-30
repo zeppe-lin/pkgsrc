@@ -4,7 +4,7 @@
 
 name=uftrace
 version=0.12
-release=7n
+release=1
 source=https://github.com/namhyung/$name/archive/v$version/$name-$version.tar.gz
 
 build() {
