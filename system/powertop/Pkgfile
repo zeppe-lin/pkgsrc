@@ -1,13 +1,19 @@
-# Description: Diagnose issues with power consumption and power management
+# Description: Diagnose issues with power consumption & power management
 # URL:         https://01.org/powertop/
 # Depends on:  autoconf-archive libnl ncurses pciutils
 
 name=powertop
 version=2.15
-release=7n
+release=1
 source=https://github.com/fenrus75/$name/archive/v$version/$name-$version.tar.gz
 
 build() {
+	# suckless patch: disable gettext
+	sed -i '/po\/Makefile.in/d' $name-$version/configure.ac
+	sed -i '/GETTEXT_PACKAGE/d' $name-$version/configure.ac
+	sed -i '/AM_GNU_GETTEXT/d'  $name-$version/configure.ac
+	sed -i '/po\b/d'            $name-$version/Makefile.am
+
 	mkdir build; cd build
 
 	autoreconf -fi ../$name-$version
