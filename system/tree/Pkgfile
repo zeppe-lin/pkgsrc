@@ -3,7 +3,7 @@
 
 name=tree
 version=2.0.4
-release=7n
+release=1
 source=https://mama.indstate.edu/users/ice/$name/src/$name-$version.tgz
 
 build() {
@@ -11,6 +11,6 @@ build() {
 
 	make CFLAGS="$CFLAGS"
 
-	install -m 0755 -Dt $PKG/usr/bin/ tree
-	install -m 0644 -Dt $PKG/usr/share/man/man1/ doc/tree.1
+	install -m 0755 -Dt $PKG/usr/bin/             tree
+	install -m 0644 -Dt $PKG/usr/share/man/man1/  doc/tree.1
 }
