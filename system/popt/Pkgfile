@@ -3,7 +3,7 @@
 
 name=popt
 version=1.19
-release=7n
+release=1
 source=http://ftp.rpm.org/popt/releases/popt-1.x/$name-$version.tar.gz
 
 build() {
