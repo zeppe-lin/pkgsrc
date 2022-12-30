@@ -5,7 +5,7 @@
 
 name=expect
 version=5.45.4
-release=7n
+release=1
 source=https://downloads.sourceforge.net/project/$name/Expect/$version/$name$version.tar.gz
 
 build() {
