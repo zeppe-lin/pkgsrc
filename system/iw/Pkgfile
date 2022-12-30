@@ -4,11 +4,11 @@
 
 name=iw
 version=5.19
-release=7n
-source=https://www.kernel.org/pub/software/network/$name/$name-$version.tar.xz
+release=1
+source=https://www.kernel.org/pub/software/network/iw/iw-$version.tar.xz
 
 build() {
-	cd $name-$version
+	cd iw-$version
 
 	make V=1
 	make DESTDIR=$PKG install
