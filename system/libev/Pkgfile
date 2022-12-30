@@ -3,7 +3,7 @@
 
 name=libev
 version=4.33
-release=7n
+release=1
 source=http://dist.schmorp.de/$name/$name-$version.tar.gz
 
 build() {
