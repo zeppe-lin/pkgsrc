@@ -4,7 +4,7 @@
 
 name=gnutls
 version=3.7.8
-release=7n
+release=1
 source=https://www.gnupg.org/ftp/gcrypt/$name/v3.7/$name-$version.tar.xz
 
 build() {
