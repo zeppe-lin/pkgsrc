@@ -13,7 +13,7 @@ OPTS="-q -z $DEV"
 case $1 in
 start)
 	# shellcheck disable=2086
-	$SSD --start --pidfile $PID --exec $PROG -- $OPTS
+	$SSD --start --pidfile $PID --exec $PROG -- $OPTS $DEV
 	;;
 stop)
 	$SSD --stop --pidfile $PID --retry 10
