@@ -4,7 +4,7 @@
 
 name=mdadm
 version=4.2
-release=7n
+release=1
 source="http://www.kernel.org/pub/linux/utils/raid/$name/$name-$version.tar.xz
 	mdadm-4.2-in_initrd-collision.patch"
 
@@ -17,5 +17,5 @@ build() {
 	make DESTDIR=$PKG install
 
 	make CXFLAGS="$CFLAGS" STRIP= mdadm.static
-	install -m 755 mdadm.static $PKG/sbin/
+	install -m 0755 mdadm.static $PKG/sbin/
 }
