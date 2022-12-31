@@ -3,15 +3,15 @@
 
 name=pv
 version=1.6.20
-release=7n
-source=https://www.ivarch.com/programs/sources/$name-$version.tar.bz2
+release=1
+source=https://www.ivarch.com/programs/sources/pv-$version.tar.bz2
 
 build() {
 	mkdir build; cd build
 
-	../$name-$version/configure  \
-		--prefix=/usr        \
-		--disable-nls        \
+	../pv-$version/configure  \
+		--prefix=/usr     \
+		--disable-nls     \
 
 	make V=1
 	make DESTDIR=$PKG install
