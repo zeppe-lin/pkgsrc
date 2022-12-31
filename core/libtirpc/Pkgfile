@@ -3,14 +3,14 @@
 
 name=libtirpc
 version=1.3.3
-release=7n
+release=1
 source=https://downloads.sourceforge.net/project/$name/$name/$version/$name-$version.tar.bz2
 
 build() {
-	mkdir build; cd build
-
 	# move path for rpcbind.sock to /run
-	sed 's|/var/run|/run|' -i ../$name-$version/tirpc/rpc/rpcb_prot.h
+	sed -i 's|/var/run|/run|' $name-$version/tirpc/rpc/rpcb_prot.h
+
+	mkdir build; cd build
 
 	../$name-$version/configure  \
 		--prefix=/usr        \
