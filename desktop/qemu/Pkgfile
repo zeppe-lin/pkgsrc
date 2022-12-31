@@ -4,37 +4,38 @@
 
 name=qemu
 version=7.0.0
-release=7n
+release=1
 source="https://download.qemu.org/$name-$version.tar.xz
 	qemu-man-$version.tar.xz
 	qemu-5.2.0-disable-keymap.patch
 	60-kvm.rules"
 
 build() {
-	cd $name-$version
-
-	patch -p1 -i $SRC/qemu-5.2.0-disable-keymap.patch
+	# disable libxkbcommon dependency
+	patch -d $name-$version -p1 -i $SRC/qemu-5.2.0-disable-keymap.patch
 
 	# fix include issues with libcap
-	sed -i  -e '/#include "qemu\/xattr.h"/d' \
-		-e 's|#include <sys/resource.h>|#include <sys/resource.h>\r\n#include "qemu\/xattr.h"|g' \
-		fsdev/virtfs-proxy-helper.c
+	sed -e '/#include "qemu\/xattr.h"/d' \
+	    -e 's|#include <sys/resource.h>|#include <sys/resource.h>\r\n#include "qemu\/xattr.h"|g' \
+	    -i $name-$version/fsdev/virtfs-proxy-helper.c
 
-	./configure \
-		--prefix=/usr \
-		--sysconfdir=/etc \
-		--libexecdir=/usr/lib/qemu \
-		--localstatedir=/var \
-		--disable-docs \
-		--disable-gettext \
-		--disable-sdl \
-		--disable-sdl-image \
-		--disable-xkbcommon \
-		--enable-gtk \
-		--enable-alsa \
-		--enable-usb-redir \
-		--python=/usr/bin/python3 \
-		--enable-virtfs \
+	mkdir build; cd build
+
+	../$name-$version/configure         \
+		--prefix=/usr               \
+		--sysconfdir=/etc           \
+		--libexecdir=/usr/lib/qemu  \
+		--localstatedir=/var        \
+		--disable-docs              \
+		--disable-gettext           \
+		--disable-sdl               \
+		--disable-sdl-image         \
+		--disable-xkbcommon         \
+		--enable-gtk                \
+		--enable-alsa               \
+		--enable-usb-redir          \
+		--python=/usr/bin/python3   \
+		--enable-virtfs             \
 
 	make V=1 ${MAKEFLAGS:=}
 	make DESTDIR=$PKG install
