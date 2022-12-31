@@ -3,18 +3,14 @@
 
 name=sysklogd
 version=2.4.4
-release=7n
+release=1
 source="https://github.com/troglobit/$name/releases/download/v$version/$name-$version.tar.gz
-	rotatelog
-	cron.syslog
-	syslog.conf
-	rc.sysklogd"
+	rotatelog cron.syslog syslog.conf rc.sysklogd"
 
 build() {
 	mkdir build; cd build
 
-	# add --without-logger since we're using
-	# sbase's || util-linux' logger
+	# --without-logger: logger(1) is provided by sbase or util-linux
 	../$name-$version/configure   \
 		--prefix=/usr         \
 		--sysconfdir=/etc     \
@@ -31,9 +27,9 @@ build() {
 	install -m 0644 -D $SRC/syslog.conf $PKG/etc/syslog.conf
 
 	install -d $PKG/var/log $PKG/etc/syslog.d
-	for f in auth cron debug kernel mail messages; do
-		touch      $PKG/var/log/$f
-		chmod 640  $PKG/var/log/$f
+	for _F in auth cron debug kernel mail messages; do
+		touch     $PKG/var/log/$_F
+		chmod 640 $PKG/var/log/$_F
 	done
 
 	# remove junk
