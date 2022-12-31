@@ -4,7 +4,7 @@
 
 name=cmake
 version=3.24.3
-release=7n
+release=1
 source=https://cmake.org/files/v${version%.*}/$name-$version.tar.gz
 
 build() {
@@ -29,8 +29,8 @@ build() {
 	ln -sf $name $PKG/usr/share/$name-${version%.*}
 
 	# remove junk
-	rm  -r  $PKG/usr/doc                            \
-		$PKG/usr/share/cmake/Help               \
-		$PKG/usr/share/emacs                    \
-		$PKG/usr/share/cmake/Modules/readme.txt
+	rm -r $PKG/usr/doc                            \
+	      $PKG/usr/share/cmake/Help               \
+	      $PKG/usr/share/emacs                    \
+	      $PKG/usr/share/cmake/Modules/readme.txt
 }
