@@ -3,8 +3,9 @@
 
 name=libnl
 version=3.7.0
-release=7n
-source=https://github.com/thom311/libnl/releases/download/libnl$(echo $version | tr . _)/$name-$version.tar.gz
+_version=$(echo $version | tr . _)
+release=1
+source=https://github.com/thom311/libnl/releases/download/libnl$_version/libnl-$version.tar.gz
 
 build() {
 	mkdir build; cd build
