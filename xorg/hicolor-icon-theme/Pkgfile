@@ -3,13 +3,14 @@
 
 name=hicolor-icon-theme
 version=0.17
-release=7n
+release=1
 source=http://icon-theme.freedesktop.org/releases/$name-$version.tar.xz
 
 build() {
-	cd $name-$version
+	mkdir build; cd build
 
-	./configure --prefix=/usr
+	../$name-$version/configure  \
+		--prefix=/usr        \
 
 	make DESTDIR=$PKG install
 }
