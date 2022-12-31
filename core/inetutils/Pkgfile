@@ -4,7 +4,7 @@
 
 name=inetutils
 version=2.4
-release=7n
+release=1
 source="http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.gz
 	inetd.conf rc.inetd"
 
