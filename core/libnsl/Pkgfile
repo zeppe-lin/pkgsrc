@@ -4,7 +4,7 @@
 
 name=libnsl
 version=2.0.0
-release=7n
+release=1
 source=https://github.com/thkukuk/$name/releases/download/v$version/$name-$version.tar.xz
 
 build() {
