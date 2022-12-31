@@ -4,7 +4,7 @@
 
 name=lighttpd
 version=1.4.67
-release=7n
+release=1
 source="https://download.$name.net/$name/releases-1.4.x/$name-$version.tar.xz
 	$name.conf  rc.$name"
 
@@ -28,7 +28,7 @@ build() {
 
 	install -d $PKG/var/www/lighttpd
 	for _D in dev htdocs logs tmp; do
-		install -o www -g www -d $PKG/var/www/lighttpd/${_D}
+		install -o www -g www -d $PKG/var/www/lighttpd/$_D
 	done
 
 	install -d $PKG/etc/ssl/certs
