@@ -3,7 +3,7 @@
 
 name=pkg-config
 version=0.29.2
-release=7n
+release=1
 source=https://pkgconfig.freedesktop.org/releases/$name-$version.tar.gz
 
 build() {
