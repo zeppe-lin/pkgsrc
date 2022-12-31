@@ -4,16 +4,21 @@
 
 name=libepoxy
 version=1.5.10
-release=7n
+release=1
 source=https://github.com/anholt/$name/archive/$version/$name-$version.tar.gz
 
 build() {
-	meson build $name-$version \
-		--prefix=/usr \
-		--buildtype=plain \
-		--wrap-mode=nodownload \
-		-D b_lto=true \
-		-D b_pie=true \
+	meson setup build $name-$version  \
+		--prefix=/usr             \
+		--buildtype=plain         \
+		--wrap-mode=nodownload    \
+		-D b_lto=true             \
+		-D b_pie=true             \
+		-D docs=false             \
+		-D egl=yes                \
+		-D glx=yes                \
+		-D tests=false            \
+		-D x11=true               \
 
 	ninja -C build -j ${JOBS:-1} -v
 	DESTDIR=$PKG ninja -C build install
