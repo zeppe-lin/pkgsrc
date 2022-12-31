@@ -4,8 +4,8 @@
 
 name=libdrm
 version=2.4.114
-release=7n
-source=https://dri.freedesktop.org/libdrm/libdrm-$version.tar.xz
+release=1
+source=https://dri.freedesktop.org/$name/$name-$version.tar.xz
 
 build() {
 	meson setup build $name-$version        \
@@ -19,8 +19,11 @@ build() {
 		-D valgrind=disabled            \
 		-D cairo-tests=disabled         \
 		-D nouveau=enabled              \
+		-D radeon=enabled               \
+		-D amdgpu=enabled               \
+		-D omap=enabled                 \
 		-D install-test-programs=false  \
 
-	meson compile -C build -j ${JOBS:-1} -v
-	DESTDIR=$PKG meson install -C build
+	ninja -C build -j ${JOBS:-1} -v
+	DESTDIR=$PKG ninja -C build install
 }

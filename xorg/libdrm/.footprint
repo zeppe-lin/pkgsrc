@@ -25,6 +25,7 @@ drwxr-xr-x	root/root	usr/include/libdrm/nouveau/nvif/
 -rw-r--r--	root/root	usr/include/libdrm/nouveau/nvif/ioctl.h
 -rw-r--r--	root/root	usr/include/libdrm/nouveau/nvif/unpack.h
 -rw-r--r--	root/root	usr/include/libdrm/nouveau_drm.h
+-rw-r--r--	root/root	usr/include/libdrm/omap_drmif.h
 -rw-r--r--	root/root	usr/include/libdrm/qxl_drm.h
 -rw-r--r--	root/root	usr/include/libdrm/r128_drm.h
 -rw-r--r--	root/root	usr/include/libdrm/r600_pci_ids.h
@@ -44,6 +45,8 @@ drwxr-xr-x	root/root	usr/include/libdrm/nouveau/nvif/
 -rw-r--r--	root/root	usr/include/libdrm/virtgpu_drm.h
 -rw-r--r--	root/root	usr/include/libdrm/vmwgfx_drm.h
 -rw-r--r--	root/root	usr/include/libsync.h
+drwxr-xr-x	root/root	usr/include/omap/
+-rw-r--r--	root/root	usr/include/omap/omap_drm.h
 -rw-r--r--	root/root	usr/include/xf86drm.h
 -rw-r--r--	root/root	usr/include/xf86drmMode.h
 drwxr-xr-x	root/root	usr/lib/
@@ -59,6 +62,9 @@ lrwxrwxrwx	root/root	usr/lib/libdrm_intel.so.1 -> libdrm_intel.so.1.0.0
 lrwxrwxrwx	root/root	usr/lib/libdrm_nouveau.so -> libdrm_nouveau.so.2
 lrwxrwxrwx	root/root	usr/lib/libdrm_nouveau.so.2 -> libdrm_nouveau.so.2.0.0
 -rwxr-xr-x	root/root	usr/lib/libdrm_nouveau.so.2.0.0
+lrwxrwxrwx	root/root	usr/lib/libdrm_omap.so -> libdrm_omap.so.1
+lrwxrwxrwx	root/root	usr/lib/libdrm_omap.so.1 -> libdrm_omap.so.1.0.0
+-rwxr-xr-x	root/root	usr/lib/libdrm_omap.so.1.0.0
 lrwxrwxrwx	root/root	usr/lib/libdrm_radeon.so -> libdrm_radeon.so.1
 lrwxrwxrwx	root/root	usr/lib/libdrm_radeon.so.1 -> libdrm_radeon.so.1.0.1
 -rwxr-xr-x	root/root	usr/lib/libdrm_radeon.so.1.0.1
@@ -67,6 +73,7 @@ drwxr-xr-x	root/root	usr/lib/pkgconfig/
 -rw-r--r--	root/root	usr/lib/pkgconfig/libdrm_amdgpu.pc
 -rw-r--r--	root/root	usr/lib/pkgconfig/libdrm_intel.pc
 -rw-r--r--	root/root	usr/lib/pkgconfig/libdrm_nouveau.pc
+-rw-r--r--	root/root	usr/lib/pkgconfig/libdrm_omap.pc
 -rw-r--r--	root/root	usr/lib/pkgconfig/libdrm_radeon.pc
 drwxr-xr-x	root/root	usr/share/
 drwxr-xr-x	root/root	usr/share/libdrm/
