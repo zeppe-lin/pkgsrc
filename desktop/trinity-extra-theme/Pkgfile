@@ -2,7 +2,7 @@
 # URL:         https://zeppe-lin.github.io/
 
 name=trinity-extra-theme
-version=0.1
+version=0.1.1
 release=1
 source="src/dircolors
 	src/dunst
