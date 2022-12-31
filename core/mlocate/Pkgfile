@@ -3,9 +3,9 @@
 
 name=mlocate
 version=0.26
-release=7n
+release=1
 source="https://releases.pagure.org/$name/$name-$version.tar.xz
-	cron.mlocate  updatedb.conf"
+	cron.mlocate updatedb.conf"
 
 build() {
 	mkdir build; cd build
