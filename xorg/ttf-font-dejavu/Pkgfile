@@ -4,8 +4,9 @@
 
 name=ttf-font-dejavu
 version=2.37
-release=7n
-source=https://github.com/dejavu-fonts/dejavu-fonts/releases/download/version_$(echo $version | tr . _)/dejavu-fonts-ttf-$version.zip
+_version=$(echo $version | tr . _)
+release=1
+source=https://github.com/dejavu-fonts/dejavu-fonts/releases/download/version_$_version/dejavu-fonts-ttf-$version.zip
 
 build() {
 	cd dejavu-fonts-ttf-$version
