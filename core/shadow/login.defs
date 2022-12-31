@@ -1,5 +1,7 @@
 #
-# /etc/login.defs: login configuration, see login.defs(5)
+# /etc/login.defs: login configuration
+#
+# See login.defs(5) for more information.
 #
 
 FAIL_DELAY		0

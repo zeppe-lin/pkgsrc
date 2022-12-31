@@ -4,7 +4,7 @@
 
 name=shadow
 version=4.13
-release=7n
+release=1
 source="https://github.com/shadow-maint/$name/releases/download/$version/$name-$version.tar.xz
 	pwck login.defs chfn chsh login groupadd groupdel
 	groupmems groupmod passwd su useradd userdel usermod"
@@ -41,29 +41,29 @@ build() {
 	touch $PKG/var/log/faillog
 
 	# pam configs
-	for f in chfn chsh login groupadd groupdel groupmems groupmod \
-		passwd su useradd userdel usermod;
+	for _F in chfn chsh login groupadd groupdel groupmems \
+		groupmod passwd su useradd userdel usermod
 	do
-		install -o root -g root -m 0644 $SRC/$f $PKG/etc/pam.d/
+		install -o root -g root -m 0644 $SRC/$_F $PKG/etc/pam.d/
 	done
 
 	# remove junk
-	rm -r	$PKG/usr/bin/gpasswd                \
-		$PKG/usr/share/man/man1/gpasswd.1   \
-		$PKG/usr/sbin/chpasswd              \
-		$PKG/usr/share/man/man8/chpasswd.8  \
-		$PKG/usr/sbin/grpconv               \
-		$PKG/usr/share/man/man8/grpconv.8   \
-		$PKG/usr/sbin/grpunconv             \
-		$PKG/usr/share/man/man8/grpunconv.8 \
-		$PKG/usr/sbin/logoutd               \
-		$PKG/usr/share/man/man8/logoutd.8   \
-		$PKG/usr/sbin/newusers              \
-		$PKG/usr/share/man/man8/newusers.8  \
-		$PKG/usr/sbin/pwconv                \
-		$PKG/usr/share/man/man8/pwconv.8    \
-		$PKG/usr/sbin/pwunconv              \
-		$PKG/usr/share/man/man8/pwunconv.8  \
-		$PKG/usr/share/man/man5/gshadow.5   \
-		$PKG/usr/share/man/man3
+	rm -r $PKG/usr/bin/gpasswd                \
+	      $PKG/usr/share/man/man1/gpasswd.1   \
+	      $PKG/usr/sbin/chpasswd              \
+	      $PKG/usr/share/man/man8/chpasswd.8  \
+	      $PKG/usr/sbin/grpconv               \
+	      $PKG/usr/share/man/man8/grpconv.8   \
+	      $PKG/usr/sbin/grpunconv             \
+	      $PKG/usr/share/man/man8/grpunconv.8 \
+	      $PKG/usr/sbin/logoutd               \
+	      $PKG/usr/share/man/man8/logoutd.8   \
+	      $PKG/usr/sbin/newusers              \
+	      $PKG/usr/share/man/man8/newusers.8  \
+	      $PKG/usr/sbin/pwconv                \
+	      $PKG/usr/share/man/man8/pwconv.8    \
+	      $PKG/usr/sbin/pwunconv              \
+	      $PKG/usr/share/man/man8/pwunconv.8  \
+	      $PKG/usr/share/man/man5/gshadow.5   \
+	      $PKG/usr/share/man/man3
 }
