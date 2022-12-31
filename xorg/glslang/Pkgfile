@@ -4,12 +4,12 @@
 
 name=glslang
 version=11.12.0
-release=7n
+release=1
 source="https://github.com/KhronosGroup/glslang/archive/$version/$name-$version.tar.gz
 	0001-pkg-config-compatibility.patch"
 
 build() {
-	patch -p1 -d $name-$version -i $SRC/0001-pkg-config-compatibility.patch
+	patch -d $name-$version -p1 -i $SRC/0001-pkg-config-compatibility.patch
 
 	PKGMK_GLSLANG_CONF="
 		-S $name-$version
