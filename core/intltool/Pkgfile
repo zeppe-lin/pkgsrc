@@ -4,13 +4,13 @@
 
 name=intltool
 version=0.51.0
-release=7n
+release=1
 source="https://edge.launchpad.net/$name/trunk/$version/+download/$name-$version.tar.gz
 	intltool-perl-5.22.patch"
 
 
 build() {
-	patch -p0 -d $name-$version -i $SRC/intltool-perl-5.22.patch
+	patch -d $name-$version -p0 -i $SRC/intltool-perl-5.22.patch
 
 	mkdir build; cd build
 
