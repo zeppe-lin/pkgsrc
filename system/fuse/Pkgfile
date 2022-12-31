@@ -3,7 +3,7 @@
 
 name=fuse
 version=3.12.0
-release=7n
+release=1
 source=https://github.com/libfuse/libfuse/releases/download/fuse-$version/fuse-$version.tar.xz
 
 build() {
