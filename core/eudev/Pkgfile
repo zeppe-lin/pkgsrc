@@ -4,18 +4,18 @@
 
 name=eudev
 version=3.2.11
-release=7n
-source="https://github.com/eudev-project/eudev/releases/download/v$version/$name-$version.tar.gz
+release=1
+source="https://github.com/eudev-project/eudev/releases/download/v$version/eudev-$version.tar.gz
 	81-fuse.rules start_udev"
 
 build() {
 	# needed for static linking, e.g. dmsetup.static
 	sed -i '/^Libs:/s/-ludev/-ludev -lrt/' \
-		$name-$version/src/libudev/libudev.pc.in
+		eudev-$version/src/libudev/libudev.pc.in
 
 	mkdir build; cd build
 
-	../$name-$version/configure      \
+	../eudev-$version/configure      \
 		--prefix=/usr            \
 		--sbindir=/sbin          \
 		--bindir=/sbin           \
@@ -39,7 +39,7 @@ build() {
 	install -d $PKG/lib/firmware $PKG/lib/udev/devices/pts \
 		$PKG/lib/udev/devices/shm $PKG/sbin $PKG/run
 
-	# distro-specific
+	# distro-specific files
 	install -m 0755 $SRC/start_udev    $PKG/sbin/
 	install -m 0644 $SRC/81-fuse.rules $PKG/lib/udev/rules.d/
 }
