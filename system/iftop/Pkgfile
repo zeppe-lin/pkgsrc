@@ -4,12 +4,12 @@
 
 name=iftop
 version=1.0pre4
-release=7n
-source=https://www.ex-parrot.com/~pdw/iftop/download/$name-$version.tar.gz
+release=1
+source=https://www.ex-parrot.com/~pdw/iftop/download/iftop-$version.tar.gz
 
 build() {
 	# build in separate dir is broken
-	cd $name-$version
+	cd iftop-$version
 
 	./configure --prefix=/usr
 
