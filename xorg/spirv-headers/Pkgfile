@@ -4,7 +4,7 @@
 
 name=spirv-headers
 version=1.3.231.1
-release=7n
+release=1
 source=https://github.com/KhronosGroup/SPIRV-Headers/archive/sdk-$version/SPIRV-Headers-sdk-$version.tar.gz
 
 build() {
