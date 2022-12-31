@@ -4,7 +4,7 @@
 
 name=ntfs-3g
 version=2022.5.17
-release=7n
+release=1
 source=https://tuxera.com/opensource/ntfs-3g_ntfsprogs-$version.tgz
 
 build() {
