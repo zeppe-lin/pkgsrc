@@ -3,7 +3,7 @@
 
 name=which
 version=2.21
-release=7n
+release=1
 source=https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.gz
 
 build() {
