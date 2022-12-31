@@ -3,7 +3,7 @@
 
 name=gettext-tiny
 version=0.3.2
-release=7n
+release=1
 source="http://ftp.barfooze.de/pub/sabotage/tarballs/$name-$version.tar.xz
 	flip-macro-logic.patch
 	line-length.patch
