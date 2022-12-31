@@ -1,9 +1,9 @@
-# Description: GNU diff utilities
+# Description: Utility programs used for creating patch files
 # URL:         http://www.gnu.org/software/diffutils/
 
 name=diffutils
 version=3.8
-release=7n
+release=1
 source=https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz
 
 build() {
