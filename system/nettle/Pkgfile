@@ -4,10 +4,11 @@
 
 name=nettle
 version=3.8.1
-release=7n
+release=1
 source=https://ftp.gnu.org/gnu/$name/$name-$version.tar.gz
 
 build() {
+	# remove debug flag
 	sed -i 's/$CFLAGS -ggdb3/$CFLAGS/' $name-$version/configure*
 
 	mkdir build; cd build
