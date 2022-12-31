@@ -4,12 +4,12 @@
 
 name=py3-mako
 version=1.2.4
-release=7n
+release=1
 source=https://files.pythonhosted.org/packages/source/M/Mako/Mako-$version.tar.gz
 
 build() {
 	cd Mako-$version
 
 	/usr/bin/python3 setup.py build
-	/usr/bin/python3 setup.py install --prefix=/usr --root=$PKG -O1
+	/usr/bin/python3 setup.py install --prefix=/usr --root=$PKG -O2
 }
