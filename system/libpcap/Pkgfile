@@ -3,7 +3,7 @@
 
 name=libpcap
 version=1.10.1
-release=7n
+release=1
 source=https://www.tcpdump.org/release/$name-$version.tar.gz
 
 build() {
