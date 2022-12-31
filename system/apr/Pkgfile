@@ -4,7 +4,7 @@
 
 name=apr
 version=1.7.0
-release=7n
+release=1
 source="https://www.apache.org/dist/apr/apr-$version.tar.bz2
         https://www.apache.org/dist/apr/apr-util-1.6.1.tar.bz2"
 
@@ -32,8 +32,10 @@ build(){
 	make V=1
 	make DESTDIR=$PKG install
 
-	sed -i -r "/^APR_(SOURCE|BUILD)/s|=.*|=|" $PKG/usr/bin/apr-1-config
-	sed -i -r "/^APU_(SOURCE|BUILD)/s|=.*|=|" $PKG/usr/bin/apu-1-config
+	sed -r "/^APR_(SOURCE|BUILD)/s|=.*|=|" \
+	    -i $PKG/usr/bin/apr-1-config
+	sed -r "/^APU_(SOURCE|BUILD)/s|=.*|=|" \
+	    -i $PKG/usr/bin/apu-1-config
 
 	# remove junk
 	rm -r $PKG/usr/lib/*.exp
