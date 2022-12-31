@@ -3,7 +3,7 @@
 
 name=cpuid
 version=20221003
-release=7n
+release=1
 source=https://www.etallen.com/cpuid/cpuid-$version.src.tar.gz
 
 build() {
