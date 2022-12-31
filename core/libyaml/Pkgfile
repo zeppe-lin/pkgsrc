@@ -3,7 +3,7 @@
 
 name=libyaml
 version=0.2.5
-release=7n
+release=1
 source=https://pyyaml.org/download/$name/yaml-$version.tar.gz
 
 build() {
