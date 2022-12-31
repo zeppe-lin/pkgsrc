@@ -3,7 +3,7 @@
 
 name=kbd
 version=2.5.1
-release=7n
+release=1
 source=https://www.kernel.org/pub/linux/utils/$name/$name-$version.tar.xz
 
 build() {
@@ -22,7 +22,10 @@ build() {
 	ln -sf default8x16.psfu.gz \
 		$PKG/usr/share/kbd/consolefonts/default.gz
 
+	#
 	# remove junk and obsolete files
+	#
+
 	cd $PKG/usr/share/kbd/keymaps
 	rm -r ppc mac atari amiga sun pine
 
