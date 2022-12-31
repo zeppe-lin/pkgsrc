@@ -1,10 +1,2 @@
 #!/bin/sh -ex
-
 /usr/bin/update-ca-trust
-
-# wordlistctl, steam and streamlink use this
-if [ ! -e /etc/ssl/certs/ca-certificates.crt ]; then
-	ln -s ../cert.pem /etc/ssl/certs/ca-certificates.crt
-fi
-
-# End of file.
