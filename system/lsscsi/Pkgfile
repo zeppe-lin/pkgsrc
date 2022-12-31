@@ -3,7 +3,7 @@
 
 name=lsscsi
 version=0.32
-release=7n
+release=1
 source=https://sg.danny.cz/scsi/$name-$version.tgz
 
 build() {
@@ -13,5 +13,5 @@ build() {
 		--prefix=/usr        \
 
 	make V=1
-	make install DESTDIR=$PKG
+	make DESTDIR=$PKG install
 }
