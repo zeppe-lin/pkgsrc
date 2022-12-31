@@ -4,7 +4,7 @@
 
 name=console-font-terminus
 version=4.49.1
-release=7n
+release=1
 source=https://downloads.sourceforge.net/terminus-font/terminus-font-$version.tar.gz
 
 build() {
