@@ -4,7 +4,7 @@
 
 name=less
 version=609
-release=7n
+release=1
 source="https://www.greenwoodsoftware.com/less/$name-$version-beta.tar.gz
 	filter"
 
