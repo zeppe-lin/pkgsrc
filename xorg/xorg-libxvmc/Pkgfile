@@ -4,16 +4,16 @@
 
 name=xorg-libxvmc
 version=1.0.13
-release=7n
+release=1
 source=https://www.x.org/releases/individual/lib/libXvMC-$version.tar.xz
 
 build() {
-	meson build libXvMC-$version    \
-		--prefix=/usr           \
-		--buildtype=plain       \
-		--wrap-mode=nodownload  \
-		-D b_lto=true           \
-		-D b_pie=true           \
+	meson setup build libXvMC-$version  \
+		--prefix=/usr               \
+		--buildtype=plain           \
+		--wrap-mode=nodownload      \
+		-D b_lto=true               \
+		-D b_pie=true               \
 
 	ninja -C build -j ${JOBS:-1} -v
 	DESTDIR=$PKG ninja -C build install
