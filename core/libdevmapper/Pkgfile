@@ -4,7 +4,7 @@
 
 name=libdevmapper
 version=2.03.16
-release=7n
+release=1
 source=https://mirrors.kernel.org/sourceware/lvm2/LVM2.$version.tgz
 
 build() {
