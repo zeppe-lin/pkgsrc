@@ -3,7 +3,7 @@
 
 name=ttf-font-ibm-plex
 version=6.1.1
-release=7n
+release=1
 source=$name-$version.zip
 
 build() {
