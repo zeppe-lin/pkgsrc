@@ -4,12 +4,12 @@
 
 name=zstd
 version=1.5.2
-release=7n
+release=1
 source=https://github.com/facebook/zstd/releases/download/v$version/zstd-$version.tar.gz
 
 build() {
 	cd $name-$version
 
-	make HAVE_THREAD=1 V=1
+	make V=1 HAVE_THREAD=1
 	PREFIX=/usr make V=1 DESTDIR=$PKG install
 }
