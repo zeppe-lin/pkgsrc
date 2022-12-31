@@ -18,9 +18,6 @@ build() {
 	make V=1
 	make DESTDIR=$PKG install
 
-	# remove conflicts
-	#rm "$PKG"/usr/share/man/man8/mount.fuse.8 "$PKG"/usr/bin/mount.fuse
-
 	# remove junk
 	rm -r $PKG/dev $PKG/etc
 }
