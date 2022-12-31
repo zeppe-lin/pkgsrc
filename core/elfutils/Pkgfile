@@ -4,7 +4,7 @@
 
 name=elfutils
 version=0.188
-release=7n
+release=1
 source=https://sourceware.org/$name/ftp/$version/$name-$version.tar.bz2
 
 build() {
