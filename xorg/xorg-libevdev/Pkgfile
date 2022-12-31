@@ -3,13 +3,16 @@
 
 name=xorg-libevdev
 version=1.13.0
-release=7n
+release=1
 source=https://www.freedesktop.org/software/libevdev/libevdev-$version.tar.xz
 
 build() {
-	cd libevdev-$version
+	export PYTHON=/usr/bin/python3
 
-	./configure --prefix=/usr
+	mkdir build; cd build
+
+	../libevdev-$version/configure  \
+		--prefix=/usr           \
 
 	make V=1
 	make DESTDIR=$PKG install
