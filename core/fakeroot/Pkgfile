@@ -3,7 +3,7 @@
 
 name=fakeroot
 version=1.30.1
-release=7n
+release=1
 source=https://deb.debian.org/debian/pool/main/f/$name/${name}_${version}.orig.tar.gz
 
 build() {
