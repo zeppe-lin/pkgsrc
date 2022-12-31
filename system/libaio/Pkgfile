@@ -3,7 +3,7 @@
 
 name=libaio
 version=0.3.113
-release=7n
+release=1
 source=https://pagure.io/libaio/archive/$name-$version/$name-$name-$version.tar.gz
 
 build() {
@@ -12,7 +12,7 @@ build() {
 	make
 	make prefix=$PKG/usr install
 
-	# move libs to /lib
+	# move libs from /usr/lib to /lib
 	install -d $PKG/lib
 	mv $PKG/usr/lib/libaio.so.* $PKG/lib
 	ln -sf ../../lib/$(readlink $PKG/usr/lib/libaio.so) \
