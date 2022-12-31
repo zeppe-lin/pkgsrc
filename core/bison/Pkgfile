@@ -3,13 +3,13 @@
 
 name=bison
 version=3.8.2
-release=7n
-source=https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz
+release=1
+source=https://ftpmirror.gnu.org/gnu/bison/bison-$version.tar.xz
 
 build() {
 	mkdir build; cd build
 
-	../$name-$version/configure  \
+	../bison-$version/configure  \
 		--prefix=/usr        \
 		--disable-nls        \
 
