@@ -3,7 +3,7 @@
 
 name=openssl
 version=1.1.1s
-release=7n
+release=1
 source="https://www.openssl.org/source/$name-$version.tar.gz
 	mksslcert.sh mksslcert.1.pod"
 
