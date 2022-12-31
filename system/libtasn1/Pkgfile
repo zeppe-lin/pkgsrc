@@ -3,7 +3,7 @@
 
 name=libtasn1
 version=4.19.0
-release=7n
+release=1
 source=https://ftp.gnu.org/gnu/$name/$name-$version.tar.gz
 
 build() {
@@ -11,7 +11,9 @@ build() {
 
 	../$name-$version/configure       \
 		--prefix=/usr             \
+		--disable-gtk-doc         \
 		--disable-gtk-doc-html    \
+		--disable-gtk-doc-pdf     \
 		--disable-valgrind-tests  \
 
 	make V=1
