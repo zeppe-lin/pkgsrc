@@ -4,7 +4,7 @@
 
 name=grub2-efi
 version=2.06
-release=7n
+release=1
 source=https://ftp.gnu.org/gnu/grub/grub-$version.tar.xz
 
 build() {
@@ -37,6 +37,6 @@ build() {
 		cd ../..
 	done
 
-	# conflicts w/ grub2 package
+	# conflicts with grub2 package
 	rm -r $PKG/usr/bin $PKG/usr/etc $PKG/usr/sbin $PKG/usr/share
 }
