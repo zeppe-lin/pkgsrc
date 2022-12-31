@@ -27,7 +27,8 @@ start)
 		exit 3
 	fi
 	echo "Starting VPN '$2'..."
-	/usr/sbin/openvpn --config "$CONF" --writepid "$PID" --daemon "ovpn-$2" $OPTS
+	/usr/sbin/openvpn --config "$CONF" --writepid "$PID" \
+		--daemon "ovpn-$2" $OPTS
 	;;
 stop)
 	if [ ! -f "$PID" ]; then

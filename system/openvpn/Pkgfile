@@ -4,7 +4,7 @@
 
 name=openvpn
 version=2.5.8
-release=7n
+release=1
 source="https://github.com/OpenVPN/$name/archive/v$version/$name-$version.tar.gz
 	rc.$name"
 
