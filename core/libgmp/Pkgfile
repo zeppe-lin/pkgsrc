@@ -3,7 +3,7 @@
 
 name=libgmp
 version=6.2.1
-release=7n
+release=1
 source="https://gmplib.org/download/gmp/gmp-$version.tar.xz
 	gmp.h"
 
