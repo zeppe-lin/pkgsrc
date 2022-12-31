@@ -4,13 +4,13 @@
 
 name=gdbm
 version=1.23
-release=7n
-source=https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.gz
+release=1
+source=https://ftpmirror.gnu.org/gnu/gdbm/gdbm-$version.tar.gz
 
 build() {
 	mkdir build; cd build
 
-	../$name-$version/configure      \
+	../gdbm-$version/configure       \
 		--prefix=/usr            \
 		--enable-libgdbm-compat  \
 
