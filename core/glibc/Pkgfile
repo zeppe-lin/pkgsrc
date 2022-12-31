@@ -3,7 +3,7 @@
 
 name=glibc
 version=2.36-3
-release=7n
+release=1
 _kernver=$(pkgman printf %v --filter=linux)
 source="https://ftp.gnu.org/gnu/$name/$name-${version%-*}.tar.xz
 	https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_kernver.tar.xz
@@ -77,6 +77,8 @@ build() {
 	# remove junk
 	rm -rf $PKG/usr/share/locale $PKG/usr/share/info
 	rm $PKG/usr/bin/tzselect $PKG/usr/bin/zdump $PKG/usr/sbin/zic
-	find $PKG -type f \( -name \*install.cmd \
-		-o -name ".\install" \) -delete
+	find $PKG -type f \(            \
+		   -name \*install.cmd  \
+		-o -name ".\install"    \
+		\) -delete
 }
