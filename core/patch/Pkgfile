@@ -1,16 +1,16 @@
-# Description: GNU patch
+# Description: Utility to apply diffs to files
 # URL:         http://www.gnu.org/software/patch/patch.html
 # Depends on:  attr
 
 name=patch
 version=2.7.6.17-9c98
-release=7n
-source=https://crux.nu/files/distfiles/$name-$version.tar.xz
+release=1
+source=https://crux.nu/files/distfiles/patch-$version.tar.xz
 
 build() {
 	mkdir build; cd build
 
-	../$name-$version/configure  \
+	../patch-$version/configure  \
 		--prefix=/usr        \
 
 	make V=1
