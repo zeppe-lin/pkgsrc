@@ -4,7 +4,7 @@
 
 name=transmission
 version=3.00
-release=7n
+release=1
 source="https://github.com/$name/$name-releases/raw/master/$name-$version.tar.xz
 	rc.$name"
 
