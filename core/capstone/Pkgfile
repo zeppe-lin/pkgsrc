@@ -4,7 +4,7 @@
 
 name=capstone
 version=4.0.2
-release=7n
+release=1
 source=https://github.com/aquynh/$name/archive/$version/$name-$version.tar.gz
 
 build() {
