@@ -4,7 +4,7 @@
 
 name=cyrus-sasl
 version=2.1.28
-release=7n
+release=1
 source="https://github.com/cyrusimap/$name/releases/download/$name-$version/$name-$version.tar.gz
 	rc.saslauthd"
 
@@ -31,8 +31,8 @@ build() {
 		--enable-digest                  \
 		--enable-shared                  \
 
-	make CFLAGS="$CFLAGS -fPIC" V=1
+	make V=1 CFLAGS="$CFLAGS -fPIC"
 	make DESTDIR=$PKG install
 
-	install -m 755 -D $SRC/rc.saslauthd $PKG/etc/rc.d/saslauthd
+	install -m 0755 -D $SRC/rc.saslauthd $PKG/etc/rc.d/saslauthd
 }
