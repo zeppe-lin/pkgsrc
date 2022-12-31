@@ -4,13 +4,14 @@
 
 name=xorg-bdftopcf
 version=1.1.1
-release=7n
+release=1
 source=https://www.x.org/archive/individual/util/bdftopcf-$version.tar.xz
 
 build() {
 	mkdir build; cd build
 
-	../bdftopcf-$version/configure --prefix=/usr
+	../bdftopcf-$version/configure  \
+		--prefix=/usr           \
 
 	make V=1
 	make DESTDIR=$PKG install
