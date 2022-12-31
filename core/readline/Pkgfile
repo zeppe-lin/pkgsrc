@@ -4,14 +4,14 @@
 
 name=readline
 version=8.2.1
-release=7n
+release=1
 source="https://ftpmirror.gnu.org/gnu/$name/$name-${version%.*}.tar.gz
 	https://ftpmirror.gnu.org/gnu/$name/$name-${version%.*}-patches/${name}82-001
 	inputrc"
 
 build() {
-	for _file in $SRC/${name}8?-???; do
-		patch -p0 -d $name-${version%.*} -i $_file
+	for _F in $SRC/${name}8?-???; do
+		patch -d $name-${version%.*} -p0 -i $_F
 	done
 
 	# remove RPATH from shared objects (FS#14366)
@@ -30,7 +30,7 @@ build() {
 	make -j1 V=1 SHLIB_LIBS=-lncurses
 	make -j1 DESTDIR=$PKG install
 
-	# move libs to /lib
+	# move libs from /usr/lib to /lib
 	install -d $PKG/lib
 	mv $PKG/usr/lib/lib*.so.* $PKG/lib/
 	ln -sf ../../lib/libhistory.so.${version%.*} \
