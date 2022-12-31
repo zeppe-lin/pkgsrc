@@ -4,20 +4,23 @@
 
 name=xautolock
 version=2.2
-release=7n
+release=1
 source="http://ibiblio.org/pub/Linux/X11/screensavers/$name-$version.tgz
 	union-wait.patch"
 
 build() {
-	cd "$name-$version"
+	cd $name-$version
 
 	patch -p1 -i $SRC/union-wait.patch
 
 	xmkmf
-	make \
-		CDEBUGFLAGS="$CFLAGS -fno-strength-reduce -fno-strict-aliasing" \
-		CXXDEBUGFLAGS="$CXXFLAGS -fno-strength-reduce -fno-strict-aliasing"
 
-	make DESTDIR=$PKG PREFIX=/usr MANPATH=/usr/share/man \
+	# fix build flags
+	sed -e "s/\(CDEBUGFLAGS = \)-O2/\1$CFLAGS/g"    \
+	    -e "s/\(CXXDEBUGFLAGS = \)-O2/\1$CXXFLAGS/" \
+	    -i Makefile
+
+	make
+	make PREFIX=/usr MANPATH=/usr/share/man DESTDIR=$PKG \
 		install install.man
 }
