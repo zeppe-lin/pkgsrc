@@ -4,7 +4,7 @@
 
 name=docutils
 version=0.19
-release=7n
+release=1
 source=https://files.pythonhosted.org/packages/source/d/$name/$name-$version.tar.gz
 
 build() {
@@ -13,5 +13,5 @@ build() {
 	/usr/bin/python3 setup.py install --root=$PKG -O1
 
 	# remove junk
-	find $PKG -name README.txt -delete
+	find $PKG -type f -name README.txt -delete
 }
