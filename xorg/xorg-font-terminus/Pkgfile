@@ -4,7 +4,7 @@
 
 name=xorg-font-terminus
 version=4.49.1
-release=7n
+release=1
 source=http://downloads.sourceforge.net/terminus-font/terminus-font-$version.tar.gz
 
 build() {
@@ -18,5 +18,5 @@ build() {
 
 	cd $PKG/usr/share/fonts/X11/terminus
 	/usr/bin/mkfontdir
-	sed -e 's|.pcf.gz||' fonts.dir|grep terminus > fonts.alias
+	sed -e 's|.pcf.gz||' fonts.dir | grep terminus > fonts.alias
 }
