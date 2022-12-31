@@ -3,7 +3,7 @@
 
 name=gzip
 version=1.12
-release=7n
+release=1
 source=https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz
 
 build() {
