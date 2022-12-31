@@ -3,7 +3,7 @@
 
 name=libconfig
 version=1.7.3
-release=7n
+release=1
 source=https://github.com/hyperrealm/$name/archive/v$version/$name-v$version.tar.gz
 
 build() {
@@ -12,9 +12,9 @@ build() {
 	autoreconf -i ../$name-$version
 
 	# don't fail without makeinfo (must be after autoreconf)
-	sed -i  -e 's|all: all-am|all:|1'              \
-		-e 's|install: install-am|install:|1'  \
-		../$name-$version/doc/Makefile.in
+	sed -e 's|all: all-am|all:|1'              \
+	    -e 's|install: install-am|install:|1'  \
+	    -i ../$name-$version/doc/Makefile.in
 
 	../$name-$version/configure  \
 		--prefix=/usr        \
