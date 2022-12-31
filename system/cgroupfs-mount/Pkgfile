@@ -16,7 +16,6 @@ build() {
 	sed -i '/^.BR fstab (5),/s/,//' $name.8
 	sed -i '/^.BR sysremd (1)/d'    $name.8
 	install -m 0644 -Dt $PKG/usr/share/man/man8/ $name.8
-	ln -s cgroupfs-mount.8 $PKG/usr/share/man/man8/cgroupfs-umount.8
 
 	# service
 	install -m 0755 -D $SRC/rc.$name $PKG/etc/rc.d/$name

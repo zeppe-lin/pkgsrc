@@ -9,4 +9,3 @@ drwxr-xr-x	root/root	usr/share/
 drwxr-xr-x	root/root	usr/share/man/
 drwxr-xr-x	root/root	usr/share/man/man8/
 -rw-r--r--	root/root	usr/share/man/man8/cgroupfs-mount.8.gz
-lrwxrwxrwx	root/root	usr/share/man/man8/cgroupfs-umount.8.gz -> cgroupfs-mount.8.gz
