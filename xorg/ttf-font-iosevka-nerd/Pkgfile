@@ -4,7 +4,7 @@
 
 name=ttf-font-iosevka-nerd
 version=2.1.0-da88bdb
-release=7n
+release=1
 source=/dev/null
 
 build() {
