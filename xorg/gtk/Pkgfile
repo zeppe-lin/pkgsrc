@@ -4,21 +4,21 @@
 
 name=gtk
 version=2.24.33
-release=7n
-source="https://download.gnome.org/sources/gtk+/2.24/${name}+-$version.tar.xz
+release=1
+source="https://download.gnome.org/sources/gtk+/2.24/gtk+-$version.tar.xz
 	gtk.immodules gtk-register.sh"
 
 build() {
 	export LINGUAS=' '
 
 	(cd gtk+-$version
-	for _f in Makefile.am Makefile.in; do
+	for _F in Makefile.am Makefile.in; do
 		# don't waste time building tests
-		sed -i '/SRC_SUBDIRS/s/tests//g' $_f
-		sed -i '/SUBDIRS/s/tests//g' gdk/$_f gtk/$_f
+		sed -i '/SRC_SUBDIRS/s/tests//g' $_F
+		sed -i '/SUBDIRS/s/tests//g' gdk/$_F gtk/$_F
 
 		# don't waste time building demos
-		sed -i '/SRC_SUBDIRS/s/demos//g' $_f
+		sed -i '/SRC_SUBDIRS/s/demos//g' $_F
 	done)
 
 	mkdir build; cd build
