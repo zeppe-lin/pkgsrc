@@ -4,18 +4,17 @@
 
 name=gnupg
 version=2.3.8
-release=7n
+release=1
 source="https://gnupg.org/ftp/gcrypt/gnupg/gnupg-$version.tar.bz2
-	gnupg-2.2.40-fix-no-ldap-build.patch"
+	fix-no-ldap-build.patch"
 
 build() {
-	# Fix build with no LDAP support.
-	patch -p1 -d $name-$version \
-		-i $SRC/gnupg-2.2.40-fix-no-ldap-build.patch
+	# fix build with no LDAP support
+	patch -p1 -d $name-$version -i $SRC/fix-no-ldap-build.patch
 
 	mkdir build; cd build
 
-	# --disable-tests is ommited for gpgscm utility
+	# --disable-tests is omitted for gpgscm utility
 	../$name-$version/configure    \
 		--prefix=/usr          \
 		--libexecdir=/usr/lib  \
@@ -29,6 +28,6 @@ build() {
 	make DESTDIR=$PKG install
 
 	# remove junk
-	rm -r	$PKG/usr/share/info  $PKG/usr/share/doc \
-		$PKG/usr/share/gnupg/help*
+	rm -r $PKG/usr/share/info $PKG/usr/share/doc \
+	      $PKG/usr/share/gnupg/help*
 }
