@@ -4,7 +4,7 @@
 
 name=libbsd
 version=0.11.7
-release=7n
+release=1
 source=https://libbsd.freedesktop.org/releases/$name-$version.tar.xz
 
 build() {
@@ -14,5 +14,5 @@ build() {
 		--prefix=/usr        \
 
 	make V=1
-	make install DESTDIR=$PKG
+	make DESTDIR=$PKG install
 }
