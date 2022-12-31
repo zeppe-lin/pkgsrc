@@ -3,7 +3,7 @@
 
 name=rdate
 version=0.12
-release=7n
+release=1
 source="https://github.com/leahneukirchen/outils/archive/v$version/outils-$version.tar.gz 
 	ntpleaps.patch
 	cron.rdate"
