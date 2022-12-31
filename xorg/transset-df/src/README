@@ -1,0 +1,18 @@
+ABOUT transset-df
+
+    This directory contains the transset-df source code tarball.
+    transset-df is a patched version of xorg's transset with
+    additional functionality.
+
+    The program is old (last update 2007-09-21), and sometimes
+    homepage (<https://forchheimer.se/transset-df/>) is not available.
+
+    Let's save it here.
+
+LICENSE
+
+    GPL.
+
+
+vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
+End of file.
