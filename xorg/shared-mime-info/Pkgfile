@@ -5,30 +5,30 @@
 name=shared-mime-info
 version=2.1
 _commit=0ee50652091363ab0d17e335e5e74fbe
-release=7n
+release=1
 source=https://gitlab.freedesktop.org/xdg/$name/uploads/$_commit/$name-$version.tar.xz
 
 build() {
 	cd $name-$version
 
-	# We bypass the build system entirely as it has
-	# a mandatory dependency on gettext.
-	# Thanx to CarbsLinux.
+	# we bypass the build system entirely as it has
+	# a mandatory dependency on gettext (thnx to CarbsLinux)
 
-	mkdir -p "$PKG/usr/share/mime/packages" \
-		 "$PKG/usr/share/pkgconfig"     \
-		 "$PKG/usr/bin"                 \
+	mkdir -p $PKG/usr/share/mime/packages \
+		 $PKG/usr/share/pkgconfig     \
+		 $PKG/usr/bin                 \
 
-	# Install with only English support.
+	# install with only English support
 	sed -e 's/_comment/comment/g' data/freedesktop.org.xml.in \
 		> "$PKG/usr/share/mime/packages/freedesktop.org.xml"
 
-	# Replace markers in the file.
-	sed -e 's|@prefix@|/usr|' -e "s|@VERSION@|$version|" \
-		shared-mime-info.pc.in \
-		> "$PKG/usr/share/pkgconfig/shared-mime-info.pc"
+	# replace markers in the file
+	sed -e 's|@prefix@|/usr|'      \
+	    -e "s|@VERSION@|$version|" \
+	    shared-mime-info.pc.in     \
+	    > "$PKG/usr/share/pkgconfig/shared-mime-info.pc"
 
-	# Define our own config.h statically.
+	# define our own config.h statically
 	cat << EOF > src/config.h
 	#define HAVE_BIND_TEXTDOMAIN_CODESET 1
 	#define HAVE_FDATASYNC 1
@@ -55,10 +55,10 @@ build() {
 	#define VERSION "$version"
 EOF
 
-	# Fix config.h include.
+	# fix config.h include
 	sed -i 's/<config.h>/"config.h"/' src/update-mime-database.c
 
-	"${CC:-gcc}" -o "$PKG/usr/bin/update-mime-database" \
-		$(pkg-config --libs --cflags glib-2.0 libxml-2.0) \
-		src/update-mime-database.c
+	${CC:-gcc} -o "$PKG/usr/bin/update-mime-database"     \
+	    $(pkg-config --libs --cflags glib-2.0 libxml-2.0) \
+	    src/update-mime-database.c
 }
