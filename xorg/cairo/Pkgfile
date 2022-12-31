@@ -4,18 +4,18 @@
 
 name=cairo
 version=1.17.6
-release=7n
-source="https://gitlab.freedesktop.org/cairo/cairo/-/archive/$version/$name-$version.tar.bz2
+release=1
+source="https://gitlab.freedesktop.org/cairo/cairo/-/archive/$version/cairo-$version.tar.bz2
 	fix-cairo-sphinx.patch"
 
 build() {
-	patch -p1 -d $name-$version -i $SRC/fix-cairo-sphinx.patch
+	patch -d cairo-$version -p1 -i $SRC/fix-cairo-sphinx.patch
 
 	if pkgman isinst wayland-protocols mesa; then
 		PKGMK_CAIRO="-D gl-backend=glesv3 -D glesv3=enabled"
 	fi
 
-	meson setup build $name-$version  \
+	meson setup build cairo-$version  \
 		--prefix=/usr             \
 		--buildtype=plain         \
 		--wrap-mode=nodownload    \
