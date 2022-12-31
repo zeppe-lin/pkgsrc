@@ -3,13 +3,14 @@
 
 name=mtdev
 version=1.1.6
-release=7n
-source=http://launchpad.net/$name/trunk/$version/+download/$name-$version.tar.gz
+release=1
+source=http://launchpad.net/mtdev/trunk/$version/+download/mtdev-$version.tar.gz
 
 build() {
-	cd $name-$version
+	mkdir build; cd build
 
-	./configure --prefix=/usr
+	../mtdev-$version/configure  \
+		--prefix=/usr        \
 
 	make V=1
 	make DESTDIR=$PKG install
