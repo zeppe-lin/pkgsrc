@@ -4,7 +4,7 @@
 
 name=stunnel
 version=5.67
-release=7n
+release=1
 source="https://ftp.nluug.nl/pub/networking/$name/archive/${version%%.*}.x/$name-$version.tar.gz
 	rc.$name $name.conf"
 
