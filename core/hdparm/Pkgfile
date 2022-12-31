@@ -3,15 +3,17 @@
 
 name=hdparm
 version=9.65
-release=7n
+release=1
 source=https://downloads.sourceforge.net/project/$name/$name/$name-$version.tar.gz
 
 build() {
 	cd $name-$version
 
-	sed -i  -e "/^CFLAGS :=/s/-O2//g"    \
-		-e "/^STRIP/s/strip/true/g"  \
-		Makefile
+	# remove default optimization flag
+	# don't strip, pkgmk will do it
+	sed -e "/^CFLAGS :=/s/-O2//g"    \
+	    -e "/^STRIP/s/strip/true/g"  \
+	    -i Makefile
 
 	make V=1
 	make DESTDIR=$PKG install
