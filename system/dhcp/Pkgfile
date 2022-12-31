@@ -3,14 +3,14 @@
 
 name=dhcp
 version=4.4.3-P1
-release=7n
+release=1
 source="https://ftp.isc.org/isc/dhcp/$version/dhcp-$version.tar.gz
-	default-config.patch  replace-hostname-with-uname-n.patch
-	rc.dhclient  rc.dhcpd4  rc.dhcpd6"
+	default-config.patch replace-hostname-with-uname-n.patch
+	rc.dhclient rc.dhcpd4 rc.dhcpd6"
 
 build() {
-	patch -p1 -d dhcp-$version -i $SRC/default-config.patch
-	patch -p1 -d dhcp-$version -i $SRC/replace-hostname-with-uname-n.patch
+	patch -d dhcp-$version -p1 -i $SRC/default-config.patch
+	patch -d dhcp-$version -p1 -i $SRC/replace-hostname-with-uname-n.patch
 
 	export CFLAGS="$CFLAGS -fcommon"
 
@@ -22,7 +22,9 @@ build() {
 		--runstatedir=/run    \
 		--localstatedir=/var  \
 
-	make -j1 V=1 # does not support parallel build
+	# parallel build is broken
+	make -j1 V=1
+
 	make DESTDIR=$PKG install
 
 	install -m 0755 -D $SRC/rc.dhclient  $PKG/etc/rc.d/dhclient
