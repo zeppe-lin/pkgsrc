@@ -4,14 +4,14 @@
 
 name=xdotool
 version=3.20210804.2
-release=7n
+release=1
 source=https://github.com/jordansissel/$name/archive/v$version/$name-$version.tar.gz
 
 build() {
 	cd $name-$version
 
 	# fix man path
-	sed -i 's@INSTALLMAN?=$(PREFIX)/man@INSTALLMAN?=$(PREFIX)/share/man@' Makefile
+	sed -i 's|INSTALLMAN?=$(PREFIX)/man|INSTALLMAN?=$(PREFIX)/share/man|' Makefile
 
 	# remove debug flag
 	sed -i '/CFLAGS+=-g #/d' Makefile
@@ -20,16 +20,11 @@ build() {
 
 	# install - call the make targets individually.
 	#
-	# This is because 'make install' calls ldconfig in the post-install target.
-	# We don't want this since it requires root, plus the package manager does
-	# that for us after install.
-	#
-	make PREFIX=/usr DESTDIR=$PKG \
-		pre-install   \
-		installlib    \
-		installprog   \
-		installman    \
-		installheader \
+	# This is because 'make install' calls ldconfig in the
+	# post-install target.  We don't want this since it requires
+	# root, plus the package manager does that for us after install.
+	make PREFIX=/usr DESTDIR=$PKG pre-install installlib \
+		installprog installman installheader
 
 	chmod -x $PKG/usr/include/xdo.h
 }
