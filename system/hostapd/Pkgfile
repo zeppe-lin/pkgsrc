@@ -4,7 +4,7 @@
 
 name=hostapd
 version=2.10
-release=7n
+release=1
 source="https://w1.fi/releases/$name-$version.tar.gz
 	rc.hostapd
 	0001-hostapd-Avoid-key-reinstallation-in-FT-handshake.patch
@@ -48,10 +48,10 @@ EOF
 
 	make V=1
 
-	install -m 0755 -Dt $PKG/usr/sbin/  hostapd hostapd_cli
+	install -m 0755 -Dt $PKG/usr/sbin/            hostapd hostapd_cli
 	install -m 0644 -Dt $PKG/usr/share/man/man1/  hostapd_cli.1
 	install -m 0644 -Dt $PKG/usr/share/man/man8/  hostapd.8
-	install -m 0644 -Dt $PKG/etc/ hostapd.conf
+	install -m 0644 -Dt $PKG/etc/                 hostapd.conf
 
 	# rc script
 	install -m 755 -D $SRC/rc.hostapd  $PKG/etc/rc.d/hostapd
