@@ -3,13 +3,13 @@
 
 name=libmd
 version=1.0.4
-release=7n
-source=https://archive.hadrons.org/software/$name/$name-$version.tar.xz
+release=1
+source=https://archive.hadrons.org/software/libmd/libmd-$version.tar.xz
 
 build() {
 	mkdir build; cd build
 
-	../$name-$version/configure  \
+	../libmd-$version/configure  \
 		--prefix=/usr        \
 
 	make V=1
