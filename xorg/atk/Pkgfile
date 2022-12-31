@@ -4,12 +4,12 @@
 
 name=atk
 version=2.38.0
-release=7n
-source=http://download.gnome.org/sources/$name/${version%.*}/$name-$version.tar.xz
+release=1
+source=http://download.gnome.org/sources/atk/${version%.*}/atk-$version.tar.xz
 
 build() {
 	# don't build tests and docs
-	sed -i -e "/subdir('tests')/d" $name-$version/meson.build
+	sed -i "/subdir('tests')/d" atk-$version/meson.build
 
 	meson setup build $name-$version  \
 		--prefix=/usr             \
