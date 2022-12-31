@@ -4,7 +4,7 @@
 
 name=openssh
 version=9.1p1
-release=7n
+release=1
 source="http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/$name-$version.tar.gz
 	rc.sshd  pam.sshd"
 
@@ -40,7 +40,7 @@ build() {
 	# remove junk
 	rm -r $PKG/var
 
-	# enable PAM
+	# enable PAM by default
 	sed -i '/^#UsePAM/aUsePAM yes' $PKG/etc/ssh/sshd_config
 
 	# ssh-copy-id
