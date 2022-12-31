@@ -4,7 +4,7 @@
 
 name=mysql
 version=5.7.39
-release=7n
+release=1
 source="https://cdn.mysql.com/Downloads/MySQL-${version%.*}/$name-boost-$version.tar.gz
 	my.cnf rc.mysqld"
 
@@ -35,8 +35,8 @@ build() {
 
 	install -d $PKG/var/lib $PKG/var/log
 	install -m 0700 -d $PKG/var/lib/mysql        \
-			   $PKG/var/lib/mysql-files  \
-			   $PKG/var/log/mysql        \
+	                   $PKG/var/lib/mysql-files  \
+	                   $PKG/var/log/mysql        \
 
 	install -m 0755 -D $SRC/rc.mysqld $PKG/etc/rc.d/mysqld
 	install -m 0600 -D $SRC/my.cnf    $PKG/etc/my.cnf

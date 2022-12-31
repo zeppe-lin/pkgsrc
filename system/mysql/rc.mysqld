@@ -13,7 +13,8 @@ OPTS="--pid-file=$PID"
 
 case $1 in
 start)
-	$SSD --start -bC --pidfile $PID --exec $PROG -- $OPTS >> $LOG 2>&1
+	$SSD --start --background --no-close --pidfile $PID \
+		--exec $PROG -- $OPTS >> $LOG 2>&1
 	;;
 stop)
 	$SSD --stop --remove-pidfile --retry 10 --name=$NAME --pidfile $PID
