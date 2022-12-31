@@ -5,7 +5,7 @@
 
 name=libunwind
 version=1.6.2
-release=7n
+release=1
 source=https://download.savannah.gnu.org/releases/$name/$name-$version.tar.gz
 
 build() {
@@ -16,7 +16,7 @@ build() {
 		--enable-documentation  \
 		--disable-tests         \
 
-	sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+	sed -i 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
 	make V=1
 	make DESTDIR=$PKG install
