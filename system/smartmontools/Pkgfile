@@ -4,7 +4,7 @@
 
 name=smartmontools
 version=7.3
-release=7n
+release=1
 source="https://downloads.sourceforge.net/project/$name/$name/$version/$name-$version.tar.gz
 	rc.smartd"
 
