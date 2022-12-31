@@ -4,7 +4,7 @@
 
 name=p5-yaml-libyaml
 version=0.85
-release=7n
+release=1
 source=https://cpan.metacpan.org/authors/id/I/IN/INGY/YAML-LibYAML-$version.tar.gz
 
 build() {
