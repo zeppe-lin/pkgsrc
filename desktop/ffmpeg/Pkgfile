@@ -4,7 +4,7 @@
 
 name=ffmpeg
 version=4.4.3
-release=7n
+release=1
 source="https://ffmpeg.org/releases/$name-$version.tar.bz2
 	ffmpeg-x264-10bit.sh CVE-2018-6621.patch"
 
