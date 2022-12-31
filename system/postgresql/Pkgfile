@@ -7,15 +7,15 @@
 
 name=postgresql
 version=14.2
-release=7n
+release=1
 source="https://ftp.$name.org/pub/source/v$version/$name-$version.tar.bz2
 	rc.$name pam.$name
 	postgresql-perl-rpath.patch
 	postgresql-run-socket.patch"
 
 build() {
-	patch -p1 -d $name-$version -i $SRC/postgresql-run-socket.patch
-	patch -p1 -d $name-$version -i $SRC/postgresql-perl-rpath.patch
+	patch -d $name-$version -p1 -i $SRC/postgresql-run-socket.patch
+	patch -d $name-$version -p1 -i $SRC/postgresql-perl-rpath.patch
 
 	mkdir build; cd build
 
@@ -32,8 +32,8 @@ build() {
 	cd doc/src/sgml
 	make DESTDIR=$PKG install-man
 
-	install -m 755 -D $SRC/rc.$name   $PKG/etc/rc.d/$name
-	install -m 755 -D $SRC/pam.$name  $PKG/etc/pam.d/$name
+	install -m 0755 -D $SRC/rc.$name   $PKG/etc/rc.d/$name
+	install -m 0755 -D $SRC/pam.$name  $PKG/etc/pam.d/$name
 
 	# remove junk
 	rm -rf $PKG/usr/share/doc
