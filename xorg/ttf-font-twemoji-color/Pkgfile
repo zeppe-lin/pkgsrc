@@ -4,7 +4,7 @@
 
 name=ttf-font-twemoji-color
 version=14.0.2
-release=7n
+release=1
 source=https://github.com/eosrei/twemoji-color-font/releases/download/v$version/TwitterColorEmoji-SVGinOT-Linux-$version.tar.gz
 
 build() {
