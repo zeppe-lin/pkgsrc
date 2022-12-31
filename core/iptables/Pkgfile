@@ -4,12 +4,11 @@
 
 name=iptables
 version=1.8.8
-release=7n
+release=1
 source=https://www.netfilter.org/projects/$name/files/$name-$version.tar.bz2
 
 build() {
-	# build in separate directory currently is broken
-
+	# build in separate dir is broken
 	cd $name-$version
 
 	./configure                    \
