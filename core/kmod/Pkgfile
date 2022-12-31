@@ -3,13 +3,13 @@
 
 name=kmod
 version=30
-release=7n
-source=https://www.kernel.org/pub/linux/utils/kernel/$name/$name-$version.tar.xz
+release=1
+source=https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-$version.tar.xz
 
 build() {
 	mkdir build; cd build
 
-	../$name-$version/configure     \
+	../kmod-$version/configure      \
 		--prefix=/usr           \
 		--bindir=/sbin          \
 		--sysconfdir=/etc       \
@@ -23,7 +23,7 @@ build() {
 	install -d $PKG/bin
 	install -d $PKG/usr/share/man/man5 $PKG/usr/share/man/man8
 
-	cd ../$name-$version/man
+	cd ../kmod-$version/man
 	install -m 0644 *.5 $PKG/usr/share/man/man5/
 	install -m 0644 *.8 $PKG/usr/share/man/man8/
 
