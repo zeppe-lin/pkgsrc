@@ -4,7 +4,7 @@
 
 name=fontconfig
 version=2.14.1
-release=7n
+release=1
 source=https://fontconfig.org/release/$name-$version.tar.xz
 
 build() {
@@ -25,6 +25,7 @@ build() {
 	ln -sf /etc/fonts/conf.avail/10-autohint.conf \
 		$PKG/etc/fonts/conf.d/10-autohint.conf
 
+	# remove junk
 	rm -f $PKG/etc/fonts/conf.d/README
 	rm -r $PKG/usr/share/doc $PKG/usr/share/gettext
 }
