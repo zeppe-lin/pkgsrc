@@ -4,17 +4,17 @@
 
 name=lftp
 version=4.9.2
-release=7n
+release=1
 source=https://distfiles.gentoo.org/distfiles/lftp-$version.tar.xz
 
 build() {
 	mkdir build; cd build
 
-	../$name-$version/configure       \
-		--prefix=/usr             \
-		--sysconfdir=/usr/etc     \
-		--disable-nls             \
-		--with-openssl=/usr       \
+	../lftp-$version/configure     \
+		--prefix=/usr          \
+		--sysconfdir=/usr/etc  \
+		--with-openssl=/usr    \
+		--disable-nls          \
 
 	make V=1
 	make DESTDIR=$PKG install
