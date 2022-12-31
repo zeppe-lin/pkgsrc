@@ -4,7 +4,7 @@
 
 name=xorg-libxfont2
 version=2.0.6
-release=7n
+release=1
 source=https://www.x.org/releases/individual/lib/libXfont2-$version.tar.xz
 
 build() {
@@ -13,6 +13,8 @@ build() {
 	../libXfont2-$version/configure  \
 		--prefix=/usr            \
 		--disable-devel-docs     \
+		--with-bzip2             \
+		--without-fop            \
 		--without-xmlto          \
 
 	make V=1
