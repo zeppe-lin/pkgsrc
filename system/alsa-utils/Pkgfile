@@ -4,15 +4,15 @@
 
 name=alsa-utils
 version=1.2.8
-release=7n
+release=1
 source="ftp://ftp.alsa-project.org/pub/utils/$name-$version.tar.bz2
 	rc.alsa
 	0001-simplify-nocolors-menu.patch
 	f77a269370af917585df59d8c21c89bca07b5b73.patch"
 
 build() {
-	for _p in $SRC/*.patch; do
-		patch -p1 -d $name-$version -i $_p
+	for _P in $SRC/*.patch; do
+		patch -d $name-$version -p1 -i $_P
 	done
 
 	# fix error when compiling alsatplg
