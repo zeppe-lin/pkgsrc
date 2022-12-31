@@ -4,16 +4,16 @@
 
 name=sed
 version=4.9
-release=7n
-source=https://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz
+release=1
+source=https://ftpmirror.gnu.org/gnu/sed/sed-$version.tar.xz
 
 build() {
 	mkdir build; cd build
 
-	../$name-$version/configure  \
-		--prefix=/usr        \
-		--exec-prefix=/      \
-		--disable-nls        \
+	../sed-$version/configure  \
+		--prefix=/usr      \
+		--exec-prefix=/    \
+		--disable-nls      \
 
 	make V=1
 	make DESTDIR=$PKG install
