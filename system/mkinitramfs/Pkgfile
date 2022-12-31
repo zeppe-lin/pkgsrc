@@ -2,7 +2,7 @@
 # URL:         https://zeppe-lin.github.io/
 
 name=mkinitramfs
-version=0.2.2
+version=0.2.3
 release=1
 source=config
 
