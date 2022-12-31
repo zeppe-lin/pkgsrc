@@ -3,12 +3,12 @@
 
 name=bzip2
 version=1.0.8
-release=7n
-source="https://sourceware.org/pub/bzip2/$name-$version.tar.gz
+release=1
+source="https://sourceware.org/pub/bzip2/bzip2-$version.tar.gz
 	bzip2.pc.in"
 
 build() {
-	cd $name-$version
+	cd bzip2-$version
 
 	install -d $PKG/usr/bin $PKG/usr/lib $PKG/usr/include \
 		$PKG/usr/share/man/man1
