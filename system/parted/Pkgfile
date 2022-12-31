@@ -4,12 +4,12 @@
 
 name=parted
 version=3.5
-release=7n
+release=1
 source="http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz
 	$name-sysmacros.patch"
 
 build() {
-	patch -p1 -d $name-$version -i $SRC/$name-sysmacros.patch
+	patch -d $name-$version -p1 -i $SRC/$name-sysmacros.patch
 
 	mkdir build; cd build
 
