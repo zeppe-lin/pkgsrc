@@ -4,10 +4,15 @@
 
 name=libnvme
 version=1.2
-release=7n
+release=1
 source=https://github.com/linux-nvme/$name/archive/v$version/$name-v$version.tar.gz
 
 build() {
+	# disable tests and examples
+	sed -e "/^subdir('test')/d"     \
+	    -e "/^subdir('examples')/d" \
+	    -i $name-$version/meson.build
+
 	meson build $name-$version      \
 		--prefix=/usr           \
 		--buildtype=plain       \
