@@ -4,12 +4,11 @@
 
 name=zip
 version=3.0
-release=7n
-_version=$(echo $version | sed 's/\.//g')
-source=http://downloads.sourceforge.net/sourceforge/infozip/${name}${_version}.tar.gz
+release=1
+source=http://downloads.sourceforge.net/sourceforge/infozip/zip30.tar.gz
 
 build() {
-	cd ${name}${_version}
+	cd zip30
 
 	make -f unix/Makefile LOCAL_ZIP="$CFLAGS" prefix=/usr generic
 	make -f unix/Makefile INSTALL=install prefix=$PKG/usr \
