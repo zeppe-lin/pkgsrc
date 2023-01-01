@@ -5,7 +5,7 @@
 
 name=qt5
 version=5.15.7
-release=7n
+release=1
 source="https://download.qt.io/archive/qt/5.15/$version/single/qt-everywhere-opensource-src-$version.tar.xz
 	qt-everywhere-opensource-src-$version-kf5-1.patch
 	qt5-cflags.patch
@@ -103,6 +103,5 @@ build() {
 	done
 
 	# remove junk
-	rm -rf  $PKG/usr/share/doc $PKG/usr/share/applications \
-		$PKG/usr/share/icons
+	rm -rf  $PKG/usr/share/doc
 }
