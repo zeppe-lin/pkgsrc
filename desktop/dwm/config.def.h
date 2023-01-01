@@ -91,42 +91,43 @@ static const Rule rules[] = {
   // Fixed Monitor.
   //
 
-  // class                 instance          title                     role                      tag mask  isfloating  iscentered  monitor
-  { "Firefox",             NULL,             NULL,                     NULL,                     0,        false,      false,      0  },
-  { "Navigator",           NULL,             NULL,                     NULL,                     0,        false,      false,      0  },
+  // class                instance          title                     role                      tag mask  isfloating  iscentered  monitor
+  { "Firefox",            NULL,             NULL,                     NULL,                     0,        false,      false,      0  },
+  { "Navigator",          NULL,             NULL,                     NULL,                     0,        false,      false,      0  },
 
-  { "Claws-mail",          NULL,             NULL,                     NULL,                     2,        false,      false,      0  },
-  { "Claws-mail",          "claws-mail",     "Input password",         NULL,                     2,        true,       true,       0  },
+  { "Claws-mail",         NULL,             NULL,                     NULL,                     2,        false,      false,      0  },
+  { "Claws-mail",         "claws-mail",     "Input password",         NULL,                     2,        true,       true,       0  },
 
-  { "Sylpheed",            NULL,             NULL,                     NULL,                     2,        false,      false,      0  },
-  { "Sylpheed",            "sylpheed",       "Input password",         NULL,                     2,        true,       true,       0  },
-  { "Sylpheed",            "sylpheed",       "Warning",                NULL,                     2,        true,       true,       0  },
-  { "Sylpheed",            "sylpheed",       "About",                  NULL,                     2,        true,       true,       0  },
-  { "Sylpheed",            "sylpheed",       "Command line options",   NULL,                     2,        true,       true,       0  },
-  { "Sylpheed",            "sylpheed",       "Plug-in manager",        NULL,                     2,        true,       true,       0  },
+  { "Sylpheed",           NULL,             NULL,                     NULL,                     2,        false,      false,      0  },
+  { "Sylpheed",           "sylpheed",       "Input password",         NULL,                     2,        true,       true,       0  },
+  { "Sylpheed",           "sylpheed",       "Warning",                NULL,                     2,        true,       true,       0  },
+  { "Sylpheed",           "sylpheed",       "About",                  NULL,                     2,        true,       true,       0  },
+  { "Sylpheed",           "sylpheed",       "Command line options",   NULL,                     2,        true,       true,       0  },
+  { "Sylpheed",           "sylpheed",       "Plug-in manager",        NULL,                     2,        true,       true,       0  },
+  { "Sylpheed",           "log_window",     "Protocol log",           NULL,                     2,        true,       true,       0  },
 
-  { "tox",                 "tox",            NULL,                     NULL,                     4,        false,      false,      0  },
-  { "irc",                 "tox",            NULL,                     NULL,                     4,        false,      false,      0  },
+  { "tox",                "tox",            NULL,                     NULL,                     4,        false,      false,      0  },
+  { "irc",                "tox",            NULL,                     NULL,                     4,        false,      false,      0  },
 
-  { "rss_zeppelin",        "st",             "newsboat",               NULL,                     8,        false,      false,      0  },
-  { "rss_infosec",         "st",             "newsboat",               NULL,                     8,        false,      false,      0  },
+  { "rss_zeppelin",       "st",             "newsboat",               NULL,                     8,        false,      false,      0  },
+  { "rss_infosec",        "st",             "newsboat",               NULL,                     8,        false,      false,      0  },
 
-  { "Qemu-system-x86_64",  "qemu",           "QEMU",                   NULL,                     128,      false,      false,      0  },
+  { "Qemu-system-x86_64", "qemu",           "QEMU",                   NULL,                     128,      false,      false,      0  },
 
-  { "moc",                 "moc",            "mocp",                   NULL,                     256,      false,      false,      0  },
-  { "Jukebox",             "jukebox",        NULL,                     NULL,                     256,      false,      false,      0  },
+  { "moc",                "moc",            "mocp",                   NULL,                     256,      false,      false,      0  },
+  { "Jukebox",            "jukebox",        NULL,                     NULL,                     256,      false,      false,      0  },
 
   //
   // Current active monitor.
   //
 
-  // class                 instance          title                     role                      tag mask  isfloating  iscentered  monitor
-  { "Ktsuss",              "ktsuss",         NULL,                     NULL,                     0,        true,       true,       -1 },
-  { "Zim",                 "zim",            "Zim - Web Server",       NULL,                     0,        true,       true,       -1 },
-  { "todo.txt",            "todo.txt",       NULL,                     NULL,                     0,        true,       true,       -1 },
-  { "notes.txt",           "notes.txt",      NULL,                     NULL,                     0,        true,       true,       -1 },
-  { "mixer",               "mixer",          "mixer",                  NULL,                     0,        true,       true,       -1 },
-  { "Sxiv",                "xbackground-w",  "sxiv",                   NULL,                     0,        true,       true,       -1 },
+  // class                instance          title                     role                      tag mask  isfloating  iscentered  monitor
+  { "Ktsuss",             "ktsuss",         NULL,                     NULL,                     0,        true,       true,       -1 },
+  { "Zim",                "zim",            "Zim - Web Server",       NULL,                     0,        true,       true,       -1 },
+  { "todo.txt",           "todo.txt",       NULL,                     NULL,                     0,        true,       true,       -1 },
+  { "notes.txt",          "notes.txt",      NULL,                     NULL,                     0,        true,       true,       -1 },
+  { "mixer",              "mixer",          "mixer",                  NULL,                     0,        true,       true,       -1 },
+  { "Sxiv",               "xbackground-w",  "sxiv",                   NULL,                     0,        true,       true,       -1 },
 };
 
 //////////////////////////////////////////////////////////////////////
