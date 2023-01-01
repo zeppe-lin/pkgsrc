@@ -3,14 +3,13 @@
 # Depends on:  p5-digest-hmac
 
 name=p5-net-dns
-version=1.35_03
+version=1.36
 release=1
 source=https://cpan.metacpan.org/authors/id/N/NL/NLNETLABS/Net-DNS-$version.tar.gz
 
 build() {
 	cd Net-DNS-$version
 
-	#finddeps-distmeta; exit 1
 	PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor \
 		--no-online-tests --no-IPv6-tests
 
