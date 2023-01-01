@@ -8125,6 +8125,7 @@ drwxrwxr-x	root/root	opt/metasploit/modules/exploits/linux/http/
 -rw-rw-r--	root/root	opt/metasploit/modules/exploits/linux/http/nuuo_nvrmini_unauth_rce.rb
 -rw-rw-r--	root/root	opt/metasploit/modules/exploits/linux/http/op5_config_exec.rb
 -rw-rw-r--	root/root	opt/metasploit/modules/exploits/linux/http/openfiler_networkcard_exec.rb
+-rw-rw-r--	root/root	opt/metasploit/modules/exploits/linux/http/opentsdb_yrange_cmd_injection.rb
 -rw-rw-r--	root/root	opt/metasploit/modules/exploits/linux/http/pandora_fms_events_exec.rb
 -rw-rw-r--	root/root	opt/metasploit/modules/exploits/linux/http/pandora_fms_exec.rb
 -rw-rw-r--	root/root	opt/metasploit/modules/exploits/linux/http/pandora_fms_sqli.rb
