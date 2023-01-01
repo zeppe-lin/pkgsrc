@@ -1,22 +1,25 @@
-# Description: Use ARP to discover IP hosts on the local network
+# Description: Use ARP to discover and fingerprint IPv4 hosts on the local network
 # URL:         https://github.com/royhills/arp-scan
-# Depends on:  libpcap p5-lwp-protocol-https p5-http-message
+# Depends on:  libcap libpcap p5-libwww p5-lwp-protocol-https p5-text-csv
 
 name=arp-scan
-version=1.9.8
+version=1.10.0
 release=1
-source=https://github.com/royhills/arp-scan/archive/$version/$name-$version.tar.gz
+source=https://github.com/royhills/$name/releases/download/$version/$name-$version.tar.gz
 
 build() {
 	mkdir build; cd build
 
 	touch ../$name-$version/INSTALL
 	autoreconf -i ../$name-$version
-	../$name-$version/configure  \
-		--prefix=/usr        \
+	../$name-$version/configure      \
+		--prefix=/usr            \
+		--with-libcap=yes        \
+		--mandir=/usr/share/man  \
 
 	make V=1
 	make DESTDIR=$PKG install
 
-	chmod 4755 $PKG/usr/bin/arp-scan
+	setcap cap_net_raw+p $PKG/usr/bin/arp-scan
+	#chmod 4755 $PKG/usr/bin/arp-scan
 }
