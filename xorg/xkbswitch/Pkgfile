@@ -1,15 +1,17 @@
 # Description: Keyboard layout switcher for X
-# URL:         https://zeppe-lin.github.io/
+# URL:         https://github.com/zeppe-lin/xkbswitch
 # Depends on:  xorg-libx11
 
 name=xkbswitch
-version=0.1.3
+version=0.1.3-a8d5ea8
 release=1
-source="src/xkbswitch.c
-	src/xkbswitch.1.pod
-	src/config.mk
-	src/Makefile"
+source=https://github.com/zeppe-lin/$name/archive/${version#*-}/$name-$version.tar.gz
 
 build() {
+	cd $name-${version#*-}*
+
+	# pick up system flags
+	sed -i '/^\(C\|LD\)FLAGS/s/ = /+=/g' config.mk
+
 	make PREFIX=/usr DESTDIR=$PKG install
 }
