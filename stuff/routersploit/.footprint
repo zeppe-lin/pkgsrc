@@ -2453,7 +2453,6 @@ drwxr-xr-x	root/root	opt/routersploit/cryptography/hazmat/backends/openssl/__pyc
 -rw-r--r--	root/root	opt/routersploit/cryptography/hazmat/backends/openssl/__pycache__/utils.cpython-39.pyc
 -rw-r--r--	root/root	opt/routersploit/cryptography/hazmat/backends/openssl/__pycache__/x25519.cpython-39.pyc
 -rw-r--r--	root/root	opt/routersploit/cryptography/hazmat/backends/openssl/__pycache__/x448.cpython-39.pyc
--rw-r--r--	root/root	opt/routersploit/cryptography/hazmat/backends/openssl/__pycache__/x509.cpython-39.pyc
 -rw-r--r--	root/root	opt/routersploit/cryptography/hazmat/backends/openssl/aead.py
 -rw-r--r--	root/root	opt/routersploit/cryptography/hazmat/backends/openssl/backend.py
 -rw-r--r--	root/root	opt/routersploit/cryptography/hazmat/backends/openssl/ciphers.py
@@ -2471,7 +2470,6 @@ drwxr-xr-x	root/root	opt/routersploit/cryptography/hazmat/backends/openssl/__pyc
 -rw-r--r--	root/root	opt/routersploit/cryptography/hazmat/backends/openssl/utils.py
 -rw-r--r--	root/root	opt/routersploit/cryptography/hazmat/backends/openssl/x25519.py
 -rw-r--r--	root/root	opt/routersploit/cryptography/hazmat/backends/openssl/x448.py
--rw-r--r--	root/root	opt/routersploit/cryptography/hazmat/backends/openssl/x509.py
 drwxr-xr-x	root/root	opt/routersploit/cryptography/hazmat/bindings/
 -rw-r--r--	root/root	opt/routersploit/cryptography/hazmat/bindings/__init__.py
 drwxr-xr-x	root/root	opt/routersploit/cryptography/hazmat/bindings/__pycache__/
@@ -2483,6 +2481,7 @@ drwxr-xr-x	root/root	opt/routersploit/cryptography/hazmat/bindings/_rust/
 -rw-r--r--	root/root	opt/routersploit/cryptography/hazmat/bindings/_rust/__init__.pyi
 -rw-r--r--	root/root	opt/routersploit/cryptography/hazmat/bindings/_rust/asn1.pyi
 -rw-r--r--	root/root	opt/routersploit/cryptography/hazmat/bindings/_rust/ocsp.pyi
+-rw-r--r--	root/root	opt/routersploit/cryptography/hazmat/bindings/_rust/pkcs7.pyi
 -rw-r--r--	root/root	opt/routersploit/cryptography/hazmat/bindings/_rust/x509.pyi
 drwxr-xr-x	root/root	opt/routersploit/cryptography/hazmat/bindings/openssl/
 -rw-r--r--	root/root	opt/routersploit/cryptography/hazmat/bindings/openssl/__init__.py
