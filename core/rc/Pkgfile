@@ -1,47 +1,13 @@
 # Description: Init scripts for sysvinit
-# URL:         https://zeppe-lin.github.io/
+# URL:         https://github.com/zeppe-lin/rc
 
 name=rc
-version=2.32.1
+version=2.32.1-9bbd69a
 release=1
-source="src/inittab
-	src/rc
-	src/rc.fix
-	src/rc.local
-	src/rc.modules
-	src/rc.multi
-	src/rc.shutdown
-	src/rc.single
-	src/rc.netfs
-	src/rc.conf.5.pod
-
-	rc.conf"
+source=https://github.com/zeppe-lin/rc/archive/${version#*-}/rc-$version.tar.gz
 
 build() {
-	# prepare man page
-	pod2man --nourls -r $version -c ' ' -n rc.conf -s 5 \
-		rc.conf.5.pod > rc.conf.5
+	cd $name-${version#*-}*
 
-	install -d $PKG/etc
-
-	install -m 0644 inittab     $PKG/etc/
-	install -m 0644 rc.conf     $PKG/etc/
-
-	install -m 0755 rc          $PKG/etc/
-	install -m 0755 rc.fix      $PKG/etc/
-	install -m 0755 rc.local    $PKG/etc/
-	install -m 0755 rc.modules  $PKG/etc/
-	install -m 0755 rc.multi    $PKG/etc/
-	install -m 0755 rc.shutdown $PKG/etc/
-	install -m 0755 rc.single   $PKG/etc/
-
-	install -d $PKG/etc/rc.d
-	install -m 0755 rc.netfs    $PKG/etc/rc.d/netfs
-
-	install -d $PKG/usr/share/man/man5
-	install -m 0644 rc.conf.5   $PKG/usr/share/man/man5/
-
-	install -d $PKG/var/log      $PKG/var/lib/urandom
-	touch      $PKG/var/log/boot $PKG/var/lib/urandom/seed
-	chmod 0640 $PKG/var/log/boot $PKG/var/lib/urandom/seed
+	make DESTDIR=$PKG install
 }
