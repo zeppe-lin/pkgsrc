@@ -1,12 +1,1 @@
-0a8aea537abdf573ec06e4c0d717a496  Makefile
-9364895093c9550ffc8f3d67b3cab607  finddeps-distmeta.1.pod
-96f1eac08074c3c59fbc42546e73509b  finddeps-distmeta.in
-89d9836551a94420f18d3770ee679708  finddeps-linked.1.pod
-b7632de508ef17b2090c53acaf1cf7a9  finddeps-linked.in
-ae9f4e888695f892c87638141e347449  finddisappeared.1.pod
-86dcc8fd6537800088b0aee787a52c7a  finddisappeared.in
-a2445aaf41ed526f5224c3e8c582c1c5  finddisowned.1.pod
-47641e0485f6dbbc6983b642098d9694  finddisowned.conf
-ea43c4ab2d6b79548b75c8b6c022a559  finddisowned.in
-6fa849a66cddc76d833706bf736cb10e  findredundantdeps.1.pod
-8040a0518dfc52b94a59f8ed2dfd1ad5  findredundantdeps.in
+2f1e76fee72bdcea9bc7132bb2575fba  pkgmaint-0.1-8b7acc9.tar.gz
