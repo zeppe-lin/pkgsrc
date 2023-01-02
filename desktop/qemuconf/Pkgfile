@@ -1,16 +1,13 @@
 # Description: Qemu launcher with config file support
-# URL:         https://zeppe-lin.github.io/
+# URL:         https://github.com/zeppe-lin/qemuconf
 
 name=qemuconf
-version=0.2.1
+version=0.2.1-9bc49a2
 release=1
-source="src/config.mk
-	src/Makefile
-	src/qemuconf.c
-	src/qemuconf.1.pod
-	src/qemuconf-import
-	src/qemuconf-import.1.pod"
+source=https://github.com/zeppe-lin/$name/archive/${version#*-}/$name-$version.tar.gz
 
 build() {
+	cd $name-${version#*-}*
+
 	make PREFIX=/usr DESTDIR=$PKG install
 }
