@@ -1,16 +1,18 @@
 # Description: Initramfs generator
-# URL:         https://zeppe-lin.github.io/
+# URL:         https://github.com/zeppe-lin/mkinitramfs
 
 name=mkinitramfs
-version=0.2.3
+version=0.2.2-5567e56
 release=1
-source=config
+source="https://github.com/zeppe-lin/$name/archive/${version#*-}/$name-$version.tar.gz
+	config"
 
 build() {
-	cp -Pr $PKGMK_ROOT/src/* .
+	cd $name-${version#*-}*
+
 	make DESTDIR=$PKG install
 
-	install -m 0644 -Dt $PKG/etc/$name/ config
+	install -m 0644 -Dt $PKG/etc/$name/ $SRC/config
 	install -m 0644 -D bash_completion \
 		$PKG/usr/share/bash-completion/completions/$name
 }
