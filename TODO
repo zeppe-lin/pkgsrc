@@ -1,0 +1,15 @@
+TODO pkgsrc
+
+    * Get rid of "src" dir for the following packages:
+      * ./stuff/nmap/src
+      * ./stuff/tnscmd10g/src
+      * ./stuff/thc-ipv6/src
+      * ./xorg/transset-df/src
+
+    * ./system/linux: switch to upstream wifi patches
+
+    * idea: add linux53 & linux54 packages?
+
+
+vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
+End of file.
