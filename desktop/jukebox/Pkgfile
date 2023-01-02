@@ -3,16 +3,14 @@
 # Depends on:   p5-gtk2 p5-net-dbus
 
 name=jukebox
-version=1.1.16zpln
+version=1.1.16zpln-4005965
 release=1
-source=/dev/null
+source=https://github.com/zeppe-lin/$name/archive/${version#*-}/$name-$version.tar.gz
 
 build() {
-	mkdir -p $PKG/usr/bin/
-	mkdir -p $PKG/usr/share/jukebox
-	cp -Pr $PKGMK_ROOT/src/* $PKG/usr/share/jukebox/
-	chmod +x $PKG/usr/share/jukebox/jukebox.pl
-	chmod +x $PKG/usr/share/jukebox/iceserver.pl
+	mkdir -p $PKG/usr/bin
+	mkdir -p $PKG/usr/share
+	cp -Pr $name-${version#*-}* $PKG/usr/share/jukebox
 	ln -s /usr/share/jukebox/jukebox.pl   $PKG/usr/bin/jukebox
 	ln -s /usr/share/jukebox/iceserver.pl $PKG/usr/bin/iceserver
 
@@ -24,6 +22,6 @@ build() {
 	mv jukebox.desktop $PKG/usr/share/applications
 
 	# remove junk
-	rm AUTHORS COPYING README Makefile pix/LICENSE pix/README \
-		layout_doc.mkd
+	rm AUTHORS COPYING README.md TODO Makefile \
+		pix/LICENSE pix/README layout_doc.mkd
 }
