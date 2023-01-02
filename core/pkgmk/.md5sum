@@ -1,7 +1,2 @@
-c475d8a6da614684d0c6c35821cff089  Makefile
-d39912faed7f75f6e7e2fa3c31ba586b  Pkgfile.5.pod
-25a3a504f8b7e10010f03ed8b5ef4485  bash_completion
-f5b19f8866a540d51f5f8f75017e4089  pkgmk.8.pod
+9ce26fd4d130944068a6c285022d3d8b  pkgmk-5.41-1baeacc.tar.gz
 ecd68112bc6f77f5daa0e4cb2dfe1649  pkgmk.conf
-bda52f017206a4a14fea1a19ae710393  pkgmk.conf.5.pod
-2510a4d18e23fc6b834b8ecec16d7e43  pkgmk.in
