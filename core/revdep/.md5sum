@@ -1,15 +1,1 @@
-b07b8651d9176e50f204d95e170c86ec  Makefile
-aedd26f82c44c506ea0ac547a0ff02b3  bash_completion
-c8b281cc5a89ed5d51257b49060b5b5d  config.mk
-ea7a90c863c8983ac5d685b3f2e29efc  elf-cache.cpp
-ec197abe3f8f07299288dd3b8ae55df0  elf-cache.h
-c674ad6d1ce3b971635f5e5384a4ed7d  elf.cpp
-31db5e8cf60ee8ac936ec002277e6fa7  elf.h
-e80590e08da925bb5d5adbd24202c868  main.cpp
-5f98a6de1959befc1bc93676156ea124  main.h
-07376e3b568d1a6eb3ea4096883ffe5e  pathnames.h
-75ec09d637d220e835a80e5df97170e7  pkg.cpp
-5547e821b788840697c6019314679bfd  pkg.h
-b310d08ad6cd96fa8a9aab38f06dd9ea  revdep.1.pod
-a34cdaebdaab5687a23609faf2f853ee  utility.cpp
-1f3550521cbf4caf6fb1638f313bbc3a  utility.h
+e45fa4cddcdeda5d6bebac56298d9dde  revdep-2.1-20d4b3f.tar.gz

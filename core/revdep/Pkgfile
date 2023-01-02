@@ -1,20 +1,20 @@
 # Description: Check for missing libraries of installed packages
-# URL:         https://zeppe-lin.github.io/
+# URL:         https://github.com/zeppe-lin/revdep
 # Depends on:  elfutils
 
 name=revdep
-version=2.1
+version=2.1-20d4b3f
 release=1
-source="src/*.cpp
-	src/*.h
-	src/*.pod
-	src/config.mk
-	src/Makefile
-	src/bash_completion"
+source=https://github.com/zeppe-lin/$name/archive/${version#*-}/$name-$version.tar.gz
 
 build() {
+	cd $name-${version#*-}*
+
 	# it's safe to optimize
 	export CXXFLAGS="$(echo $CXXFLAGS | sed 's/-O. /-O3 /')"
+
+	# pick up system flags
+	sed -i '/^\(CXX\|LD\)FLAGS/s/ = /+=/g' config.mk
 
 	make DESTDIR=$PKG install
 
