@@ -9,5 +9,8 @@ source=https://github.com/zeppe-lin/$name/archive/${version#*-}/$name-$version.t
 build() {
 	cd $name-${version#*-}*
 
+	# pick up system flags
+	sed -i '/^\(C\|LD\)FLAGS/s/ = /+=/g' config.mk
+
 	make PREFIX=/usr DESTDIR=$PKG install
 }
