@@ -1,20 +1,17 @@
 # Description: Build customized root filesystem for chroot installation
-# URL:         https://zeppe-lin.github.io/
+# URL:         https://github.com/zeppe-lin/mkrootfs
 # Depends on:  gnupg pkgman pkgmk revdep tar
 
 name=mkrootfs
-version=1.0
+version=0.2.1-f4bf8d5
 release=1
-source="src/mkrootfs.in
-	src/mkrootfs.8.pod
-	src/mkrootfs.config.5.pod
-	src/mkrootfs.release.7.pod
-	src/Makefile
-
+source="https://github.com/zeppe-lin/$name/archive/${version#*-}/$name-$version.tar.gz
 	config"
 
 build() {
+	cd $name-${version#*-}*
+
 	make DESTDIR=$PKG install
 
-	install -m 0644 -Dt $PKG/etc/mkrootfs/ config
+	install -m 0644 -Dt $PKG/etc/mkrootfs/ $SRC/config
 }

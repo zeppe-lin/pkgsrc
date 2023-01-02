@@ -1,6 +1,2 @@
-d187ec7769b539820535ce8c18b1b532  Makefile
 b9b0fd3c1f67e31208c27094b4176731  config
-e39cd62562ac3387191b20ef3486a162  mkrootfs.8.pod
-b28e14ff5071726d5487944d6cafee0a  mkrootfs.config.5.pod
-1eef178c93fb065c1cac237752094409  mkrootfs.in
-7a6bd6c356f97bb810f1a3e200d8bbf4  mkrootfs.release.7.pod
+976e659b7fd00207b6906c523ae144d2  mkrootfs-0.2.1-f4bf8d5.tar.gz
