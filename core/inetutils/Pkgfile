@@ -4,7 +4,7 @@
 
 name=inetutils
 version=2.4
-release=1
+release=2
 source="http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.gz
 	inetd.conf rc.inetd"
 
@@ -28,13 +28,13 @@ build() {
 	make V=1
 	make DESTDIR=$PKG install
 
-	install -d $PKG/bin $PKG/sbin $PKG/etc
-
+	mkdir -p $PKG/bin $PKG/sbin
 	mv $PKG/usr/bin/hostname $PKG/bin/
 	mv $PKG/usr/bin/ifconfig $PKG/sbin/
 
-	install -m 0644 -D $SRC/inetd.conf $PKG/etc/inetd.conf
-	install -m 0755 -D $SRC/rc.inetd   $PKG/etc/rc.d/inetd
+	mkdir -p $PKG/etc/rc.d
+	install -m 0644 $SRC/inetd.conf $PKG/etc/inetd.conf
+	install -m 0755 $SRC/rc.inetd   $PKG/etc/rc.d/inetd
 
 	# remove junk
 	rm -r $PKG/usr/share/info/
