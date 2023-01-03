@@ -1,6 +1,6 @@
 README iproute2
 
-POST-INSTALL
+KERNEL MODULE
 
     Add the following lines to /etc/rc.modules to be able to use
     rc.bridge:
