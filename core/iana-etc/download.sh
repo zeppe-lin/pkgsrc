@@ -25,14 +25,25 @@ process() {
 	echo 'Processing protocols'
 	${awk} -F "[<>]" -v URL="${url_pn}" -v DT="$(timestamp protocols.xml)" '
 		BEGIN{
-			print "# /etc/protocols, last updated " DT
-			print "# Source: " URL
+			print "#"
+			print "# /etc/protocols: protocols definition files"
+			print "#"
+			print "# See protocols(5) for more information."
+			print "#"
+			print ""
+			print "# Last updated: " DT
+			print "# Source:       " URL
+			print ""
 		}
 		/<record/ {v = n = ""}
 		/<value/ {v = $3}
 		/<name/ && $3!~/ / {n = $3}
 		/<\/record/ && n && v != ""{
 			printf "%-12s %3i %s\n", tolower(n), v, n
+		}
+		END{
+			print ""
+			print "# End of file."
 		}
 	' < protocols.xml > protocols.new
 	[ ${?} -eq 0 ] || exit 30
