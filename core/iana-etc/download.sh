@@ -54,6 +54,8 @@ process() {
 			print "#"
 			print "# /etc/services: internet network services list"
 			print "#"
+			print "# See services(5) for more information."
+			print "#"
 			print ""
 			print "# Last updated: " DT
 			print "# Source:       " URL
