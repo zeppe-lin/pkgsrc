@@ -10,5 +10,5 @@ source=https://github.com/aanarchyy/$name/archive/${version#*-}/$name-${version#
 build() {
 	cd $name-${version#*-}*
 
-	make -C src DESTDIR=$PKG prefix=/usr install
+	make -C src prefix=/usr DESTDIR=$PKG install
 }
