@@ -20,6 +20,5 @@ build() {
 	make V=1
 	make DESTDIR=$PKG install
 
-	setcap cap_net_raw+p $PKG/usr/bin/arp-scan
 	#chmod 4755 $PKG/usr/bin/arp-scan
 }
