@@ -26,7 +26,7 @@ process() {
 	${awk} -F "[<>]" -v URL="${url_pn}" -v DT="$(timestamp protocols.xml)" '
 		BEGIN{
 			print "#"
-			print "# /etc/protocols: protocols definition files"
+			print "# /etc/protocols: protocols definition file"
 			print "#"
 			print "# See protocols(5) for more information."
 			print "#"
@@ -51,8 +51,13 @@ process() {
 	echo 'Processing services'
 	${awk} -F "[<>]" -v URL="${url_snpn}" -v DT="$(timestamp services.xml)" '
 		BEGIN{
-			print "# /etc/services, last updated " DT
-			print "# Source: " URL
+			print "#"
+			print "# /etc/services: internet network services list"
+			print "#"
+			print ""
+			print "# Last updated: " DT
+			print "# Source:       " URL
+			print ""
 		}
 		/<record/ {n = u = p = c = ""}
 		/<name/ && !/\(/ {n = $3}
@@ -61,6 +66,10 @@ process() {
 		/Unassigned/ || /Reserved/ || /historic/ {c = 1}
 		/<\/record/ && n && u && p && !c{
 			printf "%-15s %5i/%s\n", n, u, p
+		}
+		END{
+			print ""
+			print "# End of file."
 		}
 	' < services.xml > services.new
 	[ ${?} -eq 0 ] || exit 31
