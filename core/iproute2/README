@@ -2,8 +2,8 @@ README iproute2
 
 KERNEL MODULE
 
-    Add the following lines to /etc/rc.modules to be able to use
-    rc.bridge:
+    Add the following lines to /etc/rc.modules to autoload modules
+    needed by /etc/rc.d/bridge:
 
         /sbin/modprobe tun
         /sbin/modprobe tap
