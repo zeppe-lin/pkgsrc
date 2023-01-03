@@ -5,4 +5,4 @@
 
 gdk-pixbuf-query-loaders --update-cache
 
-# End of file
+# End of file.
