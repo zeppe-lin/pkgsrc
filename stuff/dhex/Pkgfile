@@ -10,12 +10,11 @@ source=http://www.dettus.net/dhex/dhex_$version.tar.gz
 build() {
 	cd dhex_$version
 
+	mkdir -p $PKG/usr/bin $PKG/usr/share/man/man1 $PKG/usr/share/man/man5
+
 	sed -i 's|$(DESTDIR)/man|$(DESTDIR)/share/man|g' Makefile
 	sed -i '/strip dhex/d' Makefile
 
 	make LDFLAGS="$LDFLAGS" CPPFLAGS="$CPPFLAGS" CFLAGS="$CFLAGS"
-
-	install -d $PKG/usr/bin $PKG/usr/share/man/man1 $PKG/usr/share/man/man5
-
 	make DESTDIR=$PKG/usr install
 }
