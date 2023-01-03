@@ -3,12 +3,15 @@
 # /usr/bin/runjobs: run all executables in specified directory
 #
 
-if [ -z "$1" ]; then
-	echo "usage: $0 <dir>"
+if [ "$1" = "" ]; then
+	cat >&2 <<EOF
+Usage: ${0##*/} DIR
+Run all executables in specified directory.
+EOF
 	exit 1
 fi
 
-cd "$1" || exit 1
+cd "$1" || exit 2
 
 for file in ./*; do
 	if [ -f "$file" ] && [ -x "$file" ]; then
