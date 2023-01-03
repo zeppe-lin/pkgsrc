@@ -1,11 +1,12 @@
 README cpufrequtils
 
-KERNEL MODULES
+KERNEL MODULE
 
-    Add the following modules to /etc/rc.modules:
+    Add the following lines to /etc/rc.modules to autoload modules
+    needed by cpufrequtils:
 
-        cpufreq_powersave
-        cpufreq_userspace
+        /sbin/modprobe cpufreq_powersave
+        /sbin/modprobe cpufreq_userspace
 
 
 vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
