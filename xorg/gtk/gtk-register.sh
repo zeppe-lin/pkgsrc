@@ -5,4 +5,4 @@
 
 /usr/bin/gtk-query-immodules-2.0 --update-cache
 
-# End of file
+# End of file.
