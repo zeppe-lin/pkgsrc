@@ -4,7 +4,7 @@
 #
 
 REPOS=/var/lib/git
-USR=git
+USER=git
 
 SSD=/sbin/start-stop-daemon
 PROG=/usr/lib/git-core/git-daemon
@@ -13,8 +13,9 @@ OPTS="--syslog --export-all --base-path=$REPOS $REPOS"
 
 case $1 in
 start)
+	# intentional
 	# shellcheck disable=2086
-	$SSD --start --chuid $USR --background --make-pidfile \
+	$SSD --start --chuid $USER --background --make-pidfile \
 		--pidfile $PID --exec $PROG -- $OPTS
 	;;
 stop)
