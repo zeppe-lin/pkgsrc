@@ -1,5 +1,10 @@
-# /etc/services, last updated 2022-12-20
-# Source: https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xml
+#
+# /etc/services: internet network services list
+#
+
+# Last updated: 2022-12-26
+# Source:       https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xml
+
 tcpmux              1/tcp
 tcpmux              1/udp
 compressnet         2/tcp
@@ -11499,3 +11504,5 @@ matahari        49000/tcp
 nusrp           49001/tcp
 nusdp-disc      49001/udp
 inspider        49150/tcp
+
+# End of file.

@@ -1,5 +1,12 @@
-# /etc/protocols, last updated 2022-09-28
-# Source: https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xml
+#
+# /etc/protocols: protocols definition file
+#
+# See protocols(5) for more information.
+#
+
+# Last updated: 2022-09-28
+# Source:       https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xml
+
 hopopt         0 HOPOPT
 icmp           1 ICMP
 igmp           2 IGMP
@@ -136,3 +143,5 @@ rohc         142 ROHC
 ethernet     143 Ethernet
 aggfrag      144 AGGFRAG
 reserved     255 Reserved
+
+# End of file.
