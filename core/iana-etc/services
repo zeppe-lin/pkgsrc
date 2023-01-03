@@ -1,6 +1,8 @@
 #
 # /etc/services: internet network services list
 #
+# See services(5) for more information.
+#
 
 # Last updated: 2022-12-26
 # Source:       https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xml
