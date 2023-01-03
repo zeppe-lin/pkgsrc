@@ -20,7 +20,7 @@ stop)
 	affect_change --governor performance
 	;;
 *)
-	echo "usage: $0 [start|stop]"
+	echo "Usage: $0 [start|stop]"
 	;;
 esac
 
