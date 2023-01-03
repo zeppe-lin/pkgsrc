@@ -2,19 +2,19 @@
 # URL:         http://www.gnu.org/software/ncurses/ncurses.html
 
 name=ncurses
-version=6.3
+version=6.4
 release=1
 source="https://invisible-mirror.net/archives/$name/$name-$version.tar.gz
-	$name-$version-libs.patch
-	$name-$version-pkgconfig.patch"
+	$name-6.3-libs.patch
+	$name-6.3-pkgconfig.patch"
 
 build() {
 	# do not link against test libraries
-	patch -d $name-$version -p1 -i $SRC/$name-$version-libs.patch
+	patch -d $name-$version -p1 -i $SRC/$name-6.3-libs.patch
 
 	# do not leak build-time LDFLAGS into the pkgconfig files:
 	# https://bugs.archlinux.org/task/68523
-	patch -d $name-$version -p1 -i $SRC/$name-$version-pkgconfig.patch
+	patch -d $name-$version -p1 -i $SRC/$name-6.3-pkgconfig.patch
 
 	mkdir build; cd build
 
