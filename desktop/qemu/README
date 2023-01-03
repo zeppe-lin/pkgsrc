@@ -11,7 +11,7 @@ KVM
 
     Make sure your user is in the 'kvm' group.  Just run
 
-        gpasswd -a <USER> kvm
+        sudo usermod -aG kvm <USER>
 
     then have <USER> re-login.
 
@@ -19,7 +19,7 @@ KVM
     not let you access it.  You can tell udev to reset
     ownership/perms:
 
-        udevadm trigger -c add /dev/kvm
+        sudo udevadm trigger -c add /dev/kvm
 
 SHARE THE DIRECTORY
 
