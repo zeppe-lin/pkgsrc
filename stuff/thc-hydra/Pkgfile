@@ -11,7 +11,7 @@ build() {
 	# build in separate dir is broken
 	cd $name-${version#*-}*
 
-	# thc-hydra has default -O3
+	# thc-hydra has -O3 by default, remove system optimization
 	export CFLAGS="$(echo $CFLAGS | sed 's/-O. //')"
 
 	sed -i 's/dummy_ssh/dummy_sshkey/' hydra-sshkey.c
