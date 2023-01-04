@@ -6,7 +6,8 @@ TODO pkgsrc
       * ./stuff/thc-ipv6/src
       * ./xorg/transset-df/src
 
-    * ./system/linux: switch to upstream wifi patches
+    * ./system/linux: switch to the upstream wifi patches:
+      https://github.com/sighook/linux-wifi-pentest-patches
 
     * idea: add linux53 & linux54 packages?
 
