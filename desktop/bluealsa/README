@@ -21,9 +21,9 @@ CONFIGURATION & USAGE
             Bourree_in_E_minor.wav
 
     Setup parameters of the bluealsa PCM device can be set in the
-    local .asoundrc configuration file like this:
+    local  .asoundrc  configuration file like this:
 
-        cat ~/.asoundrc
+        ~/.asoundrc:
         defaults.bluealsa.service "org.bluealsa"
         defaults.bluealsa.device "XX:XX:XX:XX:XX:XX"
         defaults.bluealsa.profile "a2dp"
@@ -135,9 +135,8 @@ TROUBLESHOOTING
         an incorrect ALSA PCM name.  Run  bluealsa-aplay --list-pcms
         for the list of currently available ALSA PCM names - it might
         give you a hint what is wrong with your  .asoundrc  entry.
-        Also, take a look at the "Using the bluealsa ALSA pcm plugin"
-        bluez-alsa wiki page.
-        https://github.com/Arkq/bluez-alsa/wiki/Using-the-bluealsa-ALSA-pcm-plugin
+        Also, take a look at the bluealsa-plugins(7) and wiki page:
+        https://github.com/Arkq/bluez-alsa/wiki
 
 
 vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
