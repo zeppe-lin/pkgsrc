@@ -40,7 +40,8 @@ an introduction in "what pkgsrc is" and "how to use it".
 
 INSTALL
 -------
-See the [Zeppe-Lin Handbook](https://zeppe-lin.github.io) for
+See the [Zeppe-Lin Handbook / Install
+Zeppe-Lin](https://zeppe-lin.github.io/#INSTALL-ZEPPE-LIN) for
 installation instructions.
 
 LICENSE
