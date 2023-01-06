@@ -3,7 +3,7 @@
 # Depends on:  alsa-lib dbus-glib gtk3 nss xorg-libxtst
 
 name=firefox-bin
-version=108.0.1
+version=108.0.2
 release=1
 source=https://ftp.mozilla.org/pub/firefox/releases/$version/linux-x86_64/en-US/firefox-$version.tar.bz2
 
