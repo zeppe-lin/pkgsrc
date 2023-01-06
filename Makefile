@@ -1,5 +1,37 @@
 #!/usr/bin/make -f
 
+define USAGE
+Usage: make [-j JOBS] [TARGET...] [PKGSRCDIR="PATH..."]
+Check Zeppe-Lin package source(s) for typical errors.
+
+TARGETS:
+
+Check footprint files for typical errors:
+
+footprint-all         perform all footprint checks listed below
+├── footprint-sugid   check for SUID/SGID files and dirs
+├── footprint-ww      check for world-writeable files and dirs
+├── footprint-dirs    check for invalid directories like /usr/info
+└── footprint-junk    check for junk files like perllocal.pod, etc
+
+Check packages' source collections for missing dependencies:
+
+deps-all              perform all dependency checks listed below
+├── deps-core         check for missing deps for core collection
+├── deps-system       check for missing deps for system collection
+├── deps-xorg         check for missing deps for xorg collection
+├── deps-desktop      check for missing deps for desktop collection
+└── deps-stuff        check for missing deps for stuff collection
+
+By default, PKGSRCDIR variable is set to the following packages
+sources collections:
+  ${CURDIR}/core
+  ${CURDIR}/system
+  ${CURDIR}/xorg
+  ${CURDIR}/desktop
+  ${CURDIR}/stuff
+endef
+
 PKGSRCDIR = ${CURDIR}/core    \
 	    ${CURDIR}/system  \
 	    ${CURDIR}/xorg    \
@@ -154,33 +186,7 @@ deps-stuff:
 	   done
 
 help:
-	@echo "Usage: make [-j JOBS] [TARGET...] [PKGSRCDIR=\"PATH...\"]"
-	@echo "Lint Zeppe-Lin package source(s) for typical errors."
-	@echo ""
-	@echo "TARGETS:"
-	@echo ""
-	@echo "all|help|<empty>      display this help message"
-	@echo ""
-	@echo "Check footprint files for typical errors:"
-	@echo ""
-	@echo "footprint-all         perform all footprint checks listed below"
-	@echo "├── footprint-sugid   check for SUID/SGID files and dirs"
-	@echo "├── footprint-ww      check for world-writeable files and dirs"
-	@echo "├── footprint-dirs    check for invalid directories like /usr/info"
-	@echo "└── footprint-junk    check for junk files like perllocal.pod, etc"
-	@echo ""
-	@echo "Check packages' source collections for missing dependencies:"
-	@echo ""
-	@echo "deps-all              perform all dependency checks listed below"
-	@echo "├── deps-core         check for missing deps for core collection"
-	@echo "├── deps-system       check for missing deps for system collection"
-	@echo "├── deps-xorg         check for missing deps for xorg collection"
-	@echo "├── deps-desktop      check for missing deps for desktop collection"
-	@echo "└── deps-stuff        check for missing deps for stuff collection"
-	@echo
-	@echo "By default, PKGSRCDIR variable is set to the following"
-	@echo "packages sources collections:"
-	@for _D in ${PKGSRCDIR}; do echo "  $$_D"; done
+	@echo $(info ${USAGE})
 
 .PHONY: all help
 .PHONY: footprint-all deps-all
