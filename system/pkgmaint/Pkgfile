@@ -3,7 +3,7 @@
 # Depends on:  p5-yaml-libyaml
 
 name=pkgmaint
-version=0.1-8b7acc9
+version=0.1-030bb9e
 release=1
 source=https://github.com/zeppe-lin/$name/archive/${version#*-}/$name-$version.tar.gz
 
