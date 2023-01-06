@@ -1,8 +1,8 @@
-# Description: Control the creation and termination of system-level processes
+# Description: Control the creation/termination of system-level processes
 # URL:         https://github.com/zeppe-lin/start-stop-daemon
 
 name=start-stop-daemon
-version=20210417-848cbe2
+version=20210417-5970a6c
 release=1
 source=https://github.com/zeppe-lin/$name/archive/${version#*-}/$name-$version.tar.gz
 
