@@ -1,9 +1,12 @@
 TODO linux
 
-    * switch to the upstream wifi patches:
-      https://github.com/sighook/linux-wifi-pentest-patches
+    [ ] Switch to the upstream wifi patches:
+        https://github.com/sighook/linux-wifi-pentest-patches
 
-    * idea: add linux53 & linux54 packages?
+    [ ] Add kernel_gcc_patch for cpu optimization support?
+        https://github.com/graysky2/kernel_compiler_support
+
+    [ ] Add linux53 & linux54 packages?
 
 
 vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
