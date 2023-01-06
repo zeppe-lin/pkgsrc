@@ -3,7 +3,7 @@
 # Depends on:  libarchive
 
 name=pkgutils
-version=5.41-3a31290
+version=5.41-fa63b6c
 release=1
 source="https://github.com/zeppe-lin/$name/archive/${version#*-}/$name-$version.tar.gz
 	pkgadd.conf"
