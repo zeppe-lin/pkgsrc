@@ -2,12 +2,12 @@
 // dwm customization adjusted for Zeppe-Lin.                        //
 // See dwm LICENSE file for copyright and license details.          //
 //                                                                  //
-// Copy this file (or src/config.def.h.sample) to config.h and      //
-// adjust conform your needs to override these settings.            //
+// Copy this file (or config.def.h from sources) to config.h and    //
+// adjust conform to your needs to override this customization.     //
 //////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////
-// Appearance.
+// Appearance.                                                      //
 //////////////////////////////////////////////////////////////////////
 
 //static const char        font[]             = "Sans Mono:size=9";
@@ -41,7 +41,7 @@ static const bool          topbar             = false;      // false means botto
 static const double        defaultopacity     = DEFAULT_OPACITY;
 
 //////////////////////////////////////////////////////////////////////
-// Layout(s).
+// Layout(s).                                                       //
 //////////////////////////////////////////////////////////////////////
 
 static const float         mfact              = 0.55;       // factor of master area size [0.05..0.95]
@@ -59,7 +59,7 @@ static const Layout layouts[] = {
 };
 
 //////////////////////////////////////////////////////////////////////
-// Tags.
+// Tags.                                                            //
 //////////////////////////////////////////////////////////////////////
 
 // Number of tags per monitor.
@@ -131,7 +131,7 @@ static const Rule rules[] = {
 };
 
 //////////////////////////////////////////////////////////////////////
-/// Commands definition.
+// Commands definition.                                             //
 //////////////////////////////////////////////////////////////////////
 
 // Helper for spawning shell commands in the pre dwm-5.0 fashion.
@@ -189,7 +189,7 @@ static const char *backlight_dec_cmd[] = { "xbacklight", "-dec", "10", NULL };
 static const char *backlight_inc_cmd[] = { "xbacklight", "-inc", "10", NULL };
 
 //////////////////////////////////////////////////////////////////////
-/// Keys definition.
+// Keys definition.                                                 //
 //////////////////////////////////////////////////////////////////////
 
 // Mod4Mask - Windows key, Mod1Mask - Alt.
