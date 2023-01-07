@@ -2,7 +2,7 @@
 # URL:         https://github.com/zeppe-lin/trinity-extra-theme
 
 name=trinity-extra-theme
-version=0.1-b98ab37
+version=0.1-74a0976
 release=1
 source=https://github.com/zeppe-lin/$name/archive/${version#*-}/$name-$version.tar.gz
 
