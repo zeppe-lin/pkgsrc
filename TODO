@@ -1,10 +1,11 @@
 TODO pkgsrc
 
     * Get rid of "src" dir for the following packages:
-      * ./stuff/nmap/src
-      * ./stuff/tnscmd10g/src
-      * ./stuff/thc-ipv6/src
-      * ./xorg/transset-df/src
+
+      [x] ./stuff/nmap/src
+      [ ] ./stuff/tnscmd10g/src
+      [ ] ./stuff/thc-ipv6/src
+      [ ] ./xorg/transset-df/src
 
 
 vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
