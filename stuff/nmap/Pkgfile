@@ -1,15 +1,15 @@
-# Description: Network exploration of security auditing + unofficial nse scripts
+# Description: Network exploration of security auditing (+extra nse)
 # URL:         https://nmap.org
 # Depends on:  ktsuss libpcap pygtk
 
 name=nmap
 version=7.93
-release=1
+release=1-5791e6d # nmap-extra-nse version
 source="https://nmap.org/dist/nmap-$version.tar.bz2
 	0001-fix-hardcoded-monospace-font.patch
 	0002-fix-highlight.patch
 	nmap-7.93-openssl-1.1.patch
-	src/*.nse"
+	https://github.com/sighook/nmap-extra-nse/archive/${release#*-}/nmap-extra-nse-$release.tar.gz"
 
 build() {
 	# build in separate dir is broken
@@ -34,22 +34,16 @@ build() {
 	# add a launcher to run zenmap as root
 	ln -s /usr/share/zenmap/su-to-zenmap.sh $PKG/usr/bin/zenmap-su
 
-	# add unofficial nse scripts
-	for nse in $SRC/*.nse; do
-		install -m 644 -D $nse $PKG/usr/share/nmap/scripts/${nse#*-}
-		categories="$(grep -Eo 'categories[[:space:]]+=[[:space:]]{.*}' $nse ||:)"
-		if [ -n "$categories" ]; then
-			cat >> $PKG/usr/share/nmap/scripts/script.db <<EOF
-Entry { filename = "${nse#*-}", ${categories} }
-EOF
-		else
-			echo "WARNING: $nse missing categories!"
-		fi
-	done
-
 	# fix error "PangoFc will not work correctly"
 	mkdir -p $PKG/usr/etc/pango
 	pango-querymodules > $PKG/usr/etc/pango/pango.modules
+
+	# add unofficial nse scripts
+	cd $SRC/nmap-extra-nse-${release#*-}*
+	for _NSE in *.nse; do
+		cp -n $_NSE $PKG/usr/share/nmap/scripts/${_NSE#*-}
+	done
+	sh ./update-scriptdb.sh $PKG/usr/share/nmap/scripts/script.db
 
 	# remove junk
 	rm -r $PKG/usr/share/zenmap/locale $PKG/usr/share/zenmap/docs

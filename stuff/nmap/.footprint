@@ -449,6 +449,8 @@ drwxr-xr-x	root/root	usr/share/nmap/nselib/data/psexec/
 -rw-r--r--	root/root	usr/share/nmap/nselib/xmpp.lua
 -rw-r--r--	root/root	usr/share/nmap/nselib/zlib.luadoc
 drwxr-xr-x	root/root	usr/share/nmap/scripts/
+-rw-r--r--	root/root	usr/share/nmap/scripts/RCE_CVE2021_41773.nse
+-rw-r--r--	root/root	usr/share/nmap/scripts/RCE_CVE2021_42013.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/acarsd-info.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/address-info.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/afp-brute.nse
@@ -534,6 +536,7 @@ drwxr-xr-x	root/root	usr/share/nmap/scripts/
 -rw-r--r--	root/root	usr/share/nmap/scripts/creds-summary.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/cups-info.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/cups-queue-info.nse
+-rw-r--r--	root/root	usr/share/nmap/scripts/cve-2022-40684.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/cvs-brute-repository.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/cvs-brute.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/daap-get-library.nse
@@ -568,6 +571,7 @@ drwxr-xr-x	root/root	usr/share/nmap/scripts/
 -rw-r--r--	root/root	usr/share/nmap/scripts/domcon-brute.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/domcon-cmd.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/domino-enum-users.nse
+-rw-r--r--	root/root	usr/share/nmap/scripts/dos_iis_2022_21907.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/dpap-brute.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/drda-brute.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/drda-info.nse
@@ -696,6 +700,7 @@ drwxr-xr-x	root/root	usr/share/nmap/scripts/
 -rw-r--r--	root/root	usr/share/nmap/scripts/http-robtex-reverse-ip.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/http-robtex-shared-ns.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/http-ruby-environment.nse
+-rw-r--r--	root/root	usr/share/nmap/scripts/http-sap-igs-xmlchart-xxe.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/http-sap-netweaver-leak.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/http-security-headers.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/http-server-header.nse
@@ -752,6 +757,7 @@ drwxr-xr-x	root/root	usr/share/nmap/scripts/
 -rw-r--r--	root/root	usr/share/nmap/scripts/http-vuln-cve2018-8735.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/http-vuln-cve2018-9206.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/http-vuln-cve2019-11510.nse
+-rw-r--r--	root/root	usr/share/nmap/scripts/http-vuln-cve2019-14322.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/http-vuln-cve2019-1652.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/http-vuln-cve2019-19781.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/http-vuln-misfortune-cookie.nse
@@ -1047,6 +1053,7 @@ drwxr-xr-x	root/root	usr/share/nmap/scripts/
 -rw-r--r--	root/root	usr/share/nmap/scripts/targets-sniffer.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/targets-traceroute.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/targets-xml.nse
+-rw-r--r--	root/root	usr/share/nmap/scripts/tcp-uptime.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/teamspeak2-version.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/telnet-brute.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/telnet-encryption.nse
@@ -1080,16 +1087,19 @@ drwxr-xr-x	root/root	usr/share/nmap/scripts/
 -rw-r--r--	root/root	usr/share/nmap/scripts/vulners.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/vuze-dht-info.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/wdb-version.nse
+-rw-r--r--	root/root	usr/share/nmap/scripts/weblogic-cve-2020-14882.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/weblogic-t3-info.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/whois-domain.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/whois-ip.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/winrm-auth-methods.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/wsdd-discover.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/x11-access.nse
+-rw-r--r--	root/root	usr/share/nmap/scripts/x3-adxsrv.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/xdmcp-discover.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/xmlrpc-methods.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/xmpp-brute.nse
 -rw-r--r--	root/root	usr/share/nmap/scripts/xmpp-info.nse
+-rw-r--r--	root/root	usr/share/nmap/scripts/zookeeper-info.nse
 drwxr-xr-x	root/root	usr/share/zenmap/
 drwxr-xr-x	root/root	usr/share/zenmap/config/
 -rw-r--r--	root/root	usr/share/zenmap/config/scan_profile.usp
