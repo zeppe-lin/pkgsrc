@@ -2,14 +2,13 @@
 // st customization adjusted for Zeppe-Lin.                         //
 // See LICENSE file for copyright and license details.              //
 //                                                                  //
-// Copy this file to config.h and adjust conform your needs to      //
-// override these settings.  Or remove it if you want default st's  //
-// settings.                                                        //
+// Copy this file (or config.def.h from sources) to config.h and    //
+// adjust conform to your needs to override this customization.     //
 //////////////////////////////////////////////////////////////////////
 
 
 //////////////////////////////////////////////////////////////////////
-/// Appearance.
+// Appearance.                                                      //
 //////////////////////////////////////////////////////////////////////
 
 // Font.
@@ -132,7 +131,7 @@ static unsigned int defaultcs = 256;  // cursor color
 static unsigned int defaultrcs = 257; // reverse cursor color
 
 //////////////////////////////////////////////////////////////////////
-/// [VimBrowse] settings and appearance.
+// [VimBrowse] settings and appearance.                             //
 //////////////////////////////////////////////////////////////////////
 
 // Background color (colorname index) used in order to highlight the
@@ -188,10 +187,11 @@ Glyph style[] = {
   // No operation.
   {' ', ATTR_ITALIC, 232, 12}
 };
-// End of [Vim Browse].
+
+// End of [Vim Browse] settings and appearance.
 
 //////////////////////////////////////////////////////////////////////
-/// [CopyUrl] settings.
+// [CopyUrl] settings.                                              //
 //////////////////////////////////////////////////////////////////////
 
 // URL allowed symbols.
@@ -208,7 +208,8 @@ const char* URLStrings[] = {
 };
 unsigned int const amountURLStrings =
   sizeof(URLStrings) / sizeof(*URLStrings);
-// End of [CopyUrl].
+
+// End of [CopyUrl] settings.
 
 //////////////////////////////////////////////////////////////////////
 // Default shape of cursor.
