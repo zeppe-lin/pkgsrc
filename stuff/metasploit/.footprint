@@ -8083,6 +8083,7 @@ drwxrwxr-x	root/root	opt/metasploit/modules/exploits/linux/http/
 -rw-rw-r--	root/root	opt/metasploit/modules/exploits/linux/http/librenms_addhost_cmd_inject.rb
 -rw-rw-r--	root/root	opt/metasploit/modules/exploits/linux/http/librenms_collectd_cmd_inject.rb
 -rw-rw-r--	root/root	opt/metasploit/modules/exploits/linux/http/lifesize_uvc_ping_rce.rb
+-rw-rw-r--	root/root	opt/metasploit/modules/exploits/linux/http/linear_emerge_unauth_rce_cve_2019_7256.rb
 -rw-rw-r--	root/root	opt/metasploit/modules/exploits/linux/http/linksys_apply_cgi.rb
 -rw-rw-r--	root/root	opt/metasploit/modules/exploits/linux/http/linksys_e1500_apply_exec.rb
 -rw-rw-r--	root/root	opt/metasploit/modules/exploits/linux/http/linksys_themoon_exec.rb
