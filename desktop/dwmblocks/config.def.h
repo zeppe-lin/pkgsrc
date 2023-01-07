@@ -2,8 +2,8 @@
 // dwmblocks customization adjusted for Zeppe-Lin.                  //
 // See dwmblocks LICENSE file for copyright and license details.    //
 //                                                                  //
-// Copy this file (or src/config.def.h.sample) to config.h and      //
-// adjust conform your needs to override these settings.            //
+// Copy this file (or config.def.h from sources) to config.h and    //
+// adjust conform to your needs to override this customization.     //
 //////////////////////////////////////////////////////////////////////
 
 // Hack! Increase statusbar output. Normally shouldn't be redefined.
@@ -18,7 +18,7 @@ static const Block blocks[] = {
   {"\uf85a ", "dwmblocks-cpumem.sh",      2,               0},
   {"\uf7c9 ", "dwmblocks-diskfree.sh",    15,              0},
   {"\uf5ef ", "date '+%b %d (%a) %H:%M'", 5,               0},
-};
+}; // NOTE! "\ufXXX" requires ttf-font-iosevka-nerd
 
 // Sets delimiter between status commands.
 // NULL character ('\0') means no delimiter.
