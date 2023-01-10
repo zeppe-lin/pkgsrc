@@ -3,10 +3,10 @@
 # Depends on:  libpcre2 openssl zlib
 
 name=lighttpd
-version=1.4.67
+version=1.4.68
 release=1
-source="https://download.$name.net/$name/releases-1.4.x/$name-$version.tar.xz
-	$name.conf  rc.$name"
+source="https://download.$name.net/$name/releases-${version%.*}.x/$name-$version.tar.xz
+	$name.conf rc.$name"
 
 build() {
 	mkdir build; cd build
@@ -32,6 +32,6 @@ build() {
 	done
 
 	install -d $PKG/etc/ssl/certs
-	touch $PKG/etc/ssl/certs/lighttpd.pem
+	touch      $PKG/etc/ssl/certs/lighttpd.pem
 	chmod 0600 $PKG/etc/ssl/certs/lighttpd.pem
 }
