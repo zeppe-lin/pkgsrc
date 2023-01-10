@@ -4,7 +4,7 @@
 # Optional:    wayland-protocols
 
 name=libxkbcommon
-version=1.4.1
+version=1.5.0
 release=1
 source=https://github.com/xkbcommon/$name/archive/xkbcommon-$version.tar.gz
 
