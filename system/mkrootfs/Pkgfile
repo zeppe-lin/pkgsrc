@@ -3,7 +3,7 @@
 # Depends on:  gnupg pkgman pkgmk revdep tar
 
 name=mkrootfs
-version=0.2.1-e387484
+version=1.0.0-f716a28
 release=1
 source="https://github.com/zeppe-lin/$name/archive/${version#*-}/$name-$version.tar.gz
 	config"
